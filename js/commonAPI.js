@@ -41,28 +41,33 @@ function metaFetch(URL){
     return resultJSON;
 }
 
-function metaAjaxCall(URL) {
+function metaAjaxCall(URL, method) {
+    var resultJSON;
+    method = (method == undefined) ? "GET" : method;
     jQuery.ajax({
         url: URL,
-        type: 'GET',
+        type: method,
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Content-Type':'application/json'
         },
         dataType: "json",
         success: function (data) {
+            resultJSON = data;
             console.log(data);
         },
         error: function(data){
+            resultJSON = data;
             console.log(data);
         }
     });
+    return resultJSON;
 }
 
-function metaHTTP(URL) {
+function metaHTTP(URL, method) {
     var XMLRequest = new XMLHttpRequest();
-    // creating get request to dummy API call
-    XMLRequest.open('GET', URL);
+    method = (method == undefined) ? "GET" : method;
+    XMLRequest.open(method, URL);
     //XMLRequest.setRequestHeader("content-type","application/x-www-form-urlencoded");
     //XMLRequest.setRequestHeader("Access-Control-Allow-Origin","*");
     //XMLRequest.setRequestHeader("mode","no-cors");
@@ -73,7 +78,9 @@ function metaHTTP(URL) {
         } else {
             console.log("Error occurred!")
         }
-        console.log(JSON.parse(XMLRequest.response))
+        var resultJSON = JSON.parse(XMLRequest.response);
+        console.log(resultJSON);
+        return resultJSON;
     }
 }
 
