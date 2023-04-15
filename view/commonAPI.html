@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<head lang="EN">
+    <title>Trend Movies : API</title>
+    <style>
+        .input-div {
+            display: block;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            font-family: monospace;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    
+    <div id="dropLink" class="input-div">
+        <label>Input Link :</label>
+        <input type="text" id="dropLink-url" placeholder="URL" required><br><br>
+        <label>Input Slug :</label>
+        <input type="text" id="dropLink-alias" placeholder="CustomAlias" required>
+        <button id="dropLink-add">Add Link</button>
+    </div>
+    
+    <legend>Dood Stream</legend>
+    <div id="doodStream" class="input-div">
+        <label>Upload Link :</label>
+        <input type="text" id="doodStream-url" placeholder="Enter URL" required><br>
+        <label>Upload Folder ID :</label>
+        <input type="text" id="doodStream-fld_id" placeholder="Enter Folder ID (Optional)"><br>
+        <label>New Title :</label>
+        <input type="text" id="doodStream-new_title" placeholder="Enter New Title (Optional)">
+        <button id="doodStream-upload">Upload</button>
+        <button id="doodStream-status">Status</button>
+    </div>
+</body>
+<script src="commonAPI.js"></script>
