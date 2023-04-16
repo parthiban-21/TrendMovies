@@ -256,7 +256,7 @@ function showMovies(movieList) {
 
         $("#main #movie-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
         $("#main #movie-"+ item.id +" .overview h3").text(item.title);
-        $("#main #movie-"+ item.id +" .movie-rating").text(item.vote_average);
+        $("#main #movie-"+ item.id +" .movie-rating").text(item.vote_average.toFixed(1));
 
         /* Events */
         $("#main #movie-"+ item.id +" #watch-now").on('click',function(){
@@ -279,30 +279,44 @@ function showMovies(movieList) {
     })
 }
 
-function showSeries(data) {
-  main.innerHTML = '';
+function showSeries(seriesList) {
+    $("#main").empty();
+    $.each(seriesList, function(index, item) {
+        var frameHTML = '';
+        frameHTML += '<div class="movie" id="tvshow-'+ item.id +'">';
+        frameHTML += '  <img>';
+        frameHTML += '  <div class="cs-content movie-quality">HD</div>';
+        frameHTML += '  <div class="cs-content movie-rating">0.0</div>';
+        frameHTML += '  <div class="overview cs-hide">';
+        frameHTML += '      <h3></h3>';
+        frameHTML += '      <a class="btn btn-circle" id="info-dialog" title="Know More"><i class="fa-solid fa-lightbulb"></i></a>';
+        frameHTML += '      <a class="btn btn-circle" id="watch-now" title="Watch Now"><i class="fa-solid fa-play"></i></a>';
+        frameHTML += '  </div>';
+        frameHTML += '</div>';
+        $("#main").append(frameHTML);
 
-  data.forEach(movie => {
-    const { name, poster_path, vote_average, first_air_date, id } = movie;
-    var year = first_air_date.split("-")[0];
-    const movieEl = document.createElement('div');
-    movieEl.classList.add('movie');
-    movieEl.innerHTML = `
-    <img src="${poster_path ? IMG_URL + poster_path : "http://via.placeholder.com/1080x1580"}" alt="${name}">
-    <div class="movie-info">
-        <h3>${name} (${year})</h3>
-        <span class="${getColor(vote_average)}">${vote_average}</span> <br/>
-    </div>
-    <div class="overview info">
-      <br/>
-      <button class="know-more" id="info-${id}">Know More</button> 
-    </div> 
-    `
-    main.appendChild(movieEl);
-    document.getElementById("info-" + id).addEventListener('click', () => {
-      buttonAction(id);
+        $("#main #tvshow-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
+        $("#main #tvshow-"+ item.id +" .overview h3").text(item.name);
+        $("#main #tvshow-"+ item.id +" .movie-rating").text(item.vote_average.toFixed(1));
+
+        /* Events */
+        $("#main #tvshow-"+ item.id +" #watch-now").on('click',function(){
+            alert("We are Working on it, Stay Tuned...");
+        })
+        $("#main #tvshow-"+ item.id +" #info-dialog").on('click',function(){
+            buttonAction(item.id);
+        })
+        $("#main #tvshow-"+ item.id).hover(function(){
+            if($("#main #tvshow-"+ item.id +" .overview").hasClass('cs-hide')){
+                $("#main #tvshow-"+ item.id +" .overview").removeClass("cs-hide");
+                $("#main #tvshow-"+ item.id +" .overview").show();
+            }
+            else{
+                $("#main #tvshow-"+ item.id +" .overview").addClass("cs-hide");
+                $("#main #tvshow-"+ item.id +" .overview").hide();
+            }
+        })
     })
-  })
 }
 
 function buildSeasonAndEpisode(id) {
@@ -499,8 +513,8 @@ let span = document.getElementsByClassName("close")[0];
 let tvWatch = document.getElementById('tv-watch');
 
 function buttonAction(id) {
-    modal.style.display = "block";
     buildSeasonAndEpisode(id);
+    modal.style.display = "block";
 }
 
 tvWatch.onclick = function () {
