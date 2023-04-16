@@ -104,7 +104,7 @@ var nextPage = 2;
 var prevPage = 3;
 var lastUrl = '';
 var totalPages = 100;
-
+/*
 var selectedGenre = []
 setGenre();
 function setGenre() {
@@ -170,7 +170,7 @@ function clearBtn() {
     }
 
 }
-
+*/
 getMovies(API_URL);
 
 function getMovies(url) {
@@ -238,33 +238,43 @@ function getSeries(url) {
     })
 }
 
-function showMovies(data) {
-    main.innerHTML = '';
+function showMovies(movieList) {
+    $("#main").empty();
+    $.each(movieList, function(index, item) {
+        var frameHTML = '';
+        frameHTML += '<div class="movie" id="movie-'+ item.id +'">';
+        frameHTML += '  <img>';
+        frameHTML += '  <div class="cs-content movie-quality">HD</div>';
+        frameHTML += '  <div class="cs-content movie-rating">9.9</div>';
+        frameHTML += '  <div class="overview cs-hide">';
+        frameHTML += '      <h3></h3>';
+        frameHTML += '      <a class="btn btn-circle" id="info-dialog" title="Know More"><i class="fa-solid fa-lightbulb"></i></a>';
+        frameHTML += '      <a class="btn btn-circle" id="watch-now" title="Watch Now"><i class="fa-solid fa-play"></i></a>';
+        frameHTML += '  </div>';
+        frameHTML += '</div>';
+        $("#main").append(frameHTML);
 
-    data.forEach(movie => {
-        const { title, poster_path, vote_average, release_date, id } = movie;
-        var year = release_date.split("-")[0];
-        const movieEl = document.createElement('div');
-        movieEl.classList.add('movie');
-        movieEl.innerHTML = `
-     <img src="${poster_path ? IMG_URL + poster_path : "http://via.placeholder.com/1080x1580"}" alt="${title}">
-    <div class="movie-info">
-        <h3>${title} (${year})</h3>
-        <span class="${getColor(vote_average)}">${vote_average}</span>
-    </div>
-    <div class="overview">
-        <button class="know-more" id="${id}">Watch Now</button>
-    </div>
+        $("#main #movie-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
+        $("#main #movie-"+ item.id +" .overview h3").text(item.title);
+        $("#main #movie-"+ item.id +" .movie-rating").text(item.vote_average);
 
-`
-
-        main.appendChild(movieEl);
-
-        document.getElementById(id).addEventListener('click', () => {
-            console.log(id)
-            var url = embedMovie + id;
+        /* Events */
+        $("#main #movie-"+ item.id +" #watch-now").on('click',function(){
+            var url = embedMovie + item.id;
             window.open(url);
-            //openNav(movie)
+        })
+        $("#main #movie-"+ item.id +" #info-dialog").on('click',function(){
+            alert("We are Working on it, Stay Tuned...");
+        })
+        $("#main #movie-"+ item.id).hover(function(){
+            if($("#main #movie-"+ item.id +" .overview").hasClass('cs-hide')){
+                $("#main #movie-"+ item.id +" .overview").removeClass("cs-hide");
+                $("#main #movie-"+ item.id +" .overview").show();
+            }
+            else{
+                $("#main #movie-"+ item.id +" .overview").addClass("cs-hide");
+                $("#main #movie-"+ item.id +" .overview").hide();
+            }
         })
     })
 }
@@ -438,8 +448,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const searchTerm = search.value;
-    selectedGenre = [];
-    setGenre();
     if (searchTerm) {
         if (document.getElementById('isSeries').checked) {
             getSeries(tvsearchURL + '&query=' + searchTerm + '&language=en-US')

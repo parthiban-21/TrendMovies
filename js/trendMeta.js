@@ -1,3 +1,4 @@
+// Incomplete
 function metaFetch(URL, method){
     var resultJSON;
     method = (method == undefined) ? "GET" : method;
@@ -7,7 +8,6 @@ function metaFetch(URL, method){
     })
     return resultJSON;
 }
-
 async function metaPrimaryFetch(url,method) {
     const response = await fetch(url,{method: method});
     const resultJSON = await response.json();
