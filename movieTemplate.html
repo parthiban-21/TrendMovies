@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Movie HUB: From Trend Movies</title>
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/trendMeta.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
+        <!-- JQuery -->
+        <script src="js/jquery-3.5.1.min.js"></script>
+    </head>
+    <body>
+        <div id="backdrop-poster" class="cs-backdrop-poster"></div>
+        <header>
+            <div class="cs-head">
+                
+                <label>Movie Hub - Krafted by Trend Movies</label>
+            </div>
+            <div class="cs-menu">
+                <span>Login</span>
+                <span>Home</span>
+                <span>Series</span>
+                <span>Others</span>
+            </div>
+        </header>
+        <div id="movie-overview" class="cs-fCenter cs-overview">
+            <div class="cs-postermax cs-frag-30">
+                <img id="content-poster" src="http://via.placeholder.com/1080x1580">
+            </div>
+            <div class="cs-frag-70">
+                <div class="cs-title-head cs-lbpad">
+                    <h3 id="content-title">Title</h3>
+                    <i id="content-tagline">Tagline</i>
+                </div>
+                <div id="content-details">
+                    <a class="cs-icon"><i class="fa-solid fa-star"></i><span id="content-rating">0.0</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-hashtag"></i><span id="content-genre">Action , Love</span></a>
+                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span id="content-release">12-Jan-2022</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-clock"></i><span id="content-runtime">2h 57min</span></a>
+                </div>
+                <p id="content-overview">qwertyui rtyuio asdfg fghj</p>
+                <div class="cs-flex cs-lbpad" id="content-artists">
+                    <div class="cs-cast cs-flex">
+                        <a class="cs-btn-max cs-btn-round"><i class="fa-solid fa-user"></i></a>
+                        <span>
+                            <label class="role" id="role">Director</label>
+                            <label class="name" id="dir-name">Vetri Maaran</label>
+                        </span>
+                    </div>
+                    <div class="cs-cast cs-flex">
+                        <a class="cs-btn-max cs-btn-round"><i class="fa-solid fa-user"></i></a>
+                        <span>
+                            <label class="role" id="role">Starring</label>
+                            <label class="name" id="starring">Suriya, Vijay, Karthi, Jayam Ravi, Sana & more</label>
+                        </span>
+                    </div>
+                </div>
+                <div id="content-artist">
+                    <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span>Tamil</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-film"></i><span>High Definition - 720p</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-closed-captioning"></i><span>No Subtitles</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-user"></i><span>Adult Content</span></a>
+                </div>
+                <div class="cs-ltpad" id="actions">
+                    <a class="cs-btn-max cs-hover" id="info-dialog"><i class="fa-solid fa-tv"></i><span id="content-watch">Watch Now</span></a>
+                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
+                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-bookmark" title="Add To Watch List"><i class="fa-solid fa-bookmark"></i></a>
+                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-download" title="Download"><i class="fa-solid fa-download"></i></a>
+                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-share" title="Share"><i class="fa-solid fa-share-nodes"></i></a>
+                </div>
+            </div>
+        </div>
+        <div id="openPopover" class="cs-popover">
+            <div class="cs-popOverScreen">
+                <a id="close-dialog" class="cs-icon cs-hover cs-dialog-close"><i class="fa-solid fa-circle-xmark"></i></a>
+                <!-- <iframe id="iframe" src="https://www.2embed.to/embed/tmdb/movie?id=505642" width="80%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>     -->
+            </div>
+        </div>
+        <footer>
+            <label>Note: We don't upload any of the above movie or series. All are hosted by third-party sites.</label>
+            <script src="js/trendMeta.js"></script>
+            <script src="js/movieFooter.js"></script>
+        </footer>
+    </body>
+</html>

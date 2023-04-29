@@ -1,3 +1,320 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: rgb(0, 8, 34);
+    --secondary-color: rgba(0, 82, 204, 0.686);
+    --font-color: rgb(115, 155, 214);
+    --button-color: rgb(0,33,96);
+    --title-color:  rgb(255, 255, 255);
+    --header-bg: rgba(0, 0, 0, 0.4);
+    --icon-color: rgb(255, 202, 42);
+}
+
+body {
+    background-color: var(--primary-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: var(--header-bg);
+    color: var(--font-color);
+    padding: 14px 14px;
+    font-size: 1.1rem;
+}
+
+.cs-head {
+    display: inline-flex;
+}
+
+footer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+footer label {
+    color: var(--font-color);
+    padding: 1rem 1rem;
+    font-size: 0.9rem;
+}
+
+.cs-menu {
+    display: inline;
+    float: right;
+}
+
+.cs-menu span {
+    padding: 5px 10px;
+}
+
 .cs-hide {
     display: none;
+}
+
+.cs-fCenter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cs-flex {
+    display: flex;
+    align-items: center;
+}
+
+.cs-frag-30 {
+    width: 30%;
+}
+
+.cs-frag-70 {
+    width: 70%;
+}
+
+.cs-lmar {
+    margin-left: 10px;
+}
+
+.cs-rmar {
+    margin-right: 10px;
+}
+
+.cs-tmar {
+    margin-top: 10px;
+}
+
+.cs-bmar {
+    margin-bottom: 10px;
+}
+
+.cs-overview {
+    height: 612px;
+    color: var(--title-color);
+}
+
+.cs-backdrop-poster {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    filter: blur(3px);
+}
+
+.cs-postermax {
+    width: 320px;
+    height: 480px;
+    margin: 1rem;
+    border-radius: 3px;
+    box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-postermax img {
+    width: 100%;
+}
+
+.cs-hover:hover {
+    transform: scale(1.1);
+}
+
+.cs-btn-max {
+    display: inline-block;
+    height: 40px;
+    width: auto;
+    padding: 0px 18px;
+    border-radius: 40px;
+    background: var(--button-color);
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cs-btn-max span {
+    padding-left: 8px;
+}
+
+.cs-btn-round {
+    width: 40px;
+    padding: 0px;
+}
+
+.cs-lbpad{
+    padding: 0px 0px 20px 0px;
+}
+
+.cs-ltpad{
+    padding: 20px 0px 0px 0px;
+}
+
+.cs-title-head h3{
+    margin: 0px;
+    font-size: 30px;
+}
+
+.cs-title-head i {
+    font-size: 16px;
+    color: rgb(176, 176, 176);
+}
+
+.cs-icon span {
+    padding-right: 16px;
+}
+
+.cs-icon i {
+    padding-right: 5px;
+    color: var(--icon-color);
+}
+
+.cs-popover {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.cs-popOverScreen {
+    display: inline;
+    background-color: var(--primary-color);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    font-size: 16px;
+}
+
+.cs-dialog-close {
+    position: relative;
+    top: -40px;
+    right: -40px;
+    float: right;
+    font-size: 30px;
+}
+
+.cs-dialog-close:hover i {
+    color: red;
+}
+
+.cs-dialog-close i {
+    color: var(--font-color);
+}
+
+.cs-toggle {
+	position: relative;
+	width: 200px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+.cs-toggle input {
+	appearance: none;
+	width: 200px;
+	height: 50px;
+	border-radius: 25px;
+	background: var(--primary-color);
+	outline: none;
+	transition: 0.25s;
+}
+
+.cs-toggle input::before, .cs-toggle input::after {
+	z-index: 2;
+	position: absolute;
+	top: 56%;
+	transform: translateY(-50%);
+	font-weight: bolder;
+}
+
+.cs-toggle input::before {
+	content: "Movie";
+	left: 20px;
+}
+
+.cs-toggle input::after {
+	content: "Series";
+	right: 20px;
+}
+
+.cs-toggle label {
+	z-index: 1;
+	position: absolute;
+	top: 10px;
+	bottom: 4px;
+	border-radius: 20px;
+}
+
+.cs-toggle input:checked::after, .cs-toggle input:checked::before {
+	color: black;
+	transition: color 0.5s;
+}
+
+.cs-toggle input:checked+label {
+	left: 10px;
+	right: 100px;
+	background: var(--font-color);
+	transition: left 0.5s, right 0.4s 0.2s;
+}
+
+.cs-toggle input:not(:checked) {
+	background: var(--primary-color);
+	transition: background 0.2s;
+}
+
+.cs-toggle input:not(:checked)::before {
+	color: var(--font-color);
+	transition: color 0.5s;
+}
+
+.cs-toggle input:not(:checked)::after {
+	color: black;
+	transition: color 0.5s 0.2s;
+}
+
+.cs-toggle input:not(:checked)+label {
+	left: 100px;
+	right: 10px;
+	background: var(--font-color);
+	transition: left 0.4s 0.2s, right 0.5s, background 0.2s;
+}
+
+.cs-cast {
+    margin-right: 20px;
+}
+
+.cs-cast a {
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    background: var(--primary-color);
+    color: var(--title-color);
+}
+
+.cs-cast span {
+    display: inline-grid;
+    margin-left: 8px;
+}
+
+.cs-cast .role {
+    font-size: 12px;
+    color: var(--icon-color);
+}
+
+.cs-cast .name {
+    font-size: 15px;
+    color: var(--title-color);
 }
