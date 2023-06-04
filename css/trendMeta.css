@@ -27,6 +27,21 @@ header {
     font-size: 1.1rem;
 }
 
+select {
+    width: 150px;
+    height: 30px;
+    background: var(--primary-color);
+    color: var(--font-color);
+    font-size: 15px;
+    padding: 5px;
+    border: none;
+    margin-right: 10px;
+}
+
+select:focus-visible{
+    outline: none;
+}
+
 .cs-head {
     display: inline-flex;
 }

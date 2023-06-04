@@ -261,7 +261,9 @@ function showMovies(movieList) {
         /* Events */
         $("#main #movie-"+ item.id +" #watch-now").on('click',function(){
             var url = embedMovie + item.id;
-            window.open(url);
+            sessionStorage.setItem("movieId", item.id);
+            window.location.href = "/Programs/Website/TrendMovies/movieTemplate.html";
+            //window.open(url);
         })
         $("#main #movie-"+ item.id +" #info-dialog").on('click',function(){
             alert("We are Working on it, Stay Tuned...");

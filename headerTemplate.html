@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div class="cs-flex cs-pad">
+            <div class="cs-head">
+                <label>Movie Hub - Crafted by Trend Movies</label>
+            </div>
+            <div class="cs-menu cs-flex">
+            	<span class="cs-lrmar cs-cur" id="trend-movies">Movies</span>
+            	<span class="cs-lrmar cs-cur" id="trend-series">Series</span>
+            	<span class="cs-lrmar cs-cur" id="trend-home">Home</span>
+                <span class="cs-btn-max cs-btn-round cs-hover" id="user-profile" title="Profile" cs-dialog="user-dialog"><i class="fa-solid fa-user"></i></span>
+            </div>
+        </div>
+        
+        <!-- Login Dialog Box -->
+        <div id="user-dialog" class="cs-popover">
+            <div class="cs-user-dialog">
+                <a id="user-dialog-close" class="cs-icon cs-hover cs-dialog-close"><i class="fa-solid fa-circle-xmark"></i></a>
+                <div class="cs-cflex cs-fcenter">
+	                <div class="cs-tabs cs-lbpad cs-flex">
+	                	<button id="tab-signIn" class="cs-tab-action active" cs-action="user-signIn">Sign-In</button>
+	                	<button id="tab-signUp" class="cs-tab-action" cs-action="user-signUp">Sign-Up</button>
+	                </div>
+	                
+	                <div id="user-signIn" class="cs-cflex">
+	                	<input type="email" class="cs-bmar" placeholder="Enter Email-ID" required />
+	                	<input type="password" class="cs-bmar" placeholder="Enter Password" required />
+	                	<a class="cs-btn-max cs-hover cs-tmar" id="info-dialog"><i class="fa-solid fa-right-to-bracket"></i><span id="">Login</span></a>
+	                </div>
+	                
+	                <div id="user-signUp" class="cs-cflex" style="display: none;">
+	                	<input type="text" class="cs-bmar" placeholder="Enter Your Name" required />
+	                	<input type="email" class="cs-bmar" placeholder="Enter Email-ID" required />
+	                	<input type="password" class="cs-bmar" placeholder="Enter Password" required />
+	                	<a class="cs-btn-max cs-hover cs-tmar" id="info-dialog"><i class="fa-solid fa-right-to-bracket"></i><span id="">Create Account</span></a>
+	                </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="/js/headerTemplateFooter.js"></script>
+    </body>
+</html>

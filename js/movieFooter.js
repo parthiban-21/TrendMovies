@@ -1,5 +1,5 @@
 $(function(){
-    var movie_id = 948713;
+    var movie_id = sessionStorage.getItem("movieId");
     var fetchURL = trendMeta.tmdb.base_URL + trendMeta.tmdb.fetchMovie.actionURL + movie_id + "?api_key=" + trendMeta.tmdb.API_Key;
     var movie_data = metaAjaxCall(fetchURL);
     var credits = metaAjaxCall(trendMeta.tmdb.base_URL + "/movie/" + movie_id + "/credits?api_key=" + trendMeta.tmdb.API_Key);
