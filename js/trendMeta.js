@@ -38,7 +38,7 @@ var trendMeta = {
 
 /** Document Ready */
 $(function () {
-    $("#cs-header").load("headerTemplate.html");
+    //$("#cs-header").load("headerTemplate.html");
 });
 
 function includeHTML() {
