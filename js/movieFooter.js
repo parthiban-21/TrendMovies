@@ -25,9 +25,10 @@ $(function(){
     })
 
     $("#content-watch").on('click', function(){
+        var origin = document.location.origin;
         $("#openPopover #iframe").attr({
 			//src: "https://www.2embed.to/embed/tmdb/movie?id=" + movie_id
-            src: `http://streamy.great-site.net/se_player.php?video_id=${movie_id}&tmdb=1`
+            src: `${origin}/se_player.php?video_id=${movie_id}&tmdb=1`
 		})
         document.getElementById("openPopover").style.display = "flex";
     })
