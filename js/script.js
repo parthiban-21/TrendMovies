@@ -262,7 +262,7 @@ function showMovies(movieList) {
         $("#main #movie-"+ item.id +" #watch-now").on('click',function(){
             var url = embedMovie + item.id;
             sessionStorage.setItem("movieId", item.id);
-            window.location.href = "/Programs/Website/TrendMovies/movieTemplate.html";
+            window.location.href = "movieTemplate.html";
             //window.open(url);
         })
         $("#main #movie-"+ item.id +" #info-dialog").on('click',function(){

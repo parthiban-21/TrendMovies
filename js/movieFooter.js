@@ -1,13 +1,12 @@
 $(function(){
-    var movie_id = sessionStorage.getItem("movieId");
-    var fetchURL = trendMeta.tmdb.base_URL + trendMeta.tmdb.fetchMovie.actionURL + movie_id + "?api_key=" + trendMeta.tmdb.API_Key;
-    var movie_data = metaAjaxCall(fetchURL);
-    var credits = metaAjaxCall(trendMeta.tmdb.base_URL + "/movie/" + movie_id + "/credits?api_key=" + trendMeta.tmdb.API_Key);
-    getDirectorAndStarring(credits);
-    bg_ImgURL = trendMeta.tmdb.backdropImg_URl + movie_data.backdrop_path;
+    const movie_id = sessionStorage.getItem("movieId");
+    const tmdb = new tmdbAPI();
+    var movie_data = tmdb.getMovie(movie_id);
+
+    var bg_ImgURL = tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path;
     $('#backdrop-poster').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
 
-    $("#content-poster").attr('src',trendMeta.tmdb.img_URL + movie_data.poster_path);
+    $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path);
     $("#content-title").text(movie_data.title + " ("+ movie_data.release_date.substring(0,4) +")");
     $("#content-tagline").text(movie_data.tagline);
     $("#content-overview").text(movie_data.overview);
@@ -15,19 +14,33 @@ $(function(){
     $("#content-rating").text(movie_data.vote_average.toFixed(1));
     $("#content-genre").text(getGenre(movie_data.genres));
     $("#content-release").text(movie_data.release_date);
+    var credits = tmdb.getMovieCredits(movie_id);
+    getDirectorAndStarring(credits);
 
     $("#close-dialog").on('click',function(){
+        $("#openPopover #iframe").attr({
+			src: ""
+		})
         $("#openPopover").hide();
     })
 
     $("#content-watch").on('click', function(){
+        $("#openPopover #iframe").attr({
+			//src: "https://www.2embed.to/embed/tmdb/movie?id=" + movie_id
+            src: `http://streamy.great-site.net/se_player.php?video_id=${movie_id}&tmdb=1`
+		})
         document.getElementById("openPopover").style.display = "flex";
     })
 
     $("#content-trailer").on('click', function(){
-        var YTUrl = getVideo(movie_id);
-        if(YTUrl != '')
-            window.open(YTUrl);
+        var YTUrl = getTrailer(movie_id);
+        if(YTUrl != ''){
+            //window.open(YTUrl);
+            $("#openPopover #iframe").attr({
+                src: YTUrl
+            });
+            document.getElementById("openPopover").style.display = "flex";
+        }
         else
             alert("Sorry, Could Not Find Official Trailer.");
     })
@@ -45,10 +58,9 @@ $(function(){
     })
 })
 
-function getVideo(contentID){
-    var youTubeURL = '';
-    var fetchURL = trendMeta.tmdb.base_URL + "/movie/" + contentID + "/videos?api_key=" + trendMeta.tmdb.API_Key;
-    var video_data = metaAjaxCall(fetchURL);
+function getTrailer(contentID){
+    const tmdb = new tmdbAPI();
+    var video_data = tmdb.getMovieVideos(contentID);
     var keyArr = [];
     $.each(video_data.results , function(i, video) {
         if(video.official == true && video.site == "YouTube" && video.type == "Trailer")

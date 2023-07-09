@@ -84,14 +84,20 @@ async function metaPrimaryFetch(url,method) {
     return resultJSON;
 }
 
-function metaAjaxCall(URL, method) {
+function metaAjaxCall(URL, method, reqHeader) {
     var resultJSON;
     method = (method == undefined) ? "GET" : method;
-    jQuery.ajax({
+
+    var headers = new Object();
+    headers["accept"] = "application/json"
+    if(reqHeader && typeof(reqHeader) == "object")
+        $.extend(headers, reqHeader);
+
+    $.ajax({
         async: false,
         url: URL,
         type: method,
-        dataType: "json",
+        headers: headers,
         success: function (data) {
             resultJSON = data;
             console.log(data);
@@ -140,8 +146,14 @@ function getGenre(genreList){
     return returnString;
 }
 
-function frameYTLink(videoID){
-    var url = "https://www.youtube.com/watch?v=";
-    url += videoID;
+function frameYTLink(videoID, type){
+    var watchURL = "https://www.youtube.com/watch?v=";
+    var embedURL = "https://www.youtube.com/embed/";
+    var url = "";
+    if(type && type === "EMBED"){
+        url = embedURL + videoID;
+    } else {
+        url = watchURL + videoID;
+    }
     return url;
 }
