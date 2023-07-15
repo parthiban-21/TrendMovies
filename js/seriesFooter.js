@@ -71,7 +71,7 @@ function getTrailer(contentID){
     })
     console.log(keyArr);
     if(keyArr[0] != undefined && keyArr[0] != '' && keyArr[0] != null)
-        youTubeURL = frameYTLink(keyArr[0]);
+        youTubeURL = frameYTLink(keyArr[0], "EMBED");
     return youTubeURL;
 }
 
