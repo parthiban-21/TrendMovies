@@ -30,10 +30,10 @@ header {
 select {
     width: 150px;
     height: 30px;
-    background: var(--primary-color);
-    color: var(--font-color);
+    background: var(--button-color);
+    color: var(--title-color);
     font-size: 15px;
-    padding: 5px;
+    padding: 15px;
     border: none;
     margin-right: 10px;
 }
@@ -61,14 +61,19 @@ footer label {
 .cs-menu {
     display: inline;
     float: right;
+    color: var(--font-color);
 }
 
-.cs-menu span {
-    padding: 5px 10px;
+.cs-menu span:hover{
+	color: var(--icon-color);
 }
 
 .cs-hide {
     display: none;
+}
+
+.cs-cur {
+	cursor: pointer;
 }
 
 .cs-fCenter {
@@ -105,6 +110,10 @@ footer label {
 
 .cs-bmar {
     margin-bottom: 10px;
+}
+
+.cs-lrmar {
+    margin-right: 20px;
 }
 
 .cs-overview {
@@ -332,4 +341,13 @@ footer label {
 .cs-cast .name {
     font-size: 15px;
     color: var(--title-color);
+}
+
+.cs-input {
+    border: none;
+    color: var(--title-color);
+    width: auto;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .0);
 }

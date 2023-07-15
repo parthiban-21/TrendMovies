@@ -39,6 +39,7 @@ var trendMeta = {
 /** Document Ready */
 $(function () {
     //$("#cs-header").load("headerTemplate.html");
+    loadMenuGroup();
 });
 
 function includeHTML() {
@@ -156,4 +157,24 @@ function frameYTLink(videoID, type){
         url = watchURL + videoID;
     }
     return url;
+}
+
+function loadMenuGroup(){
+    let htmlTags = `
+        <span class="cs-lrmar cs-cur" id="trend-movies">Movies</span>
+        <span class="cs-lrmar cs-cur" id="trend-series">Series</span>
+        <span class="cs-lrmar cs-cur" id="trend-home">Home</span>`;
+    $("#menu-groups").append(htmlTags);
+
+    $("#trend-home").on('click', function(){
+		window.location.href = "index.html";
+    })
+
+    $("#trend-movies").on('click', function(){
+        window.location.href = "index.html";
+    })
+
+    $("#trend-series").on('click', function(){
+        alert("Sorry, This Feature is Currently Not Available.");
+    })
 }
