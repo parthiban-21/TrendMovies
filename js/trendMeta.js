@@ -39,6 +39,7 @@ var trendMeta = {
 /** Document Ready */
 $(function () {
     //$("#cs-header").load("headerTemplate.html");
+    setWindowTitle();
     loadMenuGroup();
 });
 
@@ -161,10 +162,15 @@ function frameYTLink(videoID, type){
 
 function loadMenuGroup(){
     let htmlTags = `
-        <span class="cs-lrmar cs-cur" id="trend-movies">Movies</span>
-        <span class="cs-lrmar cs-cur" id="trend-series">Series</span>
-        <span class="cs-lrmar cs-cur" id="trend-home">Home</span>`;
+        <span class="cs-lrmar cs-cur" id="trend-movies"><i class="fa-solid fa-film cs-rsmar"></i>Movies</span>
+        <span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>
+        <span class="cs-lrmar cs-cur" id="trend-anime"><i class="fa-solid fa-house-fire cs-rsmar"></i>Anime</span>
+        <span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-house-user cs-rsmar"></i>Home</span>`;
     $("#menu-groups").append(htmlTags);
+
+    $(".cs-head img").on('click', function(){
+		window.location.href = "index.html";
+    })
 
     $("#trend-home").on('click', function(){
 		window.location.href = "index.html";
@@ -177,4 +183,21 @@ function loadMenuGroup(){
     $("#trend-series").on('click', function(){
         alert("Sorry, This Feature is Currently Not Available.");
     })
+
+    $("#trend-anime").on('click', function(){
+        if(confirm("You will be Re-directed to Third-Party Website.\nDo You Want to Continue?")){
+            window.open("https://aniwatch.to/");
+        }
+    })
+}
+
+function setWindowTitle(){
+    let cur_url = location.href;
+    if(cur_url.indexOf("movie")){
+        document.title = "Streamy: Movie";
+    } else if (cur_url.indexOf("series")) {
+        document.title = "Streamy: Series";
+    } else {
+        document.title = "Streamy - from Trend Movies";
+    }
 }

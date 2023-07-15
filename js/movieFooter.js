@@ -62,6 +62,7 @@ $(function(){
 
 function getTrailer(contentID){
     const tmdb = new tmdbAPI();
+    let youTubeURL = '';
     var video_data = tmdb.getMovieVideos(contentID);
     var keyArr = [];
     $.each(video_data.results , function(i, video) {

@@ -291,7 +291,7 @@ function showSeries(seriesList) {
         frameHTML += '  <div class="cs-content movie-rating">0.0</div>';
         frameHTML += '  <div class="overview cs-hide">';
         frameHTML += '      <h3></h3>';
-        frameHTML += '      <a class="btn btn-circle" id="info-dialog" title="Know More"><i class="fa-solid fa-lightbulb"></i></a>';
+        //frameHTML += '      <a class="btn btn-circle" id="info-dialog" title="Know More"><i class="fa-solid fa-lightbulb"></i></a>';
         frameHTML += '      <a class="btn btn-circle" id="watch-now" title="Watch Now"><i class="fa-solid fa-play"></i></a>';
         frameHTML += '  </div>';
         frameHTML += '</div>';

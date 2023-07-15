@@ -14,6 +14,7 @@ $(function(){
     $("#content-rating").text(series_data.vote_average.toFixed(1));
     $("#content-genre").text(getGenre(series_data.genres));
     $("#content-release").text(series_data.first_air_date);
+    $("#content-status").text(series_data.status);
     var credits = tmdb.getSeriesCredits(series_id);
     getDirectorAndStarring(credits);
 
@@ -59,10 +60,23 @@ $(function(){
     $("#content-download").on('click', function(){
         alert("Sorry, This Feature is Currently Not Available.");
     })
+
+    $("#content-share").on('click', function(){
+        alert("Sorry, This Feature is Currently Not Available.");
+    })
+
+    $("#tv-info").on('click', function(){
+        alert("Sorry, This Feature is Currently Not Available.");
+    })
+
+    $("#content-bookmark").hide();
+    $("#content-like").hide();
+    $("#content-share").hide();
 })
 
 function getTrailer(contentID){
     const tmdb = new tmdbAPI();
+    let youTubeURL = '';
     var video_data = tmdb.getSeriesVideos(contentID);
     var keyArr = [];
     $.each(video_data.results , function(i, video) {

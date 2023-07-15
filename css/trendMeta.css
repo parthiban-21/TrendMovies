@@ -21,7 +21,6 @@ body {
 }
 
 header {
-    background-color: var(--header-bg);
     color: var(--font-color);
     padding: 14px 14px;
     font-size: 1.1rem;
@@ -44,6 +43,12 @@ select:focus-visible{
 
 .cs-head {
     display: inline-flex;
+    align-items: center;
+}
+
+.cs-head img{
+    height: 1.1rem;
+    margin-right: 5px;
 }
 
 footer {
@@ -102,6 +107,10 @@ footer label {
 
 .cs-rmar {
     margin-right: 10px;
+}
+
+.cs-rsmar {
+    margin-right: 5px;
 }
 
 .cs-tmar {
