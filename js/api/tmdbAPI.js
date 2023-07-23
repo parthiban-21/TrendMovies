@@ -30,7 +30,7 @@ class tmdbAPI {
     }
 
     /** To Get the Trailer & Other Videos of the Movie */
-    getMovies(page, sort_by, include_adult, include_video, lang){
+    discoverMovies(page, sort_by, include_adult, include_video, lang){
         const sortBy = {
             POP_ASC : "popularity.asc",
             POP_DSC : "popularity.desc",
@@ -70,6 +70,32 @@ class tmdbAPI {
     getSeriesVideos(series_id, lang){
         lang = (lang) ? lang : "en-US";
         var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/videos?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    seachMulti(query, page, lang, include_adult){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        include_adult = (include_adult) ? include_adult : false;
+        var serviceURL = `https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=${include_adult}&language=${lang}&page=${page}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    seachMovie(query, page, lang, primary_release_year, include_adult){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        include_adult = (include_adult) ? include_adult : false;
+        primary_release_year = (primary_release_year) ? primary_release_year : "";
+        var serviceURL = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=${include_adult}&language=${lang}&page=${page}&primary_release_year=${primary_release_year}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    seachSeries(query, page, lang, first_air_date_year, include_adult){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        include_adult = (include_adult) ? include_adult : false;
+        first_air_date_year = (first_air_date_year) ? first_air_date_year : "";
+        var serviceURL = `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=${include_adult}&language=${lang}&page=${page}&first_air_date_year=${first_air_date_year}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
 }

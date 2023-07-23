@@ -104,73 +104,7 @@ var nextPage = 2;
 var prevPage = 3;
 var lastUrl = '';
 var totalPages = 100;
-/*
-var selectedGenre = []
-setGenre();
-function setGenre() {
-    tagsEl.innerHTML = '';
-    genres.forEach(genre => {
-        const t = document.createElement('div');
-        t.classList.add('tag');
-        t.id = genre.id;
-        t.innerText = genre.name;
-        t.addEventListener('click', () => {
-            if (selectedGenre.length == 0) {
-                selectedGenre.push(genre.id);
-            } else {
-                if (selectedGenre.includes(genre.id)) {
-                    selectedGenre.forEach((id, idx) => {
-                        if (id == genre.id) {
-                            selectedGenre.splice(idx, 1);
-                        }
-                    })
-                } else {
-                    selectedGenre.push(genre.id);
-                }
-            }
-            console.log(selectedGenre)
-            getMovies(API_URL + '&with_genres=' + encodeURI(selectedGenre.join(',')))
-            highlightSelection()
-        })
-        tagsEl.append(t);
-    })
-}
 
-function highlightSelection() {
-    const tags = document.querySelectorAll('.tag');
-    tags.forEach(tag => {
-        tag.classList.remove('highlight')
-    })
-    clearBtn()
-    if (selectedGenre.length != 0) {
-        selectedGenre.forEach(id => {
-            const hightlightedTag = document.getElementById(id);
-            hightlightedTag.classList.add('highlight');
-        })
-    }
-
-}
-
-function clearBtn() {
-    let clearBtn = document.getElementById('clear');
-    if (clearBtn) {
-        clearBtn.classList.add('highlight')
-    } else {
-
-        let clear = document.createElement('div');
-        clear.classList.add('tag', 'highlight');
-        clear.id = 'clear';
-        clear.innerText = 'Clear x';
-        clear.addEventListener('click', () => {
-            selectedGenre = [];
-            setGenre();
-            getMovies(API_URL);
-        })
-        tagsEl.append(clear);
-    }
-
-}
-*/
 getMovies(API_URL);
 
 function getMovies(url) {
@@ -196,8 +130,6 @@ function getMovies(url) {
             prev.classList.remove('disabled');
             next.classList.remove('disabled')
         }
-
-        tagsEl.scrollIntoView({ behavior: 'smooth' })
 
     } else {
         main.innerHTML = `<h1 class="no-results">No Results Found</h1>`
@@ -228,9 +160,6 @@ function getSeries(url) {
                 prev.classList.remove('disabled');
                 next.classList.remove('disabled')
             }
-
-            tagsEl.scrollIntoView({ behavior: 'smooth' })
-
         } else {
             main.innerHTML = `<h1 class="no-results">No Results Found</h1>`
         }
@@ -349,107 +278,10 @@ function buildSeasonAndEpisode(id) {
   })
 }
 
-const overlayContent = document.getElementById('overlay-content');
-/* Open when someone clicks on the span element */
-function openNav(movie) {
-    let id = movie.id;
-    fetch(BASE_URL + '/movie/' + id + '/videos?' + API_KEY).then(res => res.json()).then(videoData => {
-        console.log(videoData);
-        if (videoData) {
-            document.getElementById("myNav").style.width = "100%";
-            if (videoData.results.length > 0) {
-                var embed = [];
-                var dots = [];
-                videoData.results.forEach((video, idx) => {
-                    let { name, key, site } = video
-
-                    if (site == 'YouTube') {
-
-                        embed.push(`
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" class="embed hide" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
-  `)
-
-                        dots.push(`
-      <span class="dot">${idx + 1}</span>
-    `)
-                    }
-                })
-
-                var content = `
-<h1 class="no-results">${movie.original_title}</h1>
-<br/>
-
-${embed.join('')}
-<br/>
-<div class="dots">${dots.join('')}</div>
-
-`
-                overlayContent.innerHTML = content;
-                activeSlide = 0;
-                showVideos();
-            } else {
-                overlayContent.innerHTML = `<h1 class="no-results">No Results Found</h1>`
-            }
-        }
-    })
-}
-
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeNav() {
     document.getElementById("myNav").style.width = "0%";
 }
-
-var activeSlide = 0;
-var totalVideos = 0;
-
-function showVideos() {
-    let embedClasses = document.querySelectorAll('.embed');
-    let dots = document.querySelectorAll('.dot');
-
-    totalVideos = embedClasses.length;
-    embedClasses.forEach((embedTag, idx) => {
-        if (activeSlide == idx) {
-            embedTag.classList.add('show')
-            embedTag.classList.remove('hide')
-
-        } else {
-            embedTag.classList.add('hide');
-            embedTag.classList.remove('show')
-        }
-    })
-
-    dots.forEach((dot, indx) => {
-        if (activeSlide == indx) {
-            dot.classList.add('active');
-        } else {
-            dot.classList.remove('active')
-        }
-    })
-}
-
-const leftArrow = document.getElementById('left-arrow')
-const rightArrow = document.getElementById('right-arrow')
-
-leftArrow.addEventListener('click', () => {
-    if (activeSlide > 0) {
-        activeSlide--;
-    } else {
-        activeSlide = totalVideos - 1;
-    }
-
-    showVideos()
-})
-
-rightArrow.addEventListener('click', () => {
-    if (activeSlide < (totalVideos - 1)) {
-        activeSlide++;
-    } else {
-        activeSlide = 0;
-    }
-    showVideos()
-})
-
 
 function getColor(vote) {
     if (vote >= 8) {

@@ -1,0 +1,68 @@
+{
+    "2018":{
+        "TMDB_ID":"",
+        "IMDB_ID":"",
+        "TITLE":"2018 (2023)",
+        "RELEASE_DATE":"",
+        "IMG":{
+            "POSTER_PATH":"",
+            "BACKDROP_PATH":""
+        },
+        "TAGLINE":"",
+        "OVERVIEW":"",
+        "RUNTIME":"",
+        "VOTE_AVERAGE":"",
+        "GENRES":[],
+        "LANGUAGE":"",
+        "QUALITY":"",
+        "SUBS":"",
+        "ADULT_CONTENT":"",
+        "STREAM_URL":{
+            "DOOPLAY": "https://dooood.com/e/41sl1vk3r7gr"
+        }
+    },
+    "RAAVANA KOTTAM":{
+        "TMDB_ID":"",
+        "IMDB_ID":"",
+        "TITLE":"2018 (2023)",
+        "RELEASE_DATE":"",
+        "IMG":{
+            "POSTER_PATH":"",
+            "BACKDROP_PATH":""
+        },
+        "TAGLINE":"",
+        "OVERVIEW":"",
+        "RUNTIME":"",
+        "VOTE_AVERAGE":"",
+        "GENRES":[],
+        "LANGUAGE":"",
+        "QUALITY":"",
+        "SUBS":"",
+        "ADULT_CONTENT":"",
+        "STREAM_URL":{
+            "DOOPLAY": "https://dooood.com/e/3pd6qtp5xotw"
+        }
+    },
+    "SISU":{
+        "TMDB_ID":"",
+        "IMDB_ID":"",
+        "TITLE":"SISU (2023)",
+        "RELEASE_DATE":"",
+        "IMG":{
+            "POSTER_PATH":"",
+            "BACKDROP_PATH":""
+        },
+        "TAGLINE":"",
+        "OVERVIEW":"",
+        "RUNTIME":"",
+        "VOTE_AVERAGE":"",
+        "GENRES":[],
+        "LANGUAGE":"",
+        "QUALITY":"",
+        "SUBS":"",
+        "ADULT_CONTENT":"",
+        "STREAM_URL":{
+            "DOOPLAY": "https://dooood.com/e/ofw0yr0x9jsb"
+        }
+    }
+}

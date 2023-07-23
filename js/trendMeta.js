@@ -102,7 +102,6 @@ function metaAjaxCall(URL, method, reqHeader) {
         headers: headers,
         success: function (data) {
             resultJSON = data;
-            console.log(data);
         },
         error: function(data){
             resultJSON = data;
@@ -116,10 +115,10 @@ function metaXMLRequest(URL, method) {
     var resultJSON;
     var XMLRequest = new XMLHttpRequest();
     method = (method == undefined) ? "GET" : method;
-    XMLRequest.open(method, URL, false);
-    //XMLRequest.setRequestHeader("content-type","application/x-www-form-urlencoded");
-    //XMLRequest.setRequestHeader("Access-Control-Allow-Origin","*");
-    //XMLRequest.setRequestHeader("mode","no-cors");
+    XMLRequest.open(method, URL, true);
+    XMLRequest.setRequestHeader("content-type","application/json");
+    XMLRequest.setRequestHeader("Access-Control-Allow-Origin","*");
+    XMLRequest.setRequestHeader("mode","no-cors");
     XMLRequest.onload = () => {
         if (XMLRequest.status === 200) {
             console.log("Request successful");
@@ -193,9 +192,9 @@ function loadMenuGroup(){
 
 function setWindowTitle(){
     let cur_url = location.href;
-    if(cur_url.indexOf("movie")){
+    if(cur_url.indexOf("movie") != -1){
         document.title = "Streamy: Movie";
-    } else if (cur_url.indexOf("series")) {
+    } else if (cur_url.indexOf("series") != -1) {
         document.title = "Streamy: Series";
     } else {
         document.title = "Streamy - from Trend Movies";

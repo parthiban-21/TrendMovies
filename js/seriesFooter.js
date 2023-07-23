@@ -66,7 +66,15 @@ $(function(){
     })
 
     $("#tv-info").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        var info = "";
+        $.each(series_data.seasons , function(i, s) {
+            if(s.name != "Specials")
+                info += `${i}) Season: ${s.name} Episodes: ${s.episode_count}\n`;
+        });
+        if(info)
+            alert(info);
+        else
+            alert("No Seasons Available.")
     })
 
     $("#content-bookmark").hide();

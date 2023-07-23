@@ -52,9 +52,10 @@ select:focus-visible{
 }
 
 footer {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    height: auto;
+    width: 100%;
 }
 
 footer label {

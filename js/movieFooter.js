@@ -25,23 +25,22 @@ $(function(){
     })
 
     $("#content-watch").on('click', function(){
-        const superEmbedAPI = new superembedAPI();
-        let embed_url = superEmbedAPI.getMovieURL(movie_id, "TMDB");
-        $("#openPopover #iframe").attr({
-			//src: "https://www.2embed.to/embed/tmdb/movie?id=" + movie_id
-            src: embed_url
-		})
-        document.getElementById("openPopover").style.display = "flex";
+        var key = movie_data.title.toUpperCase();
+        var movies = fetchMovies();
+        if (movies.hasOwnProperty(key)) {
+            var STREAM_URLS = movies[key].STREAM_URL.DOOPLAY;
+            openPlayer(STREAM_URLS);
+        } else {
+            const superEmbedAPI = new superembedAPI();
+            let embed_url = superEmbedAPI.getMovieURL(movie_id, "TMDB");
+            openPlayer(embed_url);
+        }
     })
 
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(movie_id);
         if(YTUrl != ''){
-            //window.open(YTUrl);
-            $("#openPopover #iframe").attr({
-                src: YTUrl
-            });
-            document.getElementById("openPopover").style.display = "flex";
+            openPlayer(YTUrl);
         }
         else
             alert("Sorry, Could Not Find Official Trailer.");
@@ -58,6 +57,14 @@ $(function(){
     $("#content-download").on('click', function(){
         alert("Sorry, This Feature is Currently Not Available.");
     })
+
+    $("#content-share").on('click', function(){
+        alert("Sorry, This Feature is Currently Not Available.");
+    })
+
+    $("#content-bookmark").hide();
+    $("#content-like").hide();
+    $("#content-share").hide();
 })
 
 function getTrailer(contentID){
@@ -93,4 +100,16 @@ function getDirectorAndStarring(credits){
     })
     stars = stars.substring(0,stars.length - 2) + " & more";
     $("#content-artists #starring").text(stars);
+}
+
+function openPlayer(embed_url){
+    $("#openPopover #iframe").attr({
+        //src: "https://www.2embed.to/embed/tmdb/movie?id=" + movie_id
+        src: embed_url
+    })
+    document.getElementById("openPopover").style.display = "flex";
+}
+
+function fetchMovies(){
+    return metaAjaxCall("./trendMoviesDB.json");
 }
