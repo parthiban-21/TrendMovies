@@ -64,5 +64,27 @@
         "STREAM_URL":{
             "DOOPLAY": "https://dooood.com/e/ofw0yr0x9jsb"
         }
+    },
+    "MAAMANNAN":{
+        "TMDB_ID":"",
+        "IMDB_ID":"",
+        "TITLE":"Maamannan (2023)",
+        "RELEASE_DATE":"",
+        "IMG":{
+            "POSTER_PATH":"",
+            "BACKDROP_PATH":""
+        },
+        "TAGLINE":"",
+        "OVERVIEW":"",
+        "RUNTIME":"",
+        "VOTE_AVERAGE":"",
+        "GENRES":[],
+        "LANGUAGE":"",
+        "QUALITY":"",
+        "SUBS":"",
+        "ADULT_CONTENT":"",
+        "STREAM_URL":{
+            "DOOPLAY": "https://dooood.com/e/qn68tanvewnw"
+        }
     }
 }
