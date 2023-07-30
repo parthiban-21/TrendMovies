@@ -121,4 +121,33 @@ class tmdbAPI {
         var serviceURL = `https://api.themoviedb.org/3/search/tv?query=${query}&include_adult=${include_adult}&language=${lang}&page=${page}&first_air_date_year=${first_air_date_year}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
+
+    trendingMulti(time_window, lang){
+        time_window = (time_window) ? time_window : "week";
+        lang = (lang) ? lang : "en-US";
+        var serviceURL = `https://api.themoviedb.org/3/trending/all/${time_window}?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    trendingMovies(time_window, lang){
+        time_window = (time_window) ? time_window : "week";
+        lang = (lang) ? lang : "en-US";
+        var serviceURL = `https://api.themoviedb.org/3/trending/movie/${time_window}?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    trendingSeries(time_window, lang){
+        time_window = (time_window) ? time_window : "week";
+        lang = (lang) ? lang : "en-US";
+        var serviceURL = `https://api.themoviedb.org/3/trending/tv/${time_window}?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    topRatedMovies(page, lang, region){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        region = (region) ? region : "IN";
+        var serviceURL = `https://api.themoviedb.org/3/movie/top_rated?page=${page}&region=${region}&language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
 }

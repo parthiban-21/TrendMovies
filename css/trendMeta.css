@@ -26,6 +26,12 @@ header {
     font-size: 1.1rem;
 }
 
+legend {
+ color: var(--font-color);
+ font-size: 20px;
+ margin: 0px 20px;
+}
+
 select {
     width: 150px;
     height: 30px;

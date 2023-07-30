@@ -176,7 +176,7 @@ function loadMenuGroup(){
     })
 
     $("#trend-movies").on('click', function(){
-        window.location.href = "index.html";
+        window.location.href = "movies.html";
     })
 
     $("#trend-series").on('click', function(){

@@ -193,7 +193,7 @@ function showMovies(movieList) {
         $("#main").append(frameHTML);
 
         $("#main #movie-"+ item.id +" #adult-flag").hide();
-        $("#main #movie-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
+        $("#main #movie-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "img/Streamy_BG.jpg");
         $("#main #movie-"+ item.id +" .overview h3").text(item.title);
         $("#main #movie-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
         if(item.adult){
@@ -244,7 +244,7 @@ function showSeries(seriesList) {
         $("#main").append(frameHTML);
 
         $("#main #tvshow-"+ item.id +" #adult-flag").hide();
-        $("#main #tvshow-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
+        $("#main #tvshow-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "img/Streamy_BG.jpg");
         $("#main #tvshow-"+ item.id +" .overview h3").text(item.name);
         $("#main #tvshow-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
         if(item.adult){
