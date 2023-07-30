@@ -180,7 +180,7 @@ function loadMenuGroup(){
     })
 
     $("#trend-series").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        window.location.href = "tvshows.html";
     })
 
     $("#trend-anime").on('click', function(){

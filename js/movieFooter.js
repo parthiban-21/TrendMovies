@@ -27,6 +27,7 @@ $(function(){
     $("#content-watch").on('click', function(){
         var key = movie_data.title.toUpperCase();
         var movies = fetchMovies();
+        $("#win-title").text(`Now Playing: ${$("#content-title").text()}`);
         if (movies.hasOwnProperty(key)) {
             var STREAM_URLS = movies[key].STREAM_URL.DOOPLAY;
             openPlayer(STREAM_URLS);
@@ -40,6 +41,7 @@ $(function(){
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(movie_id);
         if(YTUrl != ''){
+            $("#win-title").text("Official Trailer");
             openPlayer(YTUrl);
         }
         else

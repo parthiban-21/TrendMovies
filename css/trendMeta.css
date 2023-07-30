@@ -26,10 +26,26 @@ header {
     font-size: 1.1rem;
 }
 
+fieldset {
+    border-radius: 20px;
+    border-color: var(--font-color);
+    margin: 0px 20px;
+    margin-bottom: 20px;
+}
+
+fieldset:hover {
+    border-color: var(--icon-color);
+}
+
 legend {
- color: var(--font-color);
- font-size: 20px;
- margin: 0px 20px;
+    color: var(--font-color);
+    font-size: 20px;
+    margin: 0px 20px;
+    padding: 0px 10px;
+}
+
+label {
+    color: var(--font-color);
 }
 
 select {

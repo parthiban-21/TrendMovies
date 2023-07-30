@@ -150,4 +150,12 @@ class tmdbAPI {
         var serviceURL = `https://api.themoviedb.org/3/movie/top_rated?page=${page}&region=${region}&language=${lang}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
+
+    topRatedSeries(page, lang, region){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        region = (region) ? region : "IN";
+        var serviceURL = `https://api.themoviedb.org/3/tv/top_rated?page=${page}&region=${region}&language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
 }

@@ -30,6 +30,7 @@ $(function(){
         let season = $("#tv-season").val();
         let episode = $("#tv-episode").val();
         let embed_url = superEmbedAPI.getSeriesURL(series_id ,season ,episode ,"TMDB");
+        $("#win-title").text(`Now Playing: ${$("#content-title").text()}`);
         $("#openPopover #iframe").attr({
             src: embed_url
 		})
@@ -39,7 +40,7 @@ $(function(){
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(series_id);
         if(YTUrl != ''){
-            //window.open(YTUrl);
+            $("#win-title").text("Official Trailer");
             $("#openPopover #iframe").attr({
                 src: YTUrl
             });

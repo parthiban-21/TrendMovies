@@ -35,6 +35,11 @@ main {
     overflow: hidden;
 }
 
+.cs-horizontal {
+    width: 420px;
+    height: 200px;
+}
+
 .search-bar {
     display: flex;
     flex-wrap: wrap;
