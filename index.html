@@ -12,6 +12,7 @@
     <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/api/tmdbAPI.js"></script>
 </head>
 
 <body>
@@ -24,12 +25,11 @@
         <div id="menu-groups" class="cs-menu cs-flex">
         </div>
     </header>
-    <div class="search-bar">
-        <form id="form">
-            <input type="text" placeholder="Search" id="search" class="search">
-            <input type="checkbox" id="isSeries" title="tick this box to search series">
-            <label for="isSeries">Series</label>
-        </form>
+    <div class="search-bar cs-fCenter">
+        <input type="text" placeholder="Search" id="content-search" class="search">
+        <a class="cs-cur" id="search-content" title="Search"><i class="fa-brands fa-searchengin"></i></a>
+        <input type="checkbox" id="isSeries" title="tick this box to search series">
+        <label for="isSeries">Series</label>
     </div>
     <!-- Info Window -->
     <div id="myModal" class="modal">

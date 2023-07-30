@@ -45,7 +45,7 @@ class tmdbAPI {
         }
         lang = (lang) ? lang : "en-US";
         page = (page) ? page : 1;
-        sort_by = (sort_by) ? sortBy.sort_by : sortBy.POP_DSC;
+        sort_by = (sort_by) ? sortBy[sort_by] : sortBy.POP_DSC;
         include_adult = (include_adult) ? include_adult : false;
         include_video = (include_video) ? include_video : false;
         var serviceURL = `https://api.themoviedb.org/3/discover/movie?language=${lang}&page=${page}&sort_by=${sort_by}&include_adult=${include_adult}&include_video=${include_video}`;
@@ -70,6 +70,29 @@ class tmdbAPI {
     getSeriesVideos(series_id, lang){
         lang = (lang) ? lang : "en-US";
         var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/videos?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    /** To Get the Trailer & Other Videos of the Movie */
+    discoverSeries(page, sort_by, include_adult, include_video, lang){
+        const sortBy = {
+            POP_ASC : "popularity.asc",
+            POP_DSC : "popularity.desc",
+            REV_ASC: "revenue.asc",
+            REV_DSC: "revenue.desc",
+            REL_ASC : "primary_release_date.asc",
+            REL_DSC: "primary_release_date",
+            VAVG_ASC: "vote_average.asc",
+            VAVG_DSC: "vote_average.desc",
+            VCNT_ASC: "vote_count.asc",
+            VCNT_DSC: "vote_count.desc"
+        }
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        sort_by = (sort_by) ? sortBy[sort_by] : sortBy.POP_DSC;
+        include_adult = (include_adult) ? include_adult : false;
+        include_video = (include_video) ? include_video : false;
+        var serviceURL = `https://api.themoviedb.org/3/discover/tv?language=${lang}&page=${page}&sort_by=${sort_by}&include_adult=${include_adult}&include_video=${include_video}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
 

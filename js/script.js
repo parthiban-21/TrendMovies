@@ -1,15 +1,4 @@
-//TMDB 
-
-const API_KEY = 'api_key=4e30dfcb81c11681f7e64bf0bd367a3a';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-const searchURL = BASE_URL + '/search/movie?' + API_KEY;
-const tvsearchURL = BASE_URL + '/search/tv?' + API_KEY;
-const embedMovie = 'https://www.2embed.to/embed/tmdb/movie?id=';
-const embedSeries = 'https://www.2embed.to/embed/tmdb/tv?id=';
-const tv = 'https://api.themoviedb.org/3/tv/';
-var list;
 const genres = [
     {
         "id": 28,
@@ -105,12 +94,33 @@ var prevPage = 3;
 var lastUrl = '';
 var totalPages = 100;
 
-getMovies(API_URL);
+$(function () {
+    const tmdb = new tmdbAPI();
+    getMovies(tmdb.discoverMovies(1, 'POP_DSC', true, false));
 
-function getMovies(url) {
-    lastUrl = url;
-    var data = metaAjaxCall(url);
-    list = data.results;
+    $("#search-content").on('click', function (e) {
+        var searchTerm = $("#content-search").val().trim();
+        if (searchTerm) {
+            if (document.getElementById('isSeries').checked) {
+                getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, true));
+            }
+            else {
+                getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, true));
+            }
+        } else {
+            alert("Couldn't Find any Search Keywords, Try Again with Different Keyword..!")
+        }
+    });
+
+    $("#content-search").on('keypress', function (e) {
+        var key = e.which;
+        if (key == 13) {
+            $("#search-content").trigger('click');
+        }
+    });
+});
+
+function getMovies(data) {
     if (data.results.length !== 0) {
         showMovies(data.results);
         currentPage = data.page;
@@ -136,35 +146,29 @@ function getMovies(url) {
     }
 }
 
-function getSeries(url) {
-    lastUrl = url;
-    fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results)
-        list = data.results;
-        if (data.results.length !== 0) {
-            showSeries(data.results);
-            currentPage = data.page;
-            nextPage = currentPage + 1;
-            prevPage = currentPage - 1;
-            totalPages = data.total_pages;
+function getSeries(data) {
+    if (data.results.length !== 0) {
+        showSeries(data.results);
+        currentPage = data.page;
+        nextPage = currentPage + 1;
+        prevPage = currentPage - 1;
+        totalPages = data.total_pages;
 
-            current.innerText = currentPage;
+        current.innerText = currentPage;
 
-            if (currentPage <= 1) {
-                prev.classList.add('disabled');
-                next.classList.remove('disabled')
-            } else if (currentPage >= totalPages) {
-                prev.classList.remove('disabled');
-                next.classList.add('disabled')
-            } else {
-                prev.classList.remove('disabled');
-                next.classList.remove('disabled')
-            }
+        if (currentPage <= 1) {
+            prev.classList.add('disabled');
+            next.classList.remove('disabled')
+        } else if (currentPage >= totalPages) {
+            prev.classList.remove('disabled');
+            next.classList.add('disabled')
         } else {
-            main.innerHTML = `<h1 class="no-results">No Results Found</h1>`
+            prev.classList.remove('disabled');
+            next.classList.remove('disabled')
         }
-
-    })
+    } else {
+        main.innerHTML = `<h1 class="no-results">No Results Found</h1>`
+    }
 }
 
 function showMovies(movieList) {
@@ -173,8 +177,13 @@ function showMovies(movieList) {
         var frameHTML = '';
         frameHTML += '<div class="movie" id="movie-'+ item.id +'">';
         frameHTML += '  <img>';
-        frameHTML += '  <div class="cs-content movie-quality">HD</div>';
-        frameHTML += '  <div class="cs-content movie-rating">9.9</div>';
+        frameHTML += '  <div class="cs-contents">';
+        //frameHTML += '      <div class="cs-content" style="margin-right: 108px;">Movie</div>';
+        frameHTML += '      <div id="adult-flag" class="cs-content color-red">18+</div>';
+        frameHTML += '      <div class="cs-content">HD</div>';
+        frameHTML += '      <div id="content-rating" class="cs-content color-orange">0.0</div>';
+        frameHTML += '      <div class="cs-content">Movie</div>';
+        frameHTML += '  </div>';
         frameHTML += '  <div class="overview cs-hide">';
         frameHTML += '      <h3></h3>';
         //frameHTML += '      <a class="btn btn-circle" id="info-dialog" title="Know More"><i class="fa-solid fa-lightbulb"></i></a>';
@@ -183,9 +192,13 @@ function showMovies(movieList) {
         frameHTML += '</div>';
         $("#main").append(frameHTML);
 
+        $("#main #movie-"+ item.id +" #adult-flag").hide();
         $("#main #movie-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
         $("#main #movie-"+ item.id +" .overview h3").text(item.title);
-        $("#main #movie-"+ item.id +" .movie-rating").text(item.vote_average.toFixed(1));
+        $("#main #movie-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
+        if(item.adult){
+            $("#main #movie-"+ item.id +" #adult-flag").show();
+        }
 
         /* Events */
         $("#main #movie-"+ item.id +" #watch-now").on('click',function(){
@@ -216,8 +229,13 @@ function showSeries(seriesList) {
         var frameHTML = '';
         frameHTML += '<div class="movie" id="tvshow-'+ item.id +'">';
         frameHTML += '  <img>';
-        frameHTML += '  <div class="cs-content movie-quality">HD</div>';
-        frameHTML += '  <div class="cs-content movie-rating">0.0</div>';
+        frameHTML += '  <div class="cs-contents">';
+        //frameHTML += '      <div class="cs-content" style="margin-right: 108px;">Movie</div>';
+        frameHTML += '      <div id="adult-flag" class="cs-content color-red">18+</div>';
+        frameHTML += '      <div class="cs-content">HD</div>';
+        frameHTML += '      <div id="content-rating" class="cs-content color-orange">0.0</div>';
+        frameHTML += '      <div class="cs-content">Series</div>';
+        frameHTML += '  </div>';
         frameHTML += '  <div class="overview cs-hide">';
         frameHTML += '      <h3></h3>';
         //frameHTML += '      <a class="btn btn-circle" id="info-dialog" title="Know More"><i class="fa-solid fa-lightbulb"></i></a>';
@@ -226,9 +244,13 @@ function showSeries(seriesList) {
         frameHTML += '</div>';
         $("#main").append(frameHTML);
 
+        $("#main #tvshow-"+ item.id +" #adult-flag").hide();
         $("#main #tvshow-"+ item.id +" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "http://via.placeholder.com/1080x1580");
         $("#main #tvshow-"+ item.id +" .overview h3").text(item.name);
-        $("#main #tvshow-"+ item.id +" .movie-rating").text(item.vote_average.toFixed(1));
+        $("#main #tvshow-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
+        if(item.adult){
+            $("#main #tvshow-"+ item.id +" #adult-flag").show();
+        }
 
         /* Events */
         $("#main #tvshow-"+ item.id +" #watch-now").on('click',function(){
@@ -251,65 +273,6 @@ function showSeries(seriesList) {
     })
 }
 
-function buildSeasonAndEpisode(id) {
-  document.getElementById("tv-watch").setAttribute('tmdbID', id);
-  var tvurl = tv + id + '?' + API_KEY + '&language=en-US';
-  fetch(tvurl).then(res => res.json()).then(data => {
-    console.log(data);
-    document.getElementById("info-name").innerHTML = data.name;
-    if(!data.adult){
-      document.getElementById("info-adult").style.display = "none";
-    } else {
-      document.getElementById("info-adult").style.display = "block";
-    }
-    document.getElementById("info-year").innerHTML = data.first_air_date;
-    document.getElementById("info-overview").innerHTML = data.overview;
-    document.getElementById("info-season").innerHTML = data.number_of_seasons;
-    document.getElementById("info-episode").innerHTML = data.number_of_episodes;
-    document.getElementById("info-status").innerHTML = data.status;
-    const table = document.getElementById("tv-info-count");
-    let td = '';
-    for(let i=0; i<data.seasons.length; i++){
-      var s = data.seasons[i];
-      console.log(s.season_number,s.episode_count);
-      td += '<tr><td>'+s.name+'  >>>  </td><td>'+s.episode_count+' Episodes</td></tr>';
-    }
-    table.innerHTML = td;
-  })
-}
-
-/* Close when someone clicks on the "x" symbol inside the overlay */
-function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-}
-
-function getColor(vote) {
-    if (vote >= 8) {
-        return 'green'
-    } else if (vote >= 5) {
-        return "orange"
-    } else {
-        return 'red'
-    }
-}
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const searchTerm = search.value;
-    if (searchTerm) {
-        if (document.getElementById('isSeries').checked) {
-            getSeries(tvsearchURL + '&query=' + searchTerm + '&language=en-US')
-        }
-        else {
-            getMovies(searchURL + '&query=' + searchTerm + '&language=en-US')
-        }
-    } else {
-        getMovies(API_URL);
-    }
-
-})
-
 prev.addEventListener('click', () => {
     if (prevPage > 0) {
         pageCall(prevPage);
@@ -323,7 +286,14 @@ next.addEventListener('click', () => {
 })
 
 function pageCall(page) {
-    let urlSplit = lastUrl.split('?');
+    const tmdb = new tmdbAPI();
+    if (document.getElementById('isSeries').checked) {
+        getSeries(tmdb.discoverSeries(page, 'POP_DSC', true, false))
+    }
+    else {
+        getMovies(tmdb.discoverMovies(page, 'POP_DSC', true, false));
+    }
+    /*let urlSplit = lastUrl.split('?');
     let queryParams = urlSplit[1].split('&');
     let key = queryParams[queryParams.length - 1].split('=');
     if (key[0] != 'page') {
@@ -336,37 +306,5 @@ function pageCall(page) {
         let b = queryParams.join('&');
         let url = urlSplit[0] + '?' + b
         getMovies(url);
-    }
-}
-
-let modal = document.getElementById("myModal");
-
-let btn = document.getElementById("myBtn");
-
-let span = document.getElementsByClassName("close")[0];
-
-let tvWatch = document.getElementById('tv-watch');
-
-function buttonAction(id) {
-    buildSeasonAndEpisode(id);
-    modal.style.display = "block";
-}
-
-tvWatch.onclick = function () {
-  var tv_id = document.getElementById("tv-watch").getAttribute('tmdbID');
-  var season = document.getElementById('tv-season').value;
-  var episode = document.getElementById('tv-episode').value;
-  var url = embedSeries + tv_id + '&s=' + season + '&e=' + episode;
-  console.log(tv_id, season, episode);
-  window.open(url);
-}
-
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+    }*/
 }

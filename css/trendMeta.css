@@ -141,6 +141,32 @@ footer label {
     filter: blur(3px);
 }
 
+.cs-contents {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.cs-content {
+    z-index: 5;
+    font-size: 12px;
+    font-family: arial;
+    font-weight: 600;
+    color: var(--font-color);
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 5px;
+    background: var(--primary-color);
+}
+
+.color-orange {
+    color: orange;
+}
+
+.color-red {
+    color: red;
+}
+
 .cs-postermax {
     width: 320px;
     height: 480px;
@@ -179,6 +205,16 @@ footer label {
 .cs-btn-round {
     width: 40px;
     padding: 0px;
+}
+
+.cs-btn-rbox {
+    width: 40px;
+    padding: 0px;
+    border-radius: 10px;
+}
+
+.cs-icon-hover:hover{
+    color: var(--icon-color);
 }
 
 .cs-lbpad{

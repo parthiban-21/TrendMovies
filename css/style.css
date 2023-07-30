@@ -45,6 +45,16 @@ main {
     color: #eee;
 }
 
+.search-bar #search-content {
+    padding: 0px 10px;
+    color: var(--font-color);
+    font-size: 20px;
+}
+
+.search-bar #search-content:hover {
+    color: var(--icon-color);
+}
+
 .movie img {
     width: 100%;
 }
@@ -133,29 +143,6 @@ main {
     background-color: var(--title-color);
 }
 
-.cs-content {
-    position: absolute;
-    z-index: 5;
-    top: 6px;
-    font-size: 12px;
-    font-family: arial;
-    font-weight: 600;
-    color: var(--font-color);
-    display: inline-block;
-    padding: 3px 6px;
-    border-radius: 5px;
-    background: var(--primary-color);
-}
-
-.movie-quality{
-    right: 6px;
-}
-
-.movie-rating{
-    right: 38px;
-    color: orange;
-}
-
 #tags {
     width: 80%;
     display: flex;
@@ -202,11 +189,10 @@ main {
 }
 
 .current {
-    padding: 10px 20px;
+    padding: 5px 15px;
     border-radius: 50%;
-    border: 5px solid var(--secondary-color);
-    font-size: 20px;
-    font-weight: 600;
+    border: 2px solid var(--secondary-color);
+    font-size: 16px;
 }
 
 .know-more {
