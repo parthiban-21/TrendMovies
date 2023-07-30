@@ -202,7 +202,6 @@ function showMovies(movieList) {
 
         /* Events */
         $("#main #movie-"+ item.id +" #watch-now").on('click',function(){
-            var url = embedMovie + item.id;
             sessionStorage.setItem("movieId", item.id);
             window.location.href = "movieTemplate.html";
             //window.open(url);
