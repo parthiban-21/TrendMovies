@@ -96,16 +96,16 @@ var totalPages = 100;
 
 $(function () {
     const tmdb = new tmdbAPI();
-    getMovies(tmdb.discoverMovies(1, 'POP_DSC', true, false));
+    getMovies(tmdb.discoverMovies(1, 'POP_DSC', false, false));
 
     $("#search-content").on('click', function (e) {
         var searchTerm = $("#content-search").val().trim();
         if (searchTerm) {
             if (document.getElementById('isSeries').checked) {
-                getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, true));
+                getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, false));
             }
             else {
-                getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, true));
+                getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, false));
             }
         } else {
             alert("Couldn't Find any Search Keywords, Try Again with Different Keyword..!")

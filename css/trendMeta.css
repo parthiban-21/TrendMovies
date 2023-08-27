@@ -49,17 +49,22 @@ label {
 }
 
 select {
-    width: 150px;
+    width: auto;
     height: 30px;
-    background: var(--button-color);
+    background: none;
     color: var(--title-color);
     font-size: 15px;
-    padding: 15px;
     border: none;
     margin-right: 10px;
+    font-family: inherit;
 }
 
 select:focus-visible{
+    outline: none;
+}
+
+option {
+    background-color: var(--primary-color);
     outline: none;
 }
 
@@ -418,4 +423,8 @@ footer label {
     height: 40px;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, .0);
+}
+
+.cs-section {
+    margin: 0px 25px;
 }

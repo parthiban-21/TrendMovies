@@ -59,6 +59,13 @@ class tmdbAPI {
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
 
+    getSeason(series_id, season_number, lang){
+        lang = (lang) ? lang : "en-US";
+        season_number = (season_number) ? season_number : 1 ;
+        var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/season/${season_number}?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
     /** To Get the Credits of the Series */
     getSeriesCredits(series_id, lang){
         lang = (lang) ? lang : "en-US";

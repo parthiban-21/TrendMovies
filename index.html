@@ -33,32 +33,18 @@
     </div>
     <!-- Info Window -->
     <div id="myModal" class="modal">
-
-        <!-- Info Content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <label class="cs-bold">Name: </label><span id="info-name"></span>
-            <label id = "info-adult" style="color: red;">[18+ Only]</label><br>
-            <label class="cs-bold">First Aired: </label><span id="info-year"></span><br>
-            <label class="cs-bold">No of Seasons: </label><span id="info-season"></span>
-            <label class="cs-bold">No of Episodes: </label><span id="info-episode"></span>
-            <table id="tv-info-count">
-                <!-- <tr>
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>Episodes</th>
-                </tr> -->
-            </table>
-            <label class="cs-bold">Status: </label><span id="info-status"></span><br>
-            <label class="cs-bold">Overview: </label><span id="info-overview"></span><br>
-            <br>
-            <label>Season: </label>
-            <input type="number" class="cs-input" id="tv-season" placeholder="S01" value="1" min="1"/>
-            <label>Episode: </label>
-            <input type="number" class="cs-input" id="tv-episode" placeholder="E01" value="1" min="1"/>
-            <button class="know-more" id="tv-watch">Watch Now</button>
-        </div>
-
+            <li class="movie" id="movie-298618"> <img src="https://image.tmdb.org/t/p/w500/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg">
+                <div class="cs-contents">
+                    <div id="adult-flag" class="cs-content color-red" style="display: none;">18+</div>
+                    <div class="cs-content">HD</div>
+                    <div id="content-rating" class="cs-content color-orange">6.9</div>
+                    <div class="cs-content">Movie</div>
+                </div>
+                <div class="overview cs-hide" style="display: none;">
+                    <h3>The Flash</h3> <a class="btn btn-circle" id="watch-now" title="Watch Now"><i
+                            class="fa-solid fa-play"></i></a>
+                </div>
+            </li>
     </div>
     <!-- Info Window -->
     <main id="main"></main>

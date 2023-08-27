@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/trendMeta.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
     <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
     <!-- JQuery -->
     <script src="js/jquery-3.5.1.min.js"></script>
@@ -29,16 +30,17 @@
         <input type="text" placeholder="Search" id="content-search" class="search">
         <a class="cs-cur" id="search-content" title="Search"><i class="fa-brands fa-searchengin"></i></a>
     </div>
-    <fieldset>
-        <legend>Trending Movies<i class="cs-lmar color-orange fa-solid fa-fire"></i></legend>
+    <div class="cs-section">
+        <legend class="color-orange"><i class="cs-rmar fa-solid fa-hashtag"></i>Trending Movies</legend>
         <div id="upcoming-contents" class="cs-fCenter"></div>
-    </fieldset>
-    <fieldset id="popular-contents">
-        <legend>Top Rated Movies</legend>
+    </div>
+    <div id="popular-contents" class="cs-section">
+        <legend class="color-orange">Top Rated Movies</legend>
         <div id="main" class="cs-fCenter"></div>
-    </fieldset>
+    </div>
     <script src="js/trendMeta.js"></script>
     <script src="js/movie/movies.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 </body>
 
 </html>

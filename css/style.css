@@ -27,7 +27,7 @@ main {
 .movie {
     width: 270px;
     height: 400px;
-    margin: 1rem;
+    margin: 8px;
     border-radius: 3px;
     box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
     background-color: rgb(0, 0, 0);
@@ -36,8 +36,8 @@ main {
 }
 
 .cs-horizontal {
-    width: 420px;
-    height: 200px;
+    width: 450px;
+    height: 250px;
 }
 
 .search-bar {

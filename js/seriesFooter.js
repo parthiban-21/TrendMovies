@@ -18,11 +18,16 @@ $(function(){
     var credits = tmdb.getSeriesCredits(series_id);
     getDirectorAndStarring(credits);
 
+    console.log(getSeasonCount(series_data.seasons));
     $("#close-dialog").on('click',function(){
         $("#openPopover #iframe").attr({
 			src: ""
 		})
         $("#openPopover").hide();
+    })
+
+    $("#tv-season").on("change", function(){
+        frameEpisode(this.options[this.selectedIndex].getAttribute('ep'));
     })
 
     $("#content-watch").on('click', function(){
@@ -82,6 +87,31 @@ $(function(){
     $("#content-like").hide();
     $("#content-share").hide();
 })
+
+function getSeasonCount(seasons){
+    var count = 0;
+    $.each(seasons , function(i, s) {
+        if(s.name != "Specials"){
+            var option = `<option value="${s.season_number}" ep="${s.episode_count}">Season ${s.season_number}</option>`;
+            $("#tv-season").append(option);
+            count++;
+        }
+    });
+    return count;
+}
+
+function frameEpisode(ep){
+    $("#tv-episode").empty();
+    for(var i = 0 ; i <= ep ; i++){
+        var option = "";
+        if(i==0){
+            option = `<option value="${i}">-- Select --</option>`;
+        } else {
+            option = `<option value="${i}">Episode ${i}</option>`;
+        }
+        $("#tv-episode").append(option);
+    }
+}
 
 function getTrailer(contentID){
     const tmdb = new tmdbAPI();

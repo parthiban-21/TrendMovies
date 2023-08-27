@@ -1,41 +1,3 @@
-var trendMeta = {
-    dropLink: {
-        API_Key: "3a076b83232e2a66a0f0c858842bcd396f63b49a",
-        ID: "dropLink",
-        addLink: {
-            actionURL: "https://droplink.co/api",
-            paramName: ['api', 'url', 'alias']
-        }
-    },
-    doodStream: {
-        API_Key: "35875uugpb0g90z6qdujq",
-        ID: "doodStream",
-        remortUpload: {
-            actionURL: "https://doodapi.com/api/upload/url",
-            paramName: ['key','url','fld_id','new_title']
-        },
-        uploadStatus: {
-            actionURL: "https://doodapi.com/api/urlupload/status",
-            paramName: ['key','file_code']
-        },
-        fileInfo: {
-            actionURL: "https://doodapi.com/api/file/info",
-            paramName: ['key','file_code']
-        }
-    },
-    tmdb:{
-        API_Key: "4e30dfcb81c11681f7e64bf0bd367a3a",
-        ID: "tmdb",
-        base_URL: "https://api.themoviedb.org/3",
-        img_URL: "https://image.tmdb.org/t/p/w500",
-        backdropImg_URl: "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces",
-        fetchMovie: {
-            actionURL: "/movie/",
-            paramName: ['movie_id','api_key']
-        }
-    }
-}
-
 /** Document Ready */
 $(function () {
     //$("#cs-header").load("headerTemplate.html");
@@ -139,12 +101,11 @@ function getDuration(totalMinutes){
 }
 
 function getGenre(genreList){
-    var returnString = "";
+    var genreNameList = new Array();
     $.each(genreList, function(i, genre) {
-        returnString += genre.name +", ";
+        genreNameList.push(genre.name);
     })  
-    returnString = returnString.substring(0,returnString.length - 2);
-    return returnString;
+    return genreNameList.toString();
 }
 
 function frameYTLink(videoID, type){
