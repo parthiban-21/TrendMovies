@@ -8,8 +8,8 @@
     --primary-color: rgb(0, 8, 34);
     --secondary-color: rgba(0, 82, 204, 0.686);
     --font-color: rgb(115, 155, 214);
-    --button-color: rgb(0,33,96);
-    --title-color:  rgb(255, 255, 255);
+    --button-color: rgb(0, 33, 96);
+    --title-color: rgb(255, 255, 255);
     --header-bg: rgba(0, 0, 0, 0.4);
     --icon-color: rgb(255, 202, 42);
 }
@@ -59,7 +59,7 @@ select {
     font-family: inherit;
 }
 
-select:focus-visible{
+select:focus-visible {
     outline: none;
 }
 
@@ -73,7 +73,7 @@ option {
     align-items: center;
 }
 
-.cs-head img{
+.cs-head img {
     height: 1.1rem;
     margin-right: 5px;
 }
@@ -97,8 +97,8 @@ footer label {
     color: var(--font-color);
 }
 
-.cs-menu span:hover{
-	color: var(--icon-color);
+.cs-menu span:hover {
+    color: var(--icon-color);
 }
 
 .cs-hide {
@@ -106,7 +106,7 @@ footer label {
 }
 
 .cs-cur {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .cs-fCenter {
@@ -240,19 +240,23 @@ footer label {
     border-radius: 10px;
 }
 
-.cs-icon-hover:hover{
+.cs-icon-hover:hover {
     color: var(--icon-color);
 }
 
-.cs-lbpad{
+.cs-lbpad {
     padding: 0px 0px 20px 0px;
 }
 
-.cs-ltpad{
+.cs-ltpad {
     padding: 20px 0px 0px 0px;
 }
 
-.cs-title-head h3{
+.cs-lrpad {
+    padding: 0px 20px;
+}
+
+.cs-title-head h3 {
     margin: 0px;
     font-size: 30px;
 }
@@ -312,80 +316,82 @@ footer label {
 }
 
 .cs-toggle {
-	position: relative;
-	width: 200px;
-	height: 50px;
-	border-radius: 25px;
+    position: relative;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
 }
 
 .cs-toggle input {
-	appearance: none;
-	width: 200px;
-	height: 50px;
-	border-radius: 25px;
-	background: var(--primary-color);
-	outline: none;
-	transition: 0.25s;
+    appearance: none;
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    background: var(--primary-color);
+    outline: none;
+    transition: 0.25s;
 }
 
-.cs-toggle input::before, .cs-toggle input::after {
-	z-index: 2;
-	position: absolute;
-	top: 56%;
-	transform: translateY(-50%);
-	font-weight: bolder;
+.cs-toggle input::before,
+.cs-toggle input::after {
+    z-index: 2;
+    position: absolute;
+    top: 56%;
+    transform: translateY(-50%);
+    font-weight: bolder;
 }
 
 .cs-toggle input::before {
-	content: "Movie";
-	left: 20px;
+    content: "Movie";
+    left: 20px;
 }
 
 .cs-toggle input::after {
-	content: "Series";
-	right: 20px;
+    content: "Series";
+    right: 20px;
 }
 
 .cs-toggle label {
-	z-index: 1;
-	position: absolute;
-	top: 10px;
-	bottom: 4px;
-	border-radius: 20px;
+    z-index: 1;
+    position: absolute;
+    top: 10px;
+    bottom: 4px;
+    border-radius: 20px;
 }
 
-.cs-toggle input:checked::after, .cs-toggle input:checked::before {
-	color: black;
-	transition: color 0.5s;
+.cs-toggle input:checked::after,
+.cs-toggle input:checked::before {
+    color: black;
+    transition: color 0.5s;
 }
 
 .cs-toggle input:checked+label {
-	left: 10px;
-	right: 100px;
-	background: var(--font-color);
-	transition: left 0.5s, right 0.4s 0.2s;
+    left: 10px;
+    right: 100px;
+    background: var(--font-color);
+    transition: left 0.5s, right 0.4s 0.2s;
 }
 
 .cs-toggle input:not(:checked) {
-	background: var(--primary-color);
-	transition: background 0.2s;
+    background: var(--primary-color);
+    transition: background 0.2s;
 }
 
 .cs-toggle input:not(:checked)::before {
-	color: var(--font-color);
-	transition: color 0.5s;
+    color: var(--font-color);
+    transition: color 0.5s;
 }
 
 .cs-toggle input:not(:checked)::after {
-	color: black;
-	transition: color 0.5s 0.2s;
+    color: black;
+    transition: color 0.5s 0.2s;
 }
 
 .cs-toggle input:not(:checked)+label {
-	left: 100px;
-	right: 10px;
-	background: var(--font-color);
-	transition: left 0.4s 0.2s, right 0.5s, background 0.2s;
+    left: 100px;
+    right: 10px;
+    background: var(--font-color);
+    transition: left 0.4s 0.2s, right 0.5s, background 0.2s;
 }
 
 .cs-cast {
@@ -427,4 +433,52 @@ footer label {
 
 .cs-section {
     margin: 0px 25px;
+}
+
+.cs-float-right {
+    float: right;
+}
+
+.cs-float-left {
+    float: left;
+}
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    /* Hide the scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel .carousel-hr {
+    flex: 0 0 450px;
+    margin-right: 10px;
+}
+
+.carousel .carousel-vr {
+    flex: 0 0 270px;
+    margin-right: 10px;
+}
+
+.carousel .carousel-hr img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.carousel .carousel-vr img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }

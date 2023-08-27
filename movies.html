@@ -31,12 +31,20 @@
         <a class="cs-cur" id="search-content" title="Search"><i class="fa-brands fa-searchengin"></i></a>
     </div>
     <div class="cs-section">
-        <legend class="color-orange"><i class="cs-rmar fa-solid fa-hashtag"></i>Trending Movies</legend>
-        <div id="upcoming-contents" class="cs-fCenter"></div>
+        <div class="color-orange">
+            <span><i class="cs-rmar fa-solid fa-hashtag"></i>Trending Movies</span>
+            <span class="cs-float-right cs-lrpad cs-cur" id="carousel-right"><i class="fa-solid fa-caret-right"></i></span>
+            <span class="cs-float-right cs-lrpad cs-cur" id="carousel-left"><i class="fa-solid fa-caret-left"></i></span>
+        </div>
+        <div id="upcoming-contents" class="carousel"></div>
     </div>
     <div id="popular-contents" class="cs-section">
-        <legend class="color-orange">Top Rated Movies</legend>
-        <div id="main" class="cs-fCenter"></div>
+        <div class="color-orange">
+            <span><i class="cs-rmar fa-solid fa-hashtag"></i>Top Rated Movies</span>
+            <span class="cs-float-right cs-lrpad cs-cur" id="carousel-right"><i class="fa-solid fa-caret-right"></i></span>
+            <span class="cs-float-right cs-lrpad cs-cur" id="carousel-left"><i class="fa-solid fa-caret-left"></i></span>
+        </div>
+        <div id="main" class="carousel"></div>
     </div>
     <script src="js/trendMeta.js"></script>
     <script src="js/movie/movies.js"></script>
