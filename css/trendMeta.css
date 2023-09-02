@@ -171,7 +171,7 @@ footer label {
 .cs-contents {
     position: absolute;
     top: 6px;
-    right: 6px;
+    width: 100%;
 }
 
 .cs-content {
@@ -182,7 +182,8 @@ footer label {
     color: var(--font-color);
     display: inline-block;
     padding: 3px 6px;
-    border-radius: 5px;
+    margin: 0px 4px;
+    border-radius: 4px;
     background: var(--primary-color);
 }
 

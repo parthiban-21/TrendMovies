@@ -37,10 +37,10 @@ function showSeries(seriesList, append_id) {
         frameHTML += '  <img>';
         frameHTML += '  <div class="cs-contents">';
         //frameHTML += '      <div class="cs-content" style="margin-right: 108px;">Movie</div>';
-        frameHTML += '      <div id="adult-flag" class="cs-content color-red">18+</div>';
-        frameHTML += '      <div class="cs-content">HD</div>';
-        frameHTML += '      <div id="content-rating" class="cs-content color-orange">0.0</div>';
-        frameHTML += '      <div class="cs-content">Series</div>';
+        frameHTML += '      <span id="adult-flag" class="cs-content cs-float-right color-red">18+</span>';
+        frameHTML += '      <span class="cs-content cs-float-right">HD</span>';
+        frameHTML += '      <span id="content-rating" class="cs-content cs-float-right color-orange">0.0</span>';
+        frameHTML += '      <span class="cs-content cs-float-left">TV Series</span>';
         frameHTML += '  </div>';
         frameHTML += '  <div class="overview cs-hide">';
         frameHTML += '      <h3></h3>';

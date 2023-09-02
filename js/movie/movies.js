@@ -38,9 +38,9 @@ function getMovies(movieList, append_id, type) {
             frameHTML += '<div class="'+ className +' movie" id="movie-' + item.id + '">';
             frameHTML += '  <img>';
             frameHTML += '  <div class="cs-contents">';
-            frameHTML += '      <div id="adult-flag" class="cs-content color-red">18+</div>';
-            frameHTML += '      <div class="cs-content">HD</div>';
-            frameHTML += '      <div id="content-rating" class="cs-content color-orange">0.0</div>';
+            frameHTML += '      <span id="adult-flag" class="cs-content cs-float-right color-red">18+</span>';
+            frameHTML += '      <span class="cs-content cs-float-right">HD</span>';
+            frameHTML += '      <span id="content-rating" class="cs-content cs-float-right color-orange">0.0</span>';
             frameHTML += '  </div>';
             frameHTML += '  <div class="overview cs-hide">';
             frameHTML += '      <h3></h3>';
