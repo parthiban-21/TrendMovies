@@ -18,6 +18,9 @@ body {
     background-color: var(--primary-color);
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    background-image: linear-gradient(black, transparent), url(../img/top-bg.png);
+    background-repeat: repeat-x;
+    background-position: top;
 }
 
 header {
@@ -151,6 +154,10 @@ footer label {
 
 .cs-lrmar {
     margin-right: 20px;
+}
+
+.cs-f26 {
+    font-size: 26px;
 }
 
 .cs-overview {
@@ -482,4 +489,15 @@ footer label {
     width: 100%;
     height: 400px;
     object-fit: cover;
+}
+
+.sty-poster-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    filter: blur(8px);
+    opacity: .2;
 }

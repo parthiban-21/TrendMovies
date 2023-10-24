@@ -3,9 +3,10 @@ $(function(){
     const tmdb = new tmdbAPI();
     var movie_data = tmdb.getMovie(movie_id);
 
-    var bg_ImgURL = tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path;
-    $('#backdrop-poster').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
+    //var bg_ImgURL = tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path;
+    //$('#backdrop-poster img').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
 
+    $('#backdrop-poster img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path);
     $("#content-title").text(movie_data.title + " ("+ movie_data.release_date.substring(0,4) +")");
     $("#content-tagline").text(movie_data.tagline);
@@ -45,23 +46,23 @@ $(function(){
             openPlayer(YTUrl);
         }
         else
-            alert("Sorry, Could Not Find Official Trailer.");
+            alertMessage("Sorry..!", "Could Not Find Official Trailer.", "", "ERROR");
     })
     
     $("#content-bookmark").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-like").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-download").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "INFO");
     })
 
     $("#content-share").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-bookmark").hide();

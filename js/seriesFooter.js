@@ -3,9 +3,9 @@ $(function(){
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
 
-    var bg_ImgURL = tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path;
-    $('#backdrop-poster').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
+    
 
+    $('#backdrop-poster img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
     $("#content-title").text(series_data.original_name + " ("+ series_data.first_air_date.substring(0,4) +")");
     $("#content-tagline").text(series_data.tagline);
