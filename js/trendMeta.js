@@ -142,7 +142,7 @@ function setWindowTitle(title, only) {
 }
 
 function invokePlayerDialog(streamList, title, backdrop, isTrailer) {
-    let width = (screen.width < 480) ? window.innerWidth - 30 : window.innerWidth / 1.25;
+    let width = (screen.width < 610) ? window.innerWidth - 30 : window.innerWidth / 1.25;
     if (isTrailer) {
         $(".sty-server-cont").hide();
         $("#sty-iframe").attr({ width: "100%" });

@@ -702,7 +702,7 @@ footer {
     background-color: var(--secondary-color);
 }
 
-@media (max-device-width:480px) {
+@media (max-device-width:580px) {
     .sty-content-credits {
         display: grid;
     }
