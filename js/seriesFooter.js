@@ -3,8 +3,6 @@ $(function(){
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
 
-    
-
     $('#backdrop-poster img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
     $("#content-title").text(series_data.original_name + " ("+ series_data.first_air_date.substring(0,4) +")");
@@ -19,56 +17,50 @@ $(function(){
     getDirectorAndStarring(credits);
 
     console.log(getSeasonCount(series_data.seasons));
-    $("#close-dialog").on('click',function(){
-        $("#openPopover #iframe").attr({
-			src: ""
-		})
-        $("#openPopover").hide();
-    })
 
     $("#tv-season").on("change", function(){
         frameEpisode(this.options[this.selectedIndex].getAttribute('ep'));
     })
 
     $("#content-watch").on('click', function(){
-        const superEmbedAPI = new superembedAPI();
         let season = $("#tv-season").val();
         let episode = $("#tv-episode").val();
-        let embed_url = superEmbedAPI.getSeriesURL(series_id ,season ,episode ,"TMDB");
-        $("#win-title").text(`Now Playing: ${$("#content-title").text()}`);
-        $("#openPopover #iframe").attr({
-            src: embed_url
-		})
-        document.getElementById("openPopover").style.display = "flex";
+        var api = [
+            {
+                "DOMAIN": "Vid Stream",
+                "URL": new vidStreamAPI().getSeriesURL(series_id, season, episode)
+            },
+            {
+                "DOMAIN": "Super Embed",
+                "URL": new superembedAPI().getSeriesURL(series_id, season ,episode, "TMDB")
+            }
+        ];
+        invokePlayerDialog(api, $("#content-title").text(), $('#backdrop-poster img').attr('src'), false);
     })
 
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(series_id);
-        if(YTUrl != ''){
-            $("#win-title").text("Official Trailer");
-            $("#openPopover #iframe").attr({
-                src: YTUrl
-            });
-            document.getElementById("openPopover").style.display = "flex";
+        if(YTUrl){
+            invokePlayerDialog(YTUrl, "Official Trailer","", true);
         }
         else
-            alert("Sorry, Could Not Find Official Trailer.");
+            alertMessage("Sorry", "Could Not Find Official Trailer.", "", "ERROR");
     })
     
     $("#content-bookmark").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-like").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-download").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-share").on('click', function(){
-        alert("Sorry, This Feature is Currently Not Available.");
+        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#tv-info").on('click', function(){
@@ -80,7 +72,7 @@ $(function(){
         if(info)
             alert(info);
         else
-            alert("No Seasons Available.")
+            alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
     $("#content-bookmark").hide();

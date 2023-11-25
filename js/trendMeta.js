@@ -1,7 +1,6 @@
 /** Document Ready */
 $(function () {
     //$("#cs-header").load("headerTemplate.html");
-    setWindowTitle();
     loadMenuGroup();
 });
 
@@ -10,42 +9,27 @@ function includeHTML() {
     /* Loop through a collection of all HTML elements: */
     z = document.getElementsByTagName("*");
     for (i = 0; i < z.length; i++) {
-      elmnt = z[i];
-      /*search for elements with a certain atrribute:*/
-      file = elmnt.getAttribute("w3-include-html");
-      if (file) {
-        /* Make an HTTP request using the attribute value as the file name: */
-        xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4) {
-            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
-            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
-            /* Remove the attribute, and call this function once more: */
-            elmnt.removeAttribute("w3-include-html");
-            includeHTML();
-          }
+        elmnt = z[i];
+        /*search for elements with a certain atrribute:*/
+        file = elmnt.getAttribute("w3-include-html");
+        if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                    if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                    /* Remove the attribute, and call this function once more: */
+                    elmnt.removeAttribute("w3-include-html");
+                    includeHTML();
+                }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
         }
-        xhttp.open("GET", file, true);
-        xhttp.send();
-        /* Exit the function: */
-        return;
-      }
     }
-  }
-// Incomplete
-function metaFetch(URL, method){
-    var resultJSON;
-    method = (method == undefined) ? "GET" : method;
-    metaPrimaryFetch(URL,method).then(data => {
-        console.log(data);
-        resultJSON = data;
-    })
-    return resultJSON;
-}
-async function metaPrimaryFetch(url,method) {
-    const response = await fetch(url,{method: method});
-    const resultJSON = await response.json();
-    return resultJSON;
 }
 
 function metaAjaxCall(URL, method, reqHeader) {
@@ -97,7 +81,7 @@ function metaXMLRequest(URL, method) {
 function getDuration(totalMinutes){
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    return hours + "h " + minutes + "min"
+    return hours + "hrs " + minutes + "min"
 }
 
 function getGenre(genreList){
@@ -105,7 +89,7 @@ function getGenre(genreList){
     $.each(genreList, function(i, genre) {
         genreNameList.push(genre.name);
     })  
-    return genreNameList.toString();
+    return genreNameList.join(" | ");
 }
 
 function frameYTLink(videoID, type){
@@ -121,11 +105,11 @@ function frameYTLink(videoID, type){
 }
 
 function loadMenuGroup(){
-    let htmlTags = `
-        <span class="cs-lrmar cs-cur" id="trend-movies"><i class="fa-solid fa-film cs-rsmar"></i>Movies</span>
-        <span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>
-        <span class="cs-lrmar cs-cur" id="trend-anime"><i class="fa-solid fa-house-fire cs-rsmar"></i>Anime</span>
-        <span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-house-user cs-rsmar"></i>Home</span>`;
+    let htmlTags = "";
+    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-movies"><i class="fa-solid fa-film cs-rsmar"></i>Movies</span>`;
+    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>`;
+    //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-anime"><i class="fa-solid fa-house-fire cs-rsmar"></i>Anime</span>`;
+    //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-house-user cs-rsmar"></i>Home</span>`;
     $("#menu-groups").append(htmlTags);
 
     $(".cs-head img").on('click', function(){
@@ -137,7 +121,7 @@ function loadMenuGroup(){
     })
 
     $("#trend-movies").on('click', function(){
-        window.location.href = "movies.html";
+        window.location.href = "index.html";
     })
 
     $("#trend-series").on('click', function(){
@@ -151,13 +135,61 @@ function loadMenuGroup(){
     })
 }
 
-function setWindowTitle(){
-    let cur_url = location.href;
-    if(cur_url.indexOf("movie") != -1){
-        document.title = "Streamy: Movie";
-    } else if (cur_url.indexOf("series") != -1) {
-        document.title = "Streamy: Series";
+function setWindowTitle(title, only) {
+    var win_title = "Streamy";
+    win_title = (only == true) ? title : title + " | Streamy ✨";
+    document.title = win_title;
+}
+
+function invokePlayerDialog(streamList, title, backdrop, isTrailer) {
+    let width = (screen.width < 480) ? window.innerWidth - 30 : window.innerWidth / 1.25;
+    if (isTrailer) {
+        $(".sty-server-cont").hide();
+        $("#sty-iframe").attr({ width: "100%" });
+        $(".sty-player-bg").hide();
+        $("#sty-iframe").show();
+        $("#sty-iframe").attr({src:streamList});
     } else {
-        document.title = "Streamy - from Trend Movies";
+        frameServerList(streamList);
+        $(".sty-server-cont").show();
+        $("#sty-iframe").attr({ width: "70%" });
+        $(".sty-player-bg").show();
+        $(".sty-player-bg").css({'background-image':`url(${backdrop})`});
+    }
+    $("#sty-player-dialog").dialog({
+        title: (title) ? "Now Playing : " + title : "Streamy",
+        modal: true,
+        autoOpen: true,
+        draggable: false,
+        height: window.innerHeight / 1.25,
+        width: width,
+        close: function (event, ui) {
+            $("#sty-iframe").attr({ src: "" });
+            $("#sty-iframe").hide();
+        }
+    });
+
+    function frameServerList(streamList){
+        $("#sty-stream-servers").empty();
+        $.each(streamList, function(i, data){
+            var htmlTag = $(`<div class="sty-server" server="${data.DOMAIN.toUpperCase()}">
+                                <i class="fa-solid fa-server cs-rmar"></i>
+                                <span>${data.DOMAIN}</span>
+                            </div>`);
+            htmlTag.filter(".sty-server").data("URL",data.URL);
+            $("#sty-stream-servers").append(htmlTag);
+        })
+    
+        $(".sty-server").on('click', function(){
+            $(".sty-server").each(function() {
+                if ($(this).hasClass('active')) {
+                    $(this).removeClass('active');
+                }
+            });
+            $(this).addClass("active");
+            $("#sty-iframe").attr({src:$(this).data("URL")});
+            $(".sty-player-bg").hide();
+            $("#sty-iframe").show();
+        })
     }
 }

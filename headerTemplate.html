@@ -1,44 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-    <body>
-        <div class="cs-flex cs-pad">
-            <div class="cs-head">
-                <label>Movie Hub - Crafted by Trend Movies</label>
-            </div>
-            <div class="cs-menu cs-flex">
-            	<span class="cs-lrmar cs-cur" id="trend-movies">Movies</span>
-            	<span class="cs-lrmar cs-cur" id="trend-series">Series</span>
-            	<span class="cs-lrmar cs-cur" id="trend-home">Home</span>
-                <span class="cs-btn-max cs-btn-round cs-hover" id="user-profile" title="Profile" cs-dialog="user-dialog"><i class="fa-solid fa-user"></i></span>
-            </div>
-        </div>
-        
-        <!-- Login Dialog Box -->
-        <div id="user-dialog" class="cs-popover">
-            <div class="cs-user-dialog">
-                <a id="user-dialog-close" class="cs-icon cs-hover cs-dialog-close"><i class="fa-solid fa-circle-xmark"></i></a>
-                <div class="cs-cflex cs-fcenter">
-	                <div class="cs-tabs cs-lbpad cs-flex">
-	                	<button id="tab-signIn" class="cs-tab-action active" cs-action="user-signIn">Sign-In</button>
-	                	<button id="tab-signUp" class="cs-tab-action" cs-action="user-signUp">Sign-Up</button>
-	                </div>
-	                
-	                <div id="user-signIn" class="cs-cflex">
-	                	<input type="email" class="cs-bmar" placeholder="Enter Email-ID" required />
-	                	<input type="password" class="cs-bmar" placeholder="Enter Password" required />
-	                	<a class="cs-btn-max cs-hover cs-tmar" id="info-dialog"><i class="fa-solid fa-right-to-bracket"></i><span id="">Login</span></a>
-	                </div>
-	                
-	                <div id="user-signUp" class="cs-cflex" style="display: none;">
-	                	<input type="text" class="cs-bmar" placeholder="Enter Your Name" required />
-	                	<input type="email" class="cs-bmar" placeholder="Enter Email-ID" required />
-	                	<input type="password" class="cs-bmar" placeholder="Enter Password" required />
-	                	<a class="cs-btn-max cs-hover cs-tmar" id="info-dialog"><i class="fa-solid fa-right-to-bracket"></i><span id="">Create Account</span></a>
-	                </div>
-                </div>
-            </div>
-        </div>
-        
-        <script src="/js/headerTemplateFooter.js"></script>
-    </body>
-</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.55">
+    <link rel="icon" type="image/x-icon" href="img/Streamy_Logo.png">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/trendMeta.css">
+    <link rel="stylesheet" href="css/plugins.css">
+    <!-- <link rel="stylesheet" href="css/cs-common.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
+    <!-- Base -->
+    <script src="js/base/alert.js"></script>
+    <script src="js/base/jquery-3.5.1.min.js"></script>
+    <script src="js/base/jquery-ui.js"></script>
+    <script src="js/base/meow-plugin.js"></script>
+    <script src="js/base/multitooltip.js"></script>
+    <script src="js/base/perfect-scrollbar.jquery.js"></script>
+    <script src="js/base/perfect-scrollbar.js"></script>
+    <script src="js/base/share-plugin.js"></script>
+    <script src="js/base/templates.js"></script>
+    <!-- API -->
+    <script src="js/api/tmdbAPI.js"></script>
+    <script src="js/api/superembedAPI.js"></script>
+    <script src="js/api/vidstreamAPI.js"></script>
+</head>

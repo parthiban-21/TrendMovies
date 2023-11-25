@@ -175,7 +175,7 @@ function showMovies(movieList) {
     $("#main").empty();
     $.each(movieList, function(index, item) {
         var frameHTML = '';
-        frameHTML += '<div class="movie" id="movie-'+ item.id +'">';
+        frameHTML += '<div class="carousel-vr sty-content-card" id="movie-'+ item.id +'">';
         frameHTML += '  <img>';
         frameHTML += '  <div class="cs-contents">';
         //frameHTML += '      <div class="cs-content" style="margin-right: 108px;">Movie</div>';
@@ -205,19 +205,6 @@ function showMovies(movieList) {
             sessionStorage.setItem("movieId", item.id);
             window.location.href = "movieTemplate.html";
             //window.open(url);
-        })
-        $("#main #movie-"+ item.id +" #info-dialog").on('click',function(){
-            alert("We are Working on it, Stay Tuned...");
-        })
-        $("#main #movie-"+ item.id).hover(function(){
-            if($("#main #movie-"+ item.id +" .overview").hasClass('cs-hide')){
-                $("#main #movie-"+ item.id +" .overview").removeClass("cs-hide");
-                $("#main #movie-"+ item.id +" .overview").show();
-            }
-            else{
-                $("#main #movie-"+ item.id +" .overview").addClass("cs-hide");
-                $("#main #movie-"+ item.id +" .overview").hide();
-            }
         })
     })
 }
@@ -256,19 +243,7 @@ function showSeries(seriesList) {
             sessionStorage.setItem("seriesId", item.id);
             window.location.href = "series.html";
         })
-        $("#main #tvshow-"+ item.id +" #info-dialog").on('click',function(){
-            buttonAction(item.id);
-        })
-        $("#main #tvshow-"+ item.id).hover(function(){
-            if($("#main #tvshow-"+ item.id +" .overview").hasClass('cs-hide')){
-                $("#main #tvshow-"+ item.id +" .overview").removeClass("cs-hide");
-                $("#main #tvshow-"+ item.id +" .overview").show();
-            }
-            else{
-                $("#main #tvshow-"+ item.id +" .overview").addClass("cs-hide");
-                $("#main #tvshow-"+ item.id +" .overview").hide();
-            }
-        })
+        
     })
 }
 

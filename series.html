@@ -2,18 +2,30 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=0.55">
         <link rel="icon" type="image/x-icon" href="img/Streamy_Logo.png">
-        <title>Movie HUB: From Trend Movies</title>
+        <title>Streamy</title>
         <!-- Styles -->
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/trendMeta.css">
+        <link rel="stylesheet" href="css/plugins.css">
+        <!-- <link rel="stylesheet" href="css/cs-common.css"> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
-        <!-- JQuery -->
-        <script src="js/jquery-3.5.1.min.js"></script>
+        <!-- Base -->
+        <script src="js/base/alert.js"></script>
+        <script src="js/base/jquery-3.5.1.min.js"></script>
+        <script src="js/base/jquery-ui.js"></script>
+        <script src="js/base/meow-plugin.js"></script>
+        <script src="js/base/multitooltip.js"></script>
+        <script src="js/base/perfect-scrollbar.jquery.js"></script>
+        <script src="js/base/perfect-scrollbar.js"></script>
+        <script src="js/base/share-plugin.js"></script>
+        <script src="js/base/templates.js"></script>
+        <!-- API -->
         <script src="js/api/tmdbAPI.js"></script>
         <script src="js/api/superembedAPI.js"></script>
+        <script src="js/api/vidstreamAPI.js"></script>
     </head>
     <body>
         <div id="backdrop-poster" class="cs-backdrop-poster">
@@ -22,7 +34,7 @@
         <header>
             <div class="cs-head cs-cur">
                 <img src="img/Streamy_Logo.png" href="index.html">
-                <label>Streamy - Krafted by Trend Movies</label>
+                <label>Streamy</label>
             </div>
             <div id="menu-groups" class="cs-menu cs-flex">
             </div>
@@ -41,10 +53,11 @@
                     <a class="cs-icon"><i class="fa-solid fa-hashtag"></i><span id="content-genre">--</span></a>
                     <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span id="content-release">--</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-clock"></i><span id="content-runtime">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span id="content-lang">Tamil</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-satellite-dish"></i><span id="content-status">--</span></a>
                 </div>
                 <p id="content-overview">--</p>
-                <div class="cs-flex cs-lbpad" id="content-artists">
+                <div class="cs-flex cs-lbpad sty-content-credits" id="content-artists">
                     <div class="cs-cast cs-flex">
                         <a class="cs-btn-max cs-btn-round"><i class="fa-solid fa-user"></i></a>
                         <span>
@@ -60,7 +73,7 @@
                         </span>
                     </div>
                 </div>
-                <div id="content-artist">
+                <div id="content-artist" style="display: none;">
                     <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span>Tamil</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-film"></i><span>High Definition - 720p</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-closed-captioning"></i><span>No Subtitles</span></a>
@@ -77,29 +90,35 @@
                     <select id="tv-episode">
                         <option>-- Select --</option>
                     </select>
-                    <a class="cs-btn-max cs-hover" id="info-dialog"><i class="fa-solid fa-tv"></i><span id="content-watch">Watch Now</span></a>
-                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i></a>
-                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
-                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-bookmark" title="Add To Watch List"><i class="fa-solid fa-bookmark"></i></a>
-                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-download" title="Download"><i class="fa-solid fa-download"></i></a>
-                    <a class="cs-btn-max cs-btn-round cs-hover" id="content-share" title="Share"><i class="fa-solid fa-share-nodes"></i></a>
-                    <a class="cs-btn-max cs-btn-round cs-hover" id="tv-info" title="Season Info"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+                    <a class="cs-btn-max sty-tran-hover" id="info-dialog"><i class="fa-solid fa-tv"></i><span id="content-watch">Watch Now</span></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-bookmark" title="Add To Watch List"><i class="fa-solid fa-bookmark"></i></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-download" title="Download"><i class="fa-solid fa-download"></i></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-share" title="Share"><i class="fa-solid fa-share-nodes"></i></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="tv-info" title="Season Info"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
                 </div>
             </div>
         </div>
-        <div id="openPopover" class="cs-popover">
-            <div class="cs-popOverScreen">
-                <a id="close-dialog" class="cs-icon cs-hover cs-dialog-close"><i class="fa-solid fa-circle-xmark"></i></a>
-                <div id="select" class="cs-flex cs-hide" style="display: none;">
-                    <a class="cs-icon"><i class="fa-solid fa-gear"></i></a>
-                    <select>
-                        <option>Server-2Embed</option>
-                        <option>Server-Doodplay</option>
-                        <option>Server-Ghost</option>
-                    </select>
+        <div id="sty-player-dialog" class="cs-hide">
+            <div class="sty-player-wizard">
+                <div class="sty-server-cont">
+                    <div class="sty-server-header">
+                        <label>Choose a Server</label>
+                        <i style="margin-top: 4px;" class="fa-solid fa-circle-info cs-float-right cs-rmar"></i>
+                        <i style="margin-top: 4px;" class="fa-solid fa-triangle-exclamation cs-float-right cs-rmar"></i>
+                    </div>
+                    <div id="sty-stream-servers">
+                        
+                    </div>
                 </div>
-                <label id="win-title"></label>
-                <iframe id="iframe"  width="100%" height="90%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="cs-fCenter sty-player-bg">
+                    <div class="cs-cflex sty-player-txt">
+                        <!-- <label>Test</label> -->
+                        <i class="fa-solid fa-circle-play cs-hover"></i>
+                    </div>
+                </div>
+                <iframe id="sty-iframe" class="sty-iframe" width="70%" height="100%" style="display: none;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
         <footer>

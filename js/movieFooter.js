@@ -18,33 +18,24 @@ $(function(){
     var credits = tmdb.getMovieCredits(movie_id);
     getDirectorAndStarring(credits);
 
-    $("#close-dialog").on('click',function(){
-        $("#openPopover #iframe").attr({
-			src: ""
-		})
-        $("#openPopover").hide();
-    })
-
     $("#content-watch").on('click', function(){
-        var key = movie_data.title.toUpperCase();
-        var movies = fetchMovies();
-        $("#win-title").text(`Now Playing: ${$("#content-title").text()}`);
-        if (movies.hasOwnProperty(key)) {
-            var STREAM_URLS = movies[key].STREAM_URL.DOOPLAY;
-            openPlayer(STREAM_URLS);
-        } else {
-            const superEmbedAPI = new superembedAPI();
-            let embed_url = superEmbedAPI.getMovieURL(movie_id, "TMDB");
-            openPlayer(embed_url);
-        }
+        var api = [
+            {
+                "DOMAIN": "Vid Stream",
+                "URL": new vidStreamAPI().getMovieURL(movie_id)
+            },
+            {
+                "DOMAIN": "Super Embed",
+                "URL": new superembedAPI().getMovieURL(movie_id, "TMDB")
+            }
+        ];
+        invokePlayerDialog(api, $("#content-title").text(), $('#backdrop-poster img').attr('src'), false);
     })
 
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(movie_id);
-        if(YTUrl != ''){
-            $("#win-title").text("Official Trailer");
-            openPlayer(YTUrl);
-        }
+        if(YTUrl)
+            invokePlayerDialog(YTUrl, "Official Trailer","", true);
         else
             alertMessage("Sorry..!", "Could Not Find Official Trailer.", "", "ERROR");
     })

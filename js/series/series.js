@@ -1,13 +1,12 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 $(function () {
     const tmdb = new tmdbAPI();
-    getSeries(tmdb.topRatedSeries(),"#toprated-contents");
     getSeries(tmdb.trendingSeries(), "#main");
 
     $("#search-content").on('click', function (e) {
         var searchTerm = $("#content-search").val().trim();
         if (searchTerm) {
-            getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, true));
+            getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, true), "#main");
         } else {
             alert("Couldn't Find any Search Keywords, Try Again with Different Keyword..!")
         }
@@ -33,7 +32,7 @@ function showSeries(seriesList, append_id) {
     $(append_id).empty();
     $.each(seriesList, function(index, item) {
         var frameHTML = '';
-        frameHTML += '<div class="movie cs-horizontal" id="tvshow-'+ item.id +'">';
+        frameHTML += '<div class="carousel-vr sty-content-card" id="tvshow-'+ item.id +'">';
         frameHTML += '  <img>';
         frameHTML += '  <div class="cs-contents">';
         //frameHTML += '      <div class="cs-content" style="margin-right: 108px;">Movie</div>';
@@ -51,7 +50,7 @@ function showSeries(seriesList, append_id) {
         $(append_id).append(frameHTML);
         var c_id = append_id + " #tvshow-" + item.id;
         $(c_id+" #adult-flag").hide();
-        $(c_id+" img").attr('src',(item.backdrop_path) ? IMG_URL + item.backdrop_path : "img/Streamy_BG.jpg");
+        $(c_id+" img").attr('src',(item.poster_path) ? IMG_URL + item.poster_path : "img/Streamy_BG.jpg");
         $(c_id+" .overview h3").text(item.name);
         $(c_id+" #content-rating").text(item.vote_average.toFixed(1));
         if(item.adult){
@@ -62,19 +61,6 @@ function showSeries(seriesList, append_id) {
         $(c_id+" #watch-now").on('click',function(){
             sessionStorage.setItem("seriesId", item.id);
             window.location.href = "series.html";
-        })
-        $(c_id+" #info-dialog").on('click',function(){
-            buttonAction(item.id);
-        })
-        $(c_id).hover(function(){
-            if($(c_id+" .overview").hasClass('cs-hide')){
-                $(c_id+" .overview").removeClass("cs-hide");
-                $(c_id+" .overview").show();
-            }
-            else{
-                $(c_id+" .overview").addClass("cs-hide");
-                $(c_id+" .overview").hide();
-            }
         })
     })
 }

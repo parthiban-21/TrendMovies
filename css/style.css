@@ -18,12 +18,6 @@
     color: var(--font-color);
 }
 
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
 .movie {
     width: 270px;
     height: 400px;
@@ -145,6 +139,7 @@ main {
     line-height: 40px;
     border-radius: 50%;
     border: none!important;
+    color: black;
     background-color: var(--title-color);
 }
 
@@ -331,13 +326,6 @@ main {
 
 .dots .dot.active {
     border-color: orange;
-}
-
-.cs-input {
-    width: 1.5cm;
-    padding: 5px 10px;
-    margin-left: 4px;
-    margin-right: 4px;
 }
 
 .modal {
