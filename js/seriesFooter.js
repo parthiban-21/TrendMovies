@@ -25,6 +25,7 @@ $(function(){
     $("#content-watch").on('click', function(){
         let season = $("#tv-season").val();
         let episode = $("#tv-episode").val();
+        if(season && episode) {
         var api = [
             {
                 "DOMAIN": "Vid Stream",
@@ -36,6 +37,9 @@ $(function(){
             }
         ];
         invokePlayerDialog(api, $("#content-title").text(), $('#backdrop-poster img').attr('src'), false);
+    } else {
+        alertMessage("Choose Valid Season and Episode", "", "", "ERROR");
+    }
     })
 
     $("#content-trailer").on('click', function(){
@@ -97,7 +101,7 @@ function frameEpisode(ep){
     for(var i = 0 ; i <= ep ; i++){
         var option = "";
         if(i==0){
-            option = `<option value="${i}">-- Select --</option>`;
+            option = `<option value="">-- Select --</option>`;
         } else {
             option = `<option value="${i}">Episode ${i}</option>`;
         }

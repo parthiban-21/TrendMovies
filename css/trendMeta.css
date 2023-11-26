@@ -5,7 +5,7 @@
 }
 
 :root {
-    --primary-color: rgb(0, 8, 34);
+    --primary-color: rgb(0, 5, 21);
     --secondary-color: rgba(0, 82, 204, 0.686);
     --font-color: rgb(115, 155, 214);
     --button-color: rgb(0, 33, 96);
@@ -36,18 +36,23 @@
 
 body {
     color: var(--font-color);
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
     font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-image: linear-gradient(black, transparent), url(../img/top-bg.png);
-    background-repeat: repeat-x;
-    background-position: top;
+    /* background-image: linear-gradient(black, transparent), url(../img/top-bg.png); */
+    background-color: var(--primary-color);;
+    opacity: 1;
+    background-image:  radial-gradient(#001465 1.1px, transparent 1.1px), radial-gradient(#001465 1.1px, var(--primary-color) 1.1px);
+    background-size: 44px 44px;
+    background-position: 0 0,22px 22px;
 }
 
 header {
     color: var(--font-color);
     padding: 14px 14px;
     font-size: 16px;
+    background-color: var(--primary-color);
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.175);
 }
 
 fieldset {
@@ -726,9 +731,9 @@ footer {
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 8%;
+    top: 7.5%;
     right: 0;
-    background-color: rgba(8, 0, 42, 0.75);
+    background-color: var(--primary-color);
     overflow-x: hidden;
     transition: 0.5s;
   }
@@ -783,7 +788,7 @@ footer {
     }
 
     .sty-side-menu {
-        top: 4%;
+        top: 4.3%;
     }
 
     .sty-side-menu-show {

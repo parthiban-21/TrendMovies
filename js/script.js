@@ -82,7 +82,7 @@ const main = document.getElementById('main');
 const form = document.getElementById('form');
 const search = document.getElementById('search');
 const tagsEl = document.getElementById('tags');
-const isSeries = document.getElementById('isSeries').checked;
+//const isSeries = document.getElementById('isSeries').checked;
 
 const prev = document.getElementById('prev')
 const next = document.getElementById('next')
@@ -101,14 +101,7 @@ $(function () {
     $("#search-content").on('click', function (e) {
         var searchTerm = $("#content-search").val().trim();
         if (searchTerm) {
-            if (document.getElementById('isSeries').checked) {
-                getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, false));
-            }
-            else {
                 getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, false));
-            }
-        } else {
-            alert("Couldn't Find any Search Keywords, Try Again with Different Keyword..!")
         }
     });
 

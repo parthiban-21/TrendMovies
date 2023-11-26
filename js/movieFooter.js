@@ -3,11 +3,12 @@ $(function(){
     const tmdb = new tmdbAPI();
     var movie_data = tmdb.getMovie(movie_id);
 
-    //var bg_ImgURL = tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path;
+    var bg_ImgURL = (movie_data.backdrop_path) ? tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path : "img/Streamy_BG.jpg";
+    var poster_path = (movie_data.poster_path) ? tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path : "img/Streamy_BG.jpg";
     //$('#backdrop-poster img').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
 
-    $('#backdrop-poster img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path);
-    $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path);
+    $('#backdrop-poster img').attr('src',bg_ImgURL);
+    $("#content-poster").attr('src',poster_path);
     $("#content-title").text(movie_data.title + " ("+ movie_data.release_date.substring(0,4) +")");
     $("#content-tagline").text(movie_data.tagline);
     $("#content-overview").text(movie_data.overview);

@@ -106,10 +106,18 @@ function frameYTLink(videoID, type){
 
 function loadMenuGroup(){
     let htmlTags = "";
-    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-movies"><i class="fa-solid fa-film cs-rsmar"></i>Movies</span>`;
-    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>`;
+    //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-movies"><i class="fa-solid fa-film cs-rsmar"></i>Movies</span>`;
+    //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>`;
     //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-anime"><i class="fa-solid fa-house-fire cs-rsmar"></i>Anime</span>`;
-    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-house-user cs-rsmar"></i></span>`;
+    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-bars"></i></span>
+                    <div id="sty-side-menu" class="sty-side-menu">
+                        <div class="sty-side-menu-showcontent">
+                        <a href="#" class="cs-cur" id="trend-movies"><i class="fa-solid fa-clapperboard cs-rsmar"></i>Movies</a>
+                        <a href="#" class="cs-cur" id="trend-series"><i class="fa-solid fa-tv cs-rsmar"></i>Series</a>
+                        <a href="#"><i class="fa-solid fa-feather-pointed cs-rsmar"></i>About</a>
+                        <a href="#"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</a>
+                        </div>
+                    </div>`;
     $("#menu-groups").append(htmlTags);
 
     $(".cs-head img").on('click', function(){
