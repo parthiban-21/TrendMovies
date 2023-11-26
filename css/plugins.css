@@ -235,15 +235,13 @@
 
 .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
     position: absolute;
-    top: -14px;
-    right: -14px;
-    font-size: 11px;
+    right: 14px;
     border: none;
-    background: rgba(33, 33, 33, .8);
-    padding: 5px 7px;
-    color: orangered;
+    background: var(--tran-color);
+    color: var(--title-color);
     text-indent: 1px;
-    width: 27px;
+    width: 25px;
+    height: 25px;
     white-space: nowrap;
     overflow: hidden;
     -webkit-border-radius: 20px;
@@ -270,7 +268,9 @@
 }
 
 .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close:hover {
-    background: rgba(0, 0, 0, .9)
+    background: rgba(0, 0, 0, .9);
+    color: var(--icon-color);
+    transform: scale(1.05);
 }
 
 .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close:focus {
@@ -702,7 +702,7 @@
     top: 8%
 }
 
-@media (max-device-width:480px) {
+@media (max-device-width:580px) {
     .trans-message {
         top: 3%
     }

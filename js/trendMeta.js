@@ -109,7 +109,7 @@ function loadMenuGroup(){
     htmlTags += `<span class="cs-lrmar cs-cur" id="trend-movies"><i class="fa-solid fa-film cs-rsmar"></i>Movies</span>`;
     htmlTags += `<span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>`;
     //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-anime"><i class="fa-solid fa-house-fire cs-rsmar"></i>Anime</span>`;
-    //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-house-user cs-rsmar"></i>Home</span>`;
+    htmlTags += `<span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-house-user cs-rsmar"></i></span>`;
     $("#menu-groups").append(htmlTags);
 
     $(".cs-head img").on('click', function(){
@@ -117,7 +117,7 @@ function loadMenuGroup(){
     })
 
     $("#trend-home").on('click', function(){
-		window.location.href = "index.html";
+        $("#sty-side-menu").toggleClass("sty-side-menu-show");
     })
 
     $("#trend-movies").on('click', function(){
@@ -133,6 +133,12 @@ function loadMenuGroup(){
             window.open("https://aniwatch.to/");
         }
     })
+
+    
+}
+
+function openNav() {
+    
 }
 
 function setWindowTitle(title, only) {
@@ -161,6 +167,7 @@ function invokePlayerDialog(streamList, title, backdrop, isTrailer) {
         modal: true,
         autoOpen: true,
         draggable: false,
+        closeText: "",
         height: window.innerHeight / 1.25,
         width: width,
         close: function (event, ui) {
