@@ -13,8 +13,9 @@ $(function(){
     $("#content-genre").text(getGenre(series_data.genres));
     $("#content-release").text(series_data.first_air_date);
     $("#content-status").text(series_data.status);
+    $("#content-lang").text(getLanguage(series_data.original_language));
     var credits = tmdb.getSeriesCredits(series_id);
-    getDirectorAndStarring(credits);
+    getDirectorAndStarring(credits, series_data.created_by);
 
     console.log(getSeasonCount(series_data.seasons));
 
@@ -124,13 +125,14 @@ function getTrailer(contentID){
     return youTubeURL;
 }
 
-function getDirectorAndStarring(credits){
-    $.each(credits.crew , function(i, member) {
-        if(member['job'] == "Director"){
-            $("#content-artists #dir-name").text(member['name']);
-            return false;
+function getDirectorAndStarring(credits, created_by){
+    var crew = new Array();
+    $.each(created_by , function(i, member) {
+        if(member['name']){
+            crew.push(member['name']);
         }
     })
+    $("#content-artists #dir-name").text(crew.join(", "));
 
     var stars = "";
     $.each(credits.cast , function(i, member) {

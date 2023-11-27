@@ -16,6 +16,7 @@ $(function(){
     $("#content-rating").text(movie_data.vote_average.toFixed(1));
     $("#content-genre").text(getGenre(movie_data.genres));
     $("#content-release").text(movie_data.release_date);
+    $("#content-lang").text(getLanguage(movie_data.original_language));
     var credits = tmdb.getMovieCredits(movie_id);
     getDirectorAndStarring(credits);
 

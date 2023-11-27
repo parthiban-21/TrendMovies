@@ -26,6 +26,7 @@
         <script src="js/api/tmdbAPI.js"></script>
         <script src="js/api/superembedAPI.js"></script>
         <script src="js/api/vidstreamAPI.js"></script>
+        <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=Intl.~locale.en"></script>
     </head>
     <body>
         <div id="backdrop-poster" class="cs-backdrop-poster">
@@ -49,12 +50,12 @@
                     <i id="content-tagline">--</i>
                 </div>
                 <div id="content-details" class="sty-content-details">
-                    <a class="cs-icon"><i class="fa-solid fa-star"></i><span id="content-rating">0.0</span></a>
-                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span id="content-release">--</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-clock"></i><span id="content-runtime">--</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span id="content-lang">--</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-satellite-dish"></i><span id="content-status">--</span></a>
-                    <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span id="content-genre">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-star"></i><span class="sty-i-color">Rating : </span><span id="content-rating">0.0</span></a>
+                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Release Date : </span><span id="content-release">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime : </span><span id="content-runtime">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-satellite-dish"></i><span class="sty-i-color">Status : </span><span id="content-status">--</span></a>
+                    <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre : </span><span id="content-genre">--</span></a>
                 </div>
                 <textarea id="content-overview" class="sty-content-plot" spellcheck="false" readonly >--</textarea>
                 <div class="cs-flex cs-lbpad sty-content-credits" id="content-artists">

@@ -254,12 +254,7 @@ next.addEventListener('click', () => {
 
 function pageCall(page) {
     const tmdb = new tmdbAPI();
-    if (document.getElementById('isSeries').checked) {
-        getSeries(tmdb.discoverSeries(page, 'POP_DSC', true, false))
-    }
-    else {
-        getMovies(tmdb.discoverMovies(page, 'POP_DSC', true, false));
-    }
+    getMovies(tmdb.discoverMovies(page, 'POP_DSC', true, false));
     /*let urlSplit = lastUrl.split('?');
     let queryParams = urlSplit[1].split('&');
     let key = queryParams[queryParams.length - 1].split('=');

@@ -145,10 +145,6 @@ function loadMenuGroup(){
     
 }
 
-function openNav() {
-    
-}
-
 function setWindowTitle(title, only) {
     var win_title = "Streamy";
     win_title = (only == true) ? title : title + " | Streamy ✨";
@@ -206,5 +202,15 @@ function invokePlayerDialog(streamList, title, backdrop, isTrailer) {
             $(".sty-player-bg").hide();
             $("#sty-iframe").show();
         })
+    }
+}
+
+function getLanguage(code, native){
+    if(code){
+        var lang = (native == true) ? code : "en";
+        const intl = new Intl.DisplayNames([lang], { type: 'language' });
+        return intl.of(code);
+    } else {
+        return null;
     }
 }
