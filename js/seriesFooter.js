@@ -1,5 +1,7 @@
 $(function(){
     const series_id = sessionStorage.getItem("seriesId");
+    if(!series_id)
+        location.href = "index.html";
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
 
@@ -8,10 +10,11 @@ $(function(){
     $("#content-title").text(series_data.original_name + " ("+ series_data.first_air_date.substring(0,4) +")");
     $("#content-tagline").text(series_data.tagline);
     $("#content-overview").text(series_data.overview);
-    $("#content-runtime").text(series_data.number_of_seasons + " Seasons & " + series_data.number_of_episodes + " Episodes");
-    $("#content-rating").text(series_data.vote_average.toFixed(1));
+    $("#content-runtime").text((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "--");
+    $("#content-rating").text(series_data.vote_average.toFixed(1) + " / 10");
     $("#content-genre").text(getGenre(series_data.genres));
-    $("#content-release").text(series_data.first_air_date);
+    $("#content-first-aired").text(parseDate(series_data.first_air_date));
+    $("#content-last-aired").text(parseDate(series_data.last_air_date));
     $("#content-status").text(series_data.status);
     $("#content-lang").text(getLanguage(series_data.original_language));
     var credits = tmdb.getSeriesCredits(series_id);

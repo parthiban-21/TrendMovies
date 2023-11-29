@@ -1,5 +1,7 @@
 $(function(){
     const movie_id = sessionStorage.getItem("movieId");
+    if(!movie_id)
+        location.href = "index.html";
     const tmdb = new tmdbAPI();
     var movie_data = tmdb.getMovie(movie_id);
 
@@ -15,7 +17,7 @@ $(function(){
     $("#content-runtime").text(getDuration(movie_data.runtime));
     $("#content-rating").text(movie_data.vote_average.toFixed(1));
     $("#content-genre").text(getGenre(movie_data.genres));
-    $("#content-release").text(movie_data.release_date);
+    $("#content-release").text(parseDate(movie_data.release_date));
     $("#content-lang").text(getLanguage(movie_data.original_language));
     var credits = tmdb.getMovieCredits(movie_id);
     getDirectorAndStarring(credits);

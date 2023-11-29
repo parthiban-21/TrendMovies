@@ -1,0 +1,16 @@
+{
+    "name": "Streamy",
+    "short_name": "Streamy",
+    "description": "Watch Movies & Show Free Online",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#000515",
+    "theme_color": "#000515",
+    "orientation": "portrait-primary",
+    "icons": [
+      {
+        "src": "img/Streamy_Logo.png",
+        "type": "image/png", "sizes": "192x192"
+      }
+    ]
+}

@@ -81,7 +81,12 @@ function metaXMLRequest(URL, method) {
 function getDuration(totalMinutes){
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
-    return hours + "hrs " + minutes + "min"
+    const hoursText = hours > 0 ? hours + " hr" + (hours > 1 ? "s" : "") : "";
+    const minutesText = minutes > 0 ? minutes + " min" + (minutes > 1 ? "s" : "") : "";
+
+    const separator = (hoursText && minutesText) ? " " : "";
+
+    return hoursText + separator + minutesText;
 }
 
 function getGenre(genreList){
@@ -213,4 +218,14 @@ function getLanguage(code, native){
     } else {
         return null;
     }
+}
+
+function parseDate(dateString) {
+    const parsedDate = new Date(dateString);
+    if (isNaN(parsedDate.getTime())) {
+        return '--';
+    }
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    const longDateFormat = parsedDate.toLocaleDateString("en-US", options);
+    return longDateFormat;
 }

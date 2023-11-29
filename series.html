@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=0.65">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <link rel="icon" type="image/x-icon" href="img/Streamy_Logo.png">
         <title>Streamy</title>
         <!-- Styles -->
@@ -26,10 +28,10 @@
         <script src="js/api/tmdbAPI.js"></script>
         <script src="js/api/superembedAPI.js"></script>
         <script src="js/api/vidstreamAPI.js"></script>
-        <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=Intl.~locale.en"></script>
+        <!-- <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=Intl.~locale.en"></script> -->
     </head>
     <body>
-        <div id="backdrop-poster" class="cs-backdrop-poster">
+        <div id="backdrop-poster" class="cs-backdrop-poster" style="display: none;">
             <img class="sty-poster-bg">
         </div>
         <header>
@@ -51,10 +53,12 @@
                 </div>
                 <div id="content-details" class="sty-content-details">
                     <a class="cs-icon"><i class="fa-solid fa-star"></i><span class="sty-i-color">Rating : </span><span id="content-rating">0.0</span></a>
-                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Release Date : </span><span id="content-release">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-satellite-dish"></i><span class="sty-i-color">Status : </span><span id="content-status">--</span></a>
+                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">First Aired On : </span><span id="content-first-aired">--</span></a>
+                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Last Aired On : </span><span id="content-last-aired">--</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime : </span><span id="content-runtime">--</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-satellite-dish"></i><span class="sty-i-color">Status : </span><span id="content-status">--</span></a>
+                    
                     <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre : </span><span id="content-genre">--</span></a>
                 </div>
                 <textarea id="content-overview" class="sty-content-plot" spellcheck="false" readonly >--</textarea>
@@ -90,7 +94,7 @@
                         <option value="">-- Select --</option>
                     </select>
                     <a class="cs-btn-max sty-tran-hover" id="info-dialog"><i class="fa-solid fa-tv"></i><span id="content-watch">Watch Now</span></a>
-                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i></a>
+                    <a class="cs-btn-max sty-tran-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i><span>Trailer</span></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-bookmark" title="Add To Watch List"><i class="fa-solid fa-bookmark"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-download" title="Download"><i class="fa-solid fa-download"></i></a>
