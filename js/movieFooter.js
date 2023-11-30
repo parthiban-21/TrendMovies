@@ -11,7 +11,7 @@ $(function(){
 
     $('#backdrop-poster img').attr('src',bg_ImgURL);
     $("#content-poster").attr('src',poster_path);
-    $("#content-title").text(movie_data.title + " ("+ movie_data.release_date.substring(0,4) +")");
+    $("#content-title").text(movie_data.title);
     $("#content-tagline").text(movie_data.tagline);
     $("#content-overview").text(movie_data.overview);
     $("#content-runtime").text(getDuration(movie_data.runtime));
@@ -53,7 +53,7 @@ $(function(){
     })
 
     $("#content-download").on('click', function(){
-        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "INFO");
+        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "ERROR");
     })
 
     $("#content-share").on('click', function(){

@@ -11,7 +11,7 @@
 
 .search:focus {
     outline: 0;
-    background-color: var(--primary-color);
+    
 }
 
 .search::placeholder {

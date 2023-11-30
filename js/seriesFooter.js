@@ -7,7 +7,7 @@ $(function(){
 
     $('#backdrop-poster img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
-    $("#content-title").text(series_data.original_name + " ("+ series_data.first_air_date.substring(0,4) +")");
+    $("#content-title").text(series_data.original_name);
     $("#content-tagline").text(series_data.tagline);
     $("#content-overview").text(series_data.overview);
     $("#content-runtime").text((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "--");
