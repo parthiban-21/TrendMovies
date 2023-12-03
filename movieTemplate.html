@@ -124,27 +124,32 @@
                 </div>
             </div>
         </div>
-        <div id="sty-player-dialog" class="cs-hide">
-            <div class="sty-player-wizard">
-                <div class="sty-server-cont">
-                    <div class="sty-server-header">
-                        <label>Choose a Server</label>
-                        <i style="margin-top: 4px;" class="fa-solid fa-circle-info cs-float-right cs-rmar"></i>
-                        <i style="margin-top: 4px;" class="fa-solid fa-triangle-exclamation cs-float-right cs-rmar"></i>
+        <div id="sty-player-dialog" style="display: none; overflow-y: scroll;">
+            <section class="cs-cflex sty-player-sec">
+                <section class="sec sty-ply-container">
+                    <div class="cs-fCenter sty-bg" style="height: 100%;">
+                        <img>
+                        <!-- <div class="cs-cflex sty-player-txt">
+                                    <i class="fa-solid fa-circle-play cs-hover"></i>
+                                </div> -->
                     </div>
-                    <div id="sty-stream-servers">
-                        
+                    <iframe id="sty-iframe" class="sty-iframe" style="display: none;" width="100%" height="100%" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </section>
+                <section class="sec sty-ser-container">
+                    <div class="cs-cflex">
+                        <div>
+                            <label>If current server doesn't work please try other servers below.</label>
+                        </div>
+                        <div id="sty-stream-servers" class="cs-flex">
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="cs-fCenter sty-player-bg">
-                    <div class="cs-cflex sty-player-txt">
-                        <!-- <label>Test</label> -->
-                        <i class="fa-solid fa-circle-play cs-hover"></i>
-                    </div>
-                </div>
-                <iframe id="sty-iframe" class="sty-iframe" width="70%" height="100%" style="display: none;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen;" allowfullscreen="true" scrolling="false"></iframe>
-            </div>
+                </section>
+            </section>
         </div>
+        <input type="hidden" id="apiId"/>
         <footer>
             <div class="cs-fCenter">
                 <label>We don't host any of the above content. All are hosted by Third-Party sites</label>

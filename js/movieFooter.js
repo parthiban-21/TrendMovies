@@ -2,6 +2,8 @@ $(function(){
     const movie_id = sessionStorage.getItem("movieId");
     if(!movie_id)
         location.href = "index.html";
+    
+    $("#apiId").val(movie_id);
     const tmdb = new tmdbAPI();
     var movie_data = tmdb.getMovie(movie_id);
 
@@ -9,7 +11,7 @@ $(function(){
     var poster_path = (movie_data.poster_path) ? tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path : "img/Streamy_BG.jpg";
     //$('#backdrop-poster img').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
 
-    $('#backdrop-poster img').attr('src',bg_ImgURL);
+    $('.sty-bg img').attr('src',bg_ImgURL);
     $("#content-poster").attr('src',poster_path);
     $("#content-title").text(movie_data.title);
     $("#content-tagline").text(movie_data.tagline);
@@ -23,23 +25,14 @@ $(function(){
     getDirectorAndStarring(credits);
 
     $("#content-watch").on('click', function(){
-        var api = [
-            {
-                "DOMAIN": "Vid Stream",
-                "URL": new vidStreamAPI().getMovieURL(movie_id)
-            },
-            {
-                "DOMAIN": "Super Embed",
-                "URL": new superembedAPI().getMovieURL(movie_id, "TMDB")
-            }
-        ];
-        invokePlayerDialog(api, $("#content-title").text(), $('#backdrop-poster img').attr('src'), false);
+        frameSevers();
+        invokePlayerDialog("", $("#content-title").text(), false);
     })
 
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(movie_id);
         if(YTUrl)
-            invokePlayerDialog(YTUrl, "Official Trailer","", true);
+            invokePlayerDialog(YTUrl, "Official Trailer", true);
         else
             alertMessage("Sorry..!", "Could Not Find Official Trailer.", "", "ERROR");
     })
@@ -100,14 +93,42 @@ function getDirectorAndStarring(credits){
     $("#starring").text(stars);
 }
 
-function openPlayer(embed_url){
-    $("#openPopover #iframe").attr({
-        //src: "https://www.2embed.to/embed/tmdb/movie?id=" + movie_id
-        src: embed_url
-    })
-    document.getElementById("openPopover").style.display = "flex";
-}
+function frameSevers() {
+    var generalServers = [{
+        "SERVER": "VIDSTR",
+        "NAME": "Vid Stream",
+        "CLASS": new vidStreamAPI()
+    },
+    {
+        "SERVER": "SUPEREMBED",
+        "NAME": "Super Embed",
+        "CLASS": new superembedAPI()
+    }];
 
-function fetchMovies(){
-    return metaAjaxCall("./trendMoviesDB.json");
+    $("#sty-stream-servers").empty();
+    $.each(generalServers, function (i, data) {
+        var htmlTag = $(`<div class="sty-server" server="${data.SERVER}">
+                                <i class="fa-solid fa-server cs-rmar"></i>
+                                <span>${data.NAME}</span>
+                            </div>`);
+        htmlTag.filter(".sty-server").data("DATA", data);
+        if (i == 0) {
+            htmlTag.filter(".sty-server").addClass("active");
+        }
+        $("#sty-stream-servers").append(htmlTag);
+    });
+
+    $(".sty-server").on('click', function () {
+        $(".sty-server").each(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            }
+        });
+        $(this).addClass("active");
+        
+        var id = $("#apiId").val();
+        $("#sty-iframe").attr({ src: $(".sty-server.active").data("DATA").CLASS.getMovieURL(id) });
+        $(".sty-bg").hide();
+        $("#sty-iframe").show();
+    })
 }

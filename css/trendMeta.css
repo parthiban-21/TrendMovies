@@ -25,6 +25,10 @@
     background: none; /* Background color of the track */
 }
 
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
 ::-webkit-scrollbar-thumb {
     background: rgba(45, 54, 85, 0.4); /* Color of the scrollbar thumb */
     border-radius: 8px; /* Rounded corners for the thumb */
@@ -139,10 +143,17 @@ header .sty-head-mid {
 
 footer {
     position: absolute;
+    bottom: 0px;
     height: auto;
     width: 100%;
     padding: 20px;
     font-size: 13px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .cs-menu {
@@ -684,15 +695,15 @@ footer {
 }
 
 .sty-server {
-    padding: 12px;
+    padding: 10px;
     background-color: #1a253cbd;
-    border-radius: 15px;
-    margin: 10px 0px;
+    border-radius: 10px;
+    margin: 5px;
     color: var(--title-color);
     cursor: pointer;
 }
 
-.sty-server.active {
+.sty-server.active, .sty-episode.active {
     color: var(--icon-color);
 }
 
@@ -873,11 +884,41 @@ footer {
 }
 
 .sty-player-sec .sec {
-    width: 90%;
+    width: 100%;
+    background-color: var(--header-bg);
+    padding: 12px;
+}
+
+.sty-player-sec .sty-bg {
+    height: 100%;
+    overflow: hidden;
 }
 
 .sty-player-sec .sty-bg img {
-    width: 100%;
+    height: 100%;
+}
+
+.sty-ply-container {
+    height: 500px
+}
+
+.sty-player-sec .sty-ser-container {
+    border-radius: 0 0 10px 10px;
+}
+
+.sty-episode-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.sty-episode {
+    padding: 5px 10px;
+    background-color: var(--tran-color);
+    border-radius: 8px;
+    color: var(--title-color);
+    cursor: pointer;
 }
 
 @media (max-device-width:580px) {
@@ -898,6 +939,7 @@ footer {
     }
 
     .sty-content-details {
+        font-size: 12px;
         grid-template-columns: 50% 50%;
     }
 
@@ -913,5 +955,14 @@ footer {
     .cs-postermax {
         width: 85%;
         height: 85%;
+    }
+
+    .sty-ply-container {
+        height: 300px
+    }
+
+    .sty-episode-container {
+        grid-template-columns: auto;
+        font-size: 12px;
     }
 }

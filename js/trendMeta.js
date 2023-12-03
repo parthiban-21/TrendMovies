@@ -161,20 +161,17 @@ function setWindowTitle(title, only) {
     document.title = win_title;
 }
 
-function invokePlayerDialog(streamList, title, backdrop, isTrailer) {
+function invokePlayerDialog(streamList, title, isTrailer) {
     let width = (screen.width < 610) ? window.innerWidth - 30 : window.innerWidth / 1.25;
+    let height = (screen.width < 610) ? window.innerHeight / 3.5 : window.innerHeight / 1.25;
     if (isTrailer) {
-        $(".sty-server-cont").hide();
-        $("#sty-iframe").attr({ width: "100%" });
-        $(".sty-player-bg").hide();
+        $(".sty-ser-container").hide();
+        $(".sty-player-bg , .sty-bg").hide();
         $("#sty-iframe").show();
         $("#sty-iframe").attr({src:streamList});
     } else {
-        frameServerList(streamList);
-        $(".sty-server-cont").show();
-        $("#sty-iframe").attr({ width: "70%" });
-        $(".sty-player-bg").show();
-        $(".sty-player-bg").css({'background-image':`url(${backdrop})`});
+        $(".sty-ser-container").show();
+        $(".sty-player-bg , .sty-bg").show();
     }
     $("#sty-player-dialog").dialog({
         title: (title) ? "Now Playing : " + title : "Streamy",
@@ -182,37 +179,13 @@ function invokePlayerDialog(streamList, title, backdrop, isTrailer) {
         autoOpen: true,
         draggable: false,
         closeText: "",
-        height: window.innerHeight / 1.25,
+        height: height,
         width: width,
         close: function (event, ui) {
             $("#sty-iframe").attr({ src: "" });
             $("#sty-iframe").hide();
         }
     });
-
-    function frameServerList(streamList){
-        $("#sty-stream-servers").empty();
-        $.each(streamList, function(i, data){
-            var htmlTag = $(`<div class="sty-server" server="${data.DOMAIN.toUpperCase()}">
-                                <i class="fa-solid fa-server cs-rmar"></i>
-                                <span>${data.DOMAIN}</span>
-                            </div>`);
-            htmlTag.filter(".sty-server").data("URL",data.URL);
-            $("#sty-stream-servers").append(htmlTag);
-        })
-    
-        $(".sty-server").on('click', function(){
-            $(".sty-server").each(function() {
-                if ($(this).hasClass('active')) {
-                    $(this).removeClass('active');
-                }
-            });
-            $(this).addClass("active");
-            $("#sty-iframe").attr({src:$(this).data("URL")});
-            $(".sty-player-bg").hide();
-            $("#sty-iframe").show();
-        })
-    }
 }
 
 function getLanguage(code, native){

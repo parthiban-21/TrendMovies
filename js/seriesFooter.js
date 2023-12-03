@@ -2,10 +2,12 @@ $(function(){
     const series_id = sessionStorage.getItem("seriesId");
     if(!series_id)
         location.href = "index.html";
+    
+    $("#apiId").val(series_id);
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
 
-    $('#backdrop-poster img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
+    $('.sty-bg img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
     $("#content-title").text(series_data.original_name);
     $("#content-tagline").text(series_data.tagline);
@@ -21,35 +23,23 @@ $(function(){
     getDirectorAndStarring(credits, series_data.created_by);
 
     console.log(getSeasonCount(series_data.seasons));
+    frameEpisode();
 
     $("#tv-season").on("change", function(){
-        frameEpisode(this.options[this.selectedIndex].getAttribute('ep'));
+        frameEpisode();
     })
 
     $("#content-watch").on('click', function(){
-        let season = $("#tv-season").val();
-        let episode = $("#tv-episode").val();
-        if(season && episode) {
-        var api = [
-            {
-                "DOMAIN": "Vid Stream",
-                "URL": new vidStreamAPI().getSeriesURL(series_id, season, episode)
-            },
-            {
-                "DOMAIN": "Super Embed",
-                "URL": new superembedAPI().getSeriesURL(series_id, season ,episode, "TMDB")
-            }
-        ];
-        invokePlayerDialog(api, $("#content-title").text(), $('#backdrop-poster img').attr('src'), false);
-    } else {
-        alertMessage("Choose Valid Season and Episode", "", "", "ERROR");
-    }
+        //$(".sty-bg img").attr({'src':$('#backdrop-poster img').attr('src')});
+        frameSevers();
+        invokePlayerDialog("", $("#content-title").text(), false);
     })
 
     $("#content-trailer").on('click', function(){
         var YTUrl = getTrailer(series_id);
         if(YTUrl){
-            invokePlayerDialog(YTUrl, "Official Trailer","", true);
+            $(".sty-ser-container").hide();
+            invokePlayerDialog(YTUrl, "Official Trailer", true);
         }
         else
             alertMessage("Sorry", "Could Not Find Official Trailer.", "", "ERROR");
@@ -100,17 +90,69 @@ function getSeasonCount(seasons){
     return count;
 }
 
-function frameEpisode(ep){
-    $("#tv-episode").empty();
-    for(var i = 0 ; i <= ep ; i++){
-        var option = "";
-        if(i==0){
-            option = `<option value="">-- Select --</option>`;
-        } else {
-            option = `<option value="${i}">Episode ${i}</option>`;
-        }
-        $("#tv-episode").append(option);
+function frameEpisode(){
+    var ep = $("#tv-season option:selected").attr("ep");
+    $(".sty-episode-container").empty();
+    for(var i = 1 ; i <= ep ; i++){
+        var option = `<li class="sty-episode" ep="${i}">Episode ${i}</li>`;
+        $(".sty-episode-container").append(option);
     }
+
+    $(".sty-episode").on('click', function(){
+        $(".sty-episode").each(function() {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            }
+        });
+        $(this).addClass("active");
+        $("#tv-episode").val($(this).attr("ep"));
+        invokeSeriesPlayer();
+    })
+}
+
+function frameSevers() {
+    var generalServers = [{
+        "SERVER": "VIDSTR",
+        "NAME": "Vid Stream",
+        "CLASS": new vidStreamAPI()
+    },
+    {
+        "SERVER": "SUPEREMBED",
+        "NAME": "Super Embed",
+        "CLASS": new superembedAPI()
+    }];
+
+    $("#sty-stream-servers").empty();
+    $.each(generalServers, function (i, data) {
+        var htmlTag = $(`<div class="sty-server" server="${data.SERVER}">
+                                <i class="fa-solid fa-server cs-rmar"></i>
+                                <span>${data.NAME}</span>
+                            </div>`);
+        htmlTag.filter(".sty-server").data("DATA", data);
+        if (i == 0) {
+            htmlTag.filter(".sty-server").addClass("active");
+        }
+        $("#sty-stream-servers").append(htmlTag);
+    });
+
+    $(".sty-server").on('click', function () {
+        $(".sty-server").each(function () {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            }
+        });
+        $(this).addClass("active");
+        invokeSeriesPlayer();
+    })
+}
+
+function invokeSeriesPlayer() {
+    var id = $("#apiId").val();
+    var s = ($("#tv-season").val()) ? $("#tv-season").val() : 1;
+    var e = ($("#tv-episode").val()) ? $("#tv-episode").val() : 1;
+    $("#sty-iframe").attr({ src: $(".sty-server.active").data("DATA").CLASS.getSeriesURL(id, s, e) });
+    $(".sty-bg").hide();
+    $("#sty-iframe").show();
 }
 
 function getTrailer(contentID){
@@ -135,7 +177,7 @@ function getDirectorAndStarring(credits, created_by){
             crew.push(member['name']);
         }
     })
-    $("#content-artists #dir-name").text(crew.join(", "));
+    $("#dir-name").text(crew.join(", "));
 
     var stars = "";
     $.each(credits.cast , function(i, member) {
@@ -146,5 +188,5 @@ function getDirectorAndStarring(credits, created_by){
         }
     })
     stars = stars.substring(0,stars.length - 2) + " & more";
-    $("#content-artists #starring").text(stars);
+    $("#starring").text(stars);
 }

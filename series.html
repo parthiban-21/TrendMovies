@@ -48,6 +48,41 @@
             <div id="menu-groups" class="cs-menu cs-flex">
             </div>
         </header>
+        <div id="sty-player-dialog" style="display: none; overflow-y: scroll;">
+            <section class="cs-cflex sty-player-sec">
+                <section class="sec sty-ply-container">
+                    <div class="cs-fCenter sty-bg" style="height: 100%;">
+                        <img>
+                        <!-- <div class="cs-cflex sty-player-txt">
+                                    <i class="fa-solid fa-circle-play cs-hover"></i>
+                                </div> -->
+                    </div>
+                    <iframe id="sty-iframe" class="sty-iframe" style="display: none;" width="100%" height="100%" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </section>
+                <section class="sec sty-ser-container">
+                    <div class="cs-cflex">
+                        <div>
+                            <label>If current server doesn't work please try other servers below.</label>
+                        </div>
+                        <div id="sty-stream-servers" class="cs-flex">
+                            
+                        </div>
+                        <div style="width: 100%;">
+                            <div>
+                                <select id="tv-season">
+                                </select>
+                            </div>
+                            <div style="max-height: 180px; overflow-x: scroll;">
+                                <ul class="sty-episode-container">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
         <div id="movie-overview" class="cs-fCenter cs-overview">
             <div class="cs-postermax cs-frag-30">
                 <img id="content-poster" src="img/Streamy_BG.jpg">
@@ -66,21 +101,23 @@
                     <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a>
                     
                     <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre : </span><span id="content-genre">--</span></a>
+                    <a class="cs-icon sty-merge"><i class="fa-solid fa-user"></i><span class="sty-i-color">Creator : </span><span id="dir-name">--</span></a>
+                    <a class="cs-icon sty-merge"><i class="fa-solid fa-user"></i><span class="sty-i-color">Cast : </span><span id="starring">--</span></a>
                 </div>
                 <textarea id="content-overview" class="sty-content-plot" spellcheck="false" readonly >--</textarea>
-                <div class="cs-flex cs-lbpad sty-content-credits" id="content-artists">
+                <div class="cs-flex cs-lbpad sty-content-credits" id="content-artists" style="display: none;">
                     <div class="cs-cast cs-flex">
                         <a class="cs-btn-max cs-btn-round"><i class="fa-solid fa-user"></i></a>
                         <span>
                             <label class="role" id="role">Director</label>
-                            <label class="name" id="dir-name">--</label>
+                            <label class="name" >--</label>
                         </span>
                     </div>
                     <div class="cs-cast cs-flex">
                         <a class="cs-btn-max cs-btn-round"><i class="fa-solid fa-user"></i></a>
                         <span>
                             <label class="role" id="role">Starring</label>
-                            <label class="name" id="starring">--</label>
+                            <label class="name" >--</label>
                         </span>
                     </div>
                 </div>
@@ -91,14 +128,7 @@
                     <a class="cs-icon"><i class="fa-solid fa-user"></i><span>Adult Content</span></a>
                 </div>
                 <div class="cs-ltpad" id="actions">
-                    <label>Season: </label>
-                    <select id="tv-season">
-                        <option value="">-- Select --</option>
-                    </select>
-                    <label>Episode: </label>
-                    <select id="tv-episode">
-                        <option value="">-- Select --</option>
-                    </select>
+                    
                     <a class="cs-btn-max sty-tran-hover" id="info-dialog"><i class="fa-solid fa-tv"></i><span id="content-watch">Watch Now</span></a>
                     <a class="cs-btn-max sty-tran-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i><span>Trailer</span></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
@@ -109,27 +139,8 @@
                 </div>
             </div>
         </div>
-        <div id="sty-player-dialog" class="cs-hide">
-            <div class="sty-player-wizard">
-                <div class="sty-server-cont">
-                    <div class="sty-server-header">
-                        <label>Choose a Server</label>
-                        <i style="margin-top: 4px;" class="fa-solid fa-circle-info cs-float-right cs-rmar"></i>
-                        <i style="margin-top: 4px;" class="fa-solid fa-triangle-exclamation cs-float-right cs-rmar"></i>
-                    </div>
-                    <div id="sty-stream-servers">
-                        
-                    </div>
-                </div>
-                <div class="cs-fCenter sty-player-bg">
-                    <div class="cs-cflex sty-player-txt">
-                        <!-- <label>Test</label> -->
-                        <i class="fa-solid fa-circle-play cs-hover"></i>
-                    </div>
-                </div>
-                <iframe id="sty-iframe" class="sty-iframe" width="70%" height="100%" style="display: none;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-        </div>
+        <input type="hidden" id="apiId"/>
+        <input type="hidden" id="tv-episode" value="1"/>
         <footer>
             <div class="cs-fCenter">
                 <label>We don't host any of the above content. All are hosted by Third-Party sites</label>
