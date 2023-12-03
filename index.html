@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.65">
     <meta name="robots" content="index, follow">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="google-adsense-account" content="ca-pub-9658507705239666">
     <link rel="icon" type="image/x-icon" href="img/Streamy_Logo.png">
     <link rel="manifest" href="manifest.json">
     <title>Streamy</title>
@@ -30,6 +31,7 @@
     <script src="js/api/tmdbAPI.js"></script>
     <script src="js/api/superembedAPI.js"></script>
     <script src="js/api/vidstreamAPI.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.4/js/swiper.min.js"></script>
 </head>
 
 <body>
@@ -48,22 +50,14 @@
         <div id="menu-groups" class="cs-menu cs-flex">
         </div>
     </header>
-    <!-- Info Window -->
-    <div id="myModal" class="modal">
-            <li class="movie" id="movie-298618"> <img src="https://image.tmdb.org/t/p/w500/rktDFPbfHfUbArZ6OOOKsXcv0Bm.jpg">
-                <div class="cs-contents">
-                    <div id="adult-flag" class="cs-content color-red" style="display: none;">18+</div>
-                    <div class="cs-content">HD</div>
-                    <div id="content-rating" class="cs-content color-orange">6.9</div>
-                    <div class="cs-content">Movie</div>
-                </div>
-                <div class="overview cs-hide" style="display: none;">
-                    <h3>The Flash</h3> <a class="btn btn-circle" id="watch-now" title="Watch Now"><i
-                            class="fa-solid fa-play"></i></a>
-                </div>
-            </li>
+    <div class="swiper-container">
+        <div class="swiper-wrapper" >
+
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
-    <!-- Info Window -->
     <main id="main" class="cs-fCenter" style="margin-top: 15px;"></main>
     <div class="pagination">
         <div class="page" id="prev">Previous Page</div>

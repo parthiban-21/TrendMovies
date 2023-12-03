@@ -83,7 +83,7 @@ function getTrailer(contentID){
 function getDirectorAndStarring(credits){
     $.each(credits.crew , function(i, member) {
         if(member['job'] == "Director"){
-            $("#content-artists #dir-name").text(member['name']);
+            $("#dir-name").text(member['name']);
             return false;
         }
     })
@@ -97,7 +97,7 @@ function getDirectorAndStarring(credits){
         }
     })
     stars = stars.substring(0,stars.length - 2) + " & more";
-    $("#content-artists #starring").text(stars);
+    $("#starring").text(stars);
 }
 
 function openPlayer(embed_url){

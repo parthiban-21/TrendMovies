@@ -115,12 +115,16 @@ function loadMenuGroup(){
     //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-series"><i class="fa-solid fa-film cs-rsmar"></i>Series</span>`;
     //htmlTags += `<span class="cs-lrmar cs-cur" id="trend-anime"><i class="fa-solid fa-house-fire cs-rsmar"></i>Anime</span>`;
     htmlTags += `<span class="cs-lrmar cs-cur" id="trend-home"><i class="fa-solid fa-bars"></i></span>
+                    <div class="sty-side-overlay"></div>
                     <div id="sty-side-menu" class="sty-side-menu">
-                        <div class="sty-side-menu-showcontent">
-                        <a href="#" class="cs-cur" id="trend-movies"><i class="fa-solid fa-clapperboard cs-rsmar"></i>Movies</a>
-                        <a href="#" class="cs-cur" id="trend-series"><i class="fa-solid fa-tv cs-rsmar"></i>Series</a>
-                        <a href="#"><i class="fa-solid fa-feather-pointed cs-rsmar"></i>About</a>
-                        <a href="#"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</a>
+                        <div class="sty-side-menu-head">
+                            <a class="cs-btn-max sty-close cs-cur" id="close-menu"><i class="fa-solid fa-angle-left"></i><span>Close Menu</span></a>
+                        </div>
+                        <div class="sty-side-menu-list">
+                            <a href="#" class="cs-cur" id="trend-movies"><i class="fa-solid fa-clapperboard cs-rsmar"></i>Movies</a>
+                            <a href="#" class="cs-cur" id="trend-series"><i class="fa-solid fa-tv cs-rsmar"></i>Series</a>
+                            <a href="#"><i class="fa-solid fa-feather-pointed cs-rsmar"></i>About</a>
+                            <a href="#"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</a>
                         </div>
                     </div>`;
     $("#menu-groups").append(htmlTags);
@@ -129,8 +133,9 @@ function loadMenuGroup(){
 		window.location.href = "index.html";
     })
 
-    $("#trend-home").on('click', function(){
-        $("#sty-side-menu").toggleClass("sty-side-menu-show");
+    $("#trend-home, #close-menu, .sty-side-overlay").on('click', function(){
+        $("#sty-side-menu").toggleClass("active");
+        $(".sty-side-overlay").toggleClass("active");
     })
 
     $("#trend-movies").on('click', function(){
