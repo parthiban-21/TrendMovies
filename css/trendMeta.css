@@ -880,6 +880,7 @@ ul {
 }
 
 .sty-player-sec {
+    height: 100%;
     transition: 0.5s;
 }
 

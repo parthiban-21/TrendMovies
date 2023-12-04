@@ -163,7 +163,7 @@ function setWindowTitle(title, only) {
 
 function invokePlayerDialog(streamList, title, isTrailer) {
     let width = (screen.width < 610) ? window.innerWidth - 30 : window.innerWidth / 1.25;
-    let height = (screen.width < 610) ? window.innerHeight / 3.5 : window.innerHeight / 1.25;
+    let height = (screen.width < 610) ? window.innerHeight / 2 : window.innerHeight / 1.25;
     if (isTrailer) {
         $(".sty-ser-container").hide();
         $(".sty-player-bg , .sty-bg").hide();
