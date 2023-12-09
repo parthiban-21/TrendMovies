@@ -152,7 +152,82 @@ function loadMenuGroup(){
         }
     })
 
-    
+    $("#search-content").on('click', function (e) {
+        var searchTerm = $("#content-search").val().trim();
+        if (searchTerm) {
+            searchContent(searchTerm, $("#contentType").val());
+        }
+    });
+
+    $("#content-search").on('keypress', function (e) {
+        var key = e.which;
+        if (key == 13) {
+            $("#search-content").trigger('click');
+        }
+        setTimeout(() => {
+            var searchTerm = $("#content-search").val().trim();
+            if (searchTerm) {
+                searchContent(searchTerm, $("#contentType").val());
+            }
+        }, 2000);
+    });
+    $("#content-search").on('blur', function (e) {
+        setTimeout(() => {
+            $(".sty-sugg").hide();
+        }, 500);
+    })
+}
+
+function searchContent(search, type){
+    const tmdb = new tmdbAPI();
+    var result;
+    var label = "";
+    if(type === "MOVIE"){
+        label = "Movie";
+        result = tmdb.seachMovie(search, 1, "en-US", undefined, false);
+    } else if (type === "TVSHOW") {
+        label = "TV Show";
+        result = tmdb.seachSeries(search, 1, "en-US", undefined, false);
+    }
+
+    if (result && result.results.length > 0) {
+        $(".sty-sugg-body").empty();
+        $.each(result.results, function(index, item) {
+            const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+            var name = '';
+            var year = '';
+            if(type === "MOVIE"){
+                name = item.title;
+                year = item.release_date;
+            } else if (type === "TVSHOW") {
+                name = item.name;
+                year = item.first_air_date;
+            }
+            var frameHTML = `<a class="sty-sugg-entity cs-cur" id="sty-search-${item.id}"> 
+                                <div class="sty-sugg-poster"> 
+                                    <div><img src="${(item.poster_path) ? IMG_URL + item.poster_path : "img/Streamy_BG.jpg"}"></div> 
+                                </div> 
+                                <div class="sty-sugg-info"> 
+                                    <h5>${name}</h5>
+                                    <span><i class="fa-solid fa-star"></i>${item.vote_average.toFixed(1)}</span> 
+                                    <span>${label}</span> 
+                                    <span>${year}</span>  
+                                </div> 
+                            </a>`;
+            var obj = $(frameHTML).on("click", function(){
+                if(type === "MOVIE"){
+                    sessionStorage.setItem("movieId", item.id);
+                    window.location.href = "movieTemplate.html";
+                } else if (type === "TVSHOW") {
+                    sessionStorage.setItem("seriesId", item.id);
+                    window.location.href = "series.html";
+                }
+            })
+
+            $(".sty-sugg-body").append(obj);
+            $(".sty-sugg").show();
+        });
+    }
 }
 
 function setWindowTitle(title, only) {
@@ -163,7 +238,7 @@ function setWindowTitle(title, only) {
 
 function invokePlayerDialog(streamList, title, isTrailer) {
     let width = (screen.width < 610) ? window.innerWidth - 30 : window.innerWidth / 1.25;
-    let height = (screen.width < 610) ? window.innerHeight / 2 : window.innerHeight / 1.25;
+    let height = (screen.width < 610) ? "auto" : window.innerHeight / 1.25;
     if (isTrailer) {
         $(".sty-ser-container").hide();
         $(".sty-player-bg , .sty-bg").hide();

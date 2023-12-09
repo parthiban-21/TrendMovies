@@ -190,7 +190,7 @@
     position: absolute;
     z-index: 100001;
     width: 600px;
-    background: var(--primary-color);
+    background: var(--header-bg);
     -webkit-box-shadow: 0 0 10px #555;
     -moz-box-shadow: 0 0 10px #555;
     box-shadow: 0 0 10px #555;
@@ -219,6 +219,7 @@
 
 .ui-dialog .ui-dialog-titlebar {
     border-bottom: var(--button-color) solid 1px;
+    background-color: var(--primary-color);
     padding: 10px;
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;

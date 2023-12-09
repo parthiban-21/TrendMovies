@@ -153,6 +153,7 @@ function invokeSeriesPlayer() {
     $("#sty-iframe").attr({ src: $(".sty-server.active").data("DATA").CLASS.getSeriesURL(id, s, e) });
     $(".sty-bg").hide();
     $("#sty-iframe").show();
+    location.href = "#sty-ply-container";
 }
 
 function getTrailer(contentID){

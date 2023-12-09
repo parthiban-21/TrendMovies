@@ -41,6 +41,14 @@
                     <a class="cs-cur cs-rsmar" id="search-content" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
                     <input type="text" placeholder="Search" id="content-search" class="sty-search" autocomplete="off">
                 </div>
+                <div class="sty-sugg">
+                    <div class="sty-sugg-body">
+                        
+                    </div>
+                    <div class="sty-sugg-foot">
+                        <a class="w-100 btn btn-sm btn-primary"><span>View all Result</span><i class="fa-solid fa-arrow-up-right"></i></a>
+                    </div>
+                </div>
             </div>
             <div id="menu-groups" class="cs-menu cs-flex">
                 
@@ -126,7 +134,7 @@
         </div>
         <div id="sty-player-dialog" style="display: none; overflow-y: scroll;">
             <section class="cs-cflex sty-player-sec">
-                <section class="sec sty-ply-container">
+                <section class="sec sty-ply-container" id="sty-ply-container">
                     <div class="cs-fCenter sty-bg" style="height: 100%;">
                         <img>
                         <!-- <div class="cs-cflex sty-player-txt">
@@ -150,6 +158,7 @@
             </section>
         </div>
         <input type="hidden" id="apiId"/>
+        <input type="hidden" id="contentType" value="MOVIE"/>
         <footer>
             <div class="cs-fCenter">
                 <label>We don't host any of the above content. All are hosted by Third-Party sites</label>

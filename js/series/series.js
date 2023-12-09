@@ -2,22 +2,6 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 $(function () {
     const tmdb = new tmdbAPI();
     getSeries(tmdb.trendingSeries(), "#main");
-
-    $("#search-content").on('click', function (e) {
-        var searchTerm = $("#content-search").val().trim();
-        if (searchTerm) {
-            getSeries(tmdb.seachSeries(searchTerm, 1, "en-US", undefined, true), "#main");
-        } else {
-            alert("Couldn't Find any Search Keywords, Try Again with Different Keyword..!")
-        }
-    });
-
-    $("#content-search").on('keypress', function (e) {
-        var key = e.which;
-        if (key == 13) {
-            $("#search-content").trigger('click');
-        }
-    });
 });
 
 function getSeries(data, append_id) {

@@ -119,6 +119,11 @@ textarea:focus-visible {
     outline: none;
 }
 
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
 .cs-head {
     display: inline-flex;
     align-items: center;
@@ -880,7 +885,7 @@ ul {
 }
 
 .sty-player-sec {
-    height: 100%;
+    
     transition: 0.5s;
 }
 
@@ -922,7 +927,98 @@ ul {
     cursor: pointer;
 }
 
+/* Search Suggestion */
+.sty-sugg {
+    /* top: 65px; */
+    display: none;
+    width: 100%;
+    max-width: inherit;
+    position: absolute;
+    background: #20242d;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .175);
+    overflow: hidden;
+    /* padding: 1rem 0 0; */
+    /* margin-top: -1rem; */
+    z-index: 1;
+    border-radius: 0 0 0.5rem 0.5rem;
+    border: 1px solid #2b303c;
+}
+
+.sty-sugg-body {
+    max-height: 360px;
+    overflow-y: scroll;
+}
+
+.sty-sugg-body .sty-sugg-entity {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid #20242d;
+    transition: background .3s;
+    background: #2b303c;
+    position: relative;
+}
+
+.sty-sugg-body .sty-sugg-entity .sty-sugg-poster{
+    width: 2.5rem;
+    margin-right: 0.7rem;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.sty-sugg-poster div {
+    position: relative;
+    padding: 72% 0;
+}
+
+.sty-sugg-poster div img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+.sty-sugg-body .sty-sugg-entity .sty-sugg-info {
+    width: 1px;
+    flex-grow: 1;
+}
+
+.sty-sugg-body .sty-sugg-entity .sty-sugg-info h5 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color .3s;
+    color: #cfd9d9;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+.sty-sugg-body .sty-sugg-entity .sty-sugg-info span:not(:last-child) {
+    margin-right: 0.7rem;
+}
+
+.sty-sugg-body .sty-sugg-entity .sty-sugg-info span {
+    display: inline-block;
+    font-size: .9rem;
+    color: #607a7c;
+}
+
+.sty-sugg-foot {
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @media (max-device-width:580px) {
+    header .sty-head-mid {
+        max-width: 20rem;
+    }
+
     .sty-content-credits {
         display: grid;
     }

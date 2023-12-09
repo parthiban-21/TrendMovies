@@ -97,20 +97,6 @@ var totalPages = 100;
 $(function () {
     const tmdb = new tmdbAPI();
     getMovies(tmdb.discoverMovies(1, 'POP_DSC', false, false));
-
-    $("#search-content").on('click', function (e) {
-        var searchTerm = $("#content-search").val().trim();
-        if (searchTerm) {
-                getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, false));
-        }
-    });
-
-    $("#content-search").on('keypress', function (e) {
-        var key = e.which;
-        if (key == 13) {
-            $("#search-content").trigger('click');
-        }
-    });
 });
 
 function getMovies(data) {
