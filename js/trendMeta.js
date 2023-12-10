@@ -159,7 +159,7 @@ function loadMenuGroup(){
         }
     });
 
-    $("#content-search").on('keypress', function (e) {
+    $("#content-search").on('input', function (e) {
         var key = e.which;
         if (key == 13) {
             $("#search-content").trigger('click');
