@@ -211,7 +211,7 @@ function searchContent(search, type){
                                     <h5>${name}</h5>
                                     <span><i class="fa-solid fa-star"></i>${item.vote_average.toFixed(1)}</span> 
                                     <span>${label}</span> 
-                                    <span>${year}</span>  
+                                    <span>${parseDate(year)}</span>  
                                 </div> 
                             </a>`;
             var obj = $(frameHTML).on("click", function(){
