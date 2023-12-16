@@ -90,14 +90,14 @@
                         <i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre :    </span>
                         <span id="content-genre">--</span>
                     </a>
-                    <a class="cs-icon sty-merge">
+                    <!-- <a class="cs-icon sty-merge">
                         <i class="fa-solid fa-user"></i><span class="sty-i-color">Director :    </span>
                         <span id="dir-name">--</span>
                     </a>
                     <a class="cs-icon sty-merge">
                         <i class="fa-solid fa-user"></i><span class="sty-i-color">Cast :    </span>
                         <span id="starring">--</span>
-                    </a>
+                    </a> -->
                 </div>
                 <textarea id="content-overview" class="sty-content-plot" spellcheck="false" readonly >--</textarea>
                 <div class="cs-flex cs-lbpad sty-content-credits" id="content-artists" style="display: none;">
@@ -156,6 +156,15 @@
                     </div>
                 </section>
             </section>
+        </div>
+        <div class="swiper-container" style="padding: 20px 40px;">
+            <label class="sty-sec-title">Recommentdation</label>
+            <div id="related-contents" class="swiper-wrapper carousel">
+    
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
         <input type="hidden" id="apiId"/>
         <input type="hidden" id="contentType" value="MOVIE"/>

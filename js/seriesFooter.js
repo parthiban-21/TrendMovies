@@ -19,8 +19,8 @@ $(function(){
     $("#content-last-aired").text(parseDate(series_data.last_air_date));
     $("#content-status").text(series_data.status);
     $("#content-lang").text(getLanguage(series_data.original_language));
-    var credits = tmdb.getSeriesCredits(series_id);
-    getDirectorAndStarring(credits, series_data.created_by);
+    //var credits = tmdb.getSeriesCredits(series_id);
+    //getDirectorAndStarring(credits, series_data.created_by);
 
     console.log(getSeasonCount(series_data.seasons));
     frameEpisode();

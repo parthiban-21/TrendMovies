@@ -165,4 +165,18 @@ class tmdbAPI {
         var serviceURL = `https://api.themoviedb.org/3/tv/top_rated?page=${page}&region=${region}&language=${lang}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
+
+    getMovieRecommendation(movie_id, page, lang){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        var serviceURL = `https://api.themoviedb.org/3/movie/${movie_id}/recommendations?page=${page}&language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    getSeriesRecommendation(series_id, page, lang){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/recommendations?page=${page}&language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
 }

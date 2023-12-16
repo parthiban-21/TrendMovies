@@ -21,8 +21,9 @@ $(function(){
     $("#content-genre").text(getGenre(movie_data.genres));
     $("#content-release").text(parseDate(movie_data.release_date));
     $("#content-lang").text(getLanguage(movie_data.original_language));
-    var credits = tmdb.getMovieCredits(movie_id);
-    getDirectorAndStarring(credits);
+    //var credits = tmdb.getMovieCredits(movie_id);
+    //getDirectorAndStarring(credits);
+    invokeRecommandation();
 
     $("#content-watch").on('click', function(){
         frameSevers();
@@ -132,4 +133,45 @@ function frameSevers() {
         $("#sty-iframe").show();
         location.href = "#sty-ply-container";
     })
+}
+
+function invokeRecommandation(){
+    const tmdb = new tmdbAPI();
+    var movie_id = $("#apiId").val();
+    var recomList = tmdb.getMovieRecommendation(movie_id);
+    if(recomList.results.length > 0) {
+            $("#related-contents").empty();
+            $.each(recomList.results, function(index, item) {
+                var frameHTML = '';
+                frameHTML += '<div class="carousel-vr sty-content-card" id="movie-'+ item.id +'">';
+                frameHTML += '  <img>';
+                frameHTML += '  <div class="cs-contents">';
+                frameHTML += '      <span id="adult-flag" class="cs-content cs-float-right color-red">18+</span>';
+                frameHTML += '      <span id="content-rating" class="cs-content cs-float-right color-orange">0.0</span>';
+                //frameHTML += '      <span class="cs-content cs-float-left">Movie</span>';
+                frameHTML += '  </div>';
+                frameHTML += '  <div class="overview cs-hide">';
+                frameHTML += '      <h3></h3>';
+                frameHTML += '      <a class="btn btn-circle cs-cur" id="watch-now" title="Watch Now"><i class="fa-solid fa-play"></i></a>';
+                frameHTML += '  </div>';
+                frameHTML += '</div>';
+                $("#related-contents").append(frameHTML);
+        
+                $("#related-contents #movie-"+ item.id +" #adult-flag").hide();
+                $("#related-contents #movie-"+ item.id +" img").attr('src',(item.poster_path) ? tmdb.BASIC_INFO.IMG_URL + item.poster_path : "img/Streamy_BG.jpg");
+                $("#related-contents #movie-"+ item.id +" .overview h3").text(item.title);
+                $("#related-contents #movie-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
+                if(item.adult){
+                    $("#related-contents #movie-"+ item.id +" #adult-flag").show();
+                }
+        
+                /* Events */
+                $("#related-contents #movie-"+ item.id +" #watch-now").on('click',function(){
+                    sessionStorage.setItem("movieId", item.id);
+                    window.location.href = "movieTemplate.html";
+                })
+            })
+    } else {
+
+    }
 }

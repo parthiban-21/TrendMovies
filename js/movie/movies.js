@@ -7,7 +7,7 @@ $(function () {
     $("#search-content").on('click', function (e) {
         var searchTerm = $("#content-search").val().trim();
         if (searchTerm) {
-            getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, true));
+            getMovies(tmdb.seachMovie(searchTerm, 1, "en-US", undefined, false));
         } else {
             alert("Couldn't Find any Search Keywords, Try Again with Different Keyword..!");
         }
@@ -84,10 +84,10 @@ function getMovies(movieList, append_id, type) {
 function pageCall(page) {
     const tmdb = new tmdbAPI();
     if (document.getElementById('isSeries').checked) {
-        getSeries(tmdb.discoverSeries(page, 'POP_DSC', true, false))
+        getSeries(tmdb.discoverSeries(page, 'POP_DSC', true, true))
     }
     else {
-        getMovies(tmdb.discoverMovies(page, 'POP_DSC', true, false));
+        getMovies(tmdb.discoverMovies(page, 'POP_DSC', true, true));
     }
 }
 

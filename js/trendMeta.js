@@ -2,6 +2,7 @@
 $(function () {
     //$("#cs-header").load("headerTemplate.html");
     loadMenuGroup();
+    loadFooter();
 });
 
 function includeHTML() {
@@ -184,10 +185,10 @@ function searchContent(search, type){
     var label = "";
     if(type === "MOVIE"){
         label = "Movie";
-        result = tmdb.seachMovie(search, 1, "en-US", undefined, false);
+        result = tmdb.seachMovie(search, 1, "en-US", undefined, true);
     } else if (type === "TVSHOW") {
         label = "TV Show";
-        result = tmdb.seachSeries(search, 1, "en-US", undefined, false);
+        result = tmdb.seachSeries(search, 1, "en-US", undefined, true);
     }
 
     if (result && result.results.length > 0) {
@@ -209,7 +210,7 @@ function searchContent(search, type){
                                 </div> 
                                 <div class="sty-sugg-info"> 
                                     <h5>${name}</h5>
-                                    <span><i class="fa-solid fa-star"></i>${item.vote_average.toFixed(1)}</span> 
+                                    <span><i class="fa-solid fa-star cs-rsmar"></i>${item.vote_average.toFixed(1)}</span> 
                                     <span>${label}</span> 
                                     <span>${parseDate(year)}</span>  
                                 </div> 
@@ -228,6 +229,21 @@ function searchContent(search, type){
             $(".sty-sugg").show();
         });
     }
+}
+
+function loadFooter(){
+    var htmlTags = `<div class="sty-foot-left">
+                        <label><i class="fa-regular fa-copyright cs-rsmar"></i>2023 | Streamy, All Rights Reserved.</label>
+                    </div>
+                    <div class="sty-foot-mid">
+                        <label>We don't host any of the above content. All are hosted by Third-Party sites</label>
+                    </div>
+                    <div class="sty-foot-right">
+                        <label class="cs-lmar cs-cur sty-hi sty-anti-select"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</label>
+                        <label class="cs-lmar cs-cur sty-hi sty-anti-select"><i class="fa-regular fa-circle-question cs-rsmar"></i>Help</label>
+                    </div>`;
+    $("footer").empty();
+    $("footer").append(htmlTags);
 }
 
 function setWindowTitle(title, only) {
