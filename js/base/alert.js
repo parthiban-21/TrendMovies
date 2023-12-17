@@ -33,7 +33,7 @@ function alertMessage(title, message, msglist, type, sticky, closeable, customic
 	} else if (type == "ERROR") {
 		messageType = "danger-light";
 		icon = "fa-regular fa-circle-xmark";
-		sticky = true;
+		closeable = false;
 	}
 	icon = (customicon) ? customicon : icon;
 	
@@ -47,7 +47,8 @@ function alertMessage(title, message, msglist, type, sticky, closeable, customic
 			showHideTransition: 'slide',
 			sticky: sticky,
 			closeable: closeable,
-			moreinfo: msglist
+			moreinfo: msglist,
+			duration: 2000
 		});
 	}
 }

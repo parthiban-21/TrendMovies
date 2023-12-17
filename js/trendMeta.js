@@ -272,9 +272,13 @@ function invokePlayerDialog(streamList, title, isTrailer) {
         closeText: "",
         height: height,
         width: width,
+        open: function(){
+            $("body").addClass("sty-model-open");
+        },
         close: function (event, ui) {
             $("#sty-iframe").attr({ src: "" });
             $("#sty-iframe").hide();
+            $("body").removeClass("sty-model-open");
         }
     });
 }
