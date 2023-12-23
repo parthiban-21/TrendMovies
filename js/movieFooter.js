@@ -172,6 +172,6 @@ function invokeRecommandation(){
                 })
             })
     } else {
-
+        $("#sty-recommendations").hide();
     }
 }
