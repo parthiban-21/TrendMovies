@@ -126,6 +126,7 @@ function loadMenuGroup(){
                             <a href="#" class="cs-cur" id="trend-series"><i class="fa-solid fa-tv cs-rsmar"></i>Series</a>
                             <a href="#"><i class="fa-solid fa-feather-pointed cs-rsmar"></i>About</a>
                             <a href="#"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</a>
+                            <a href="streamy-player.html"><i class="fa-regular fa-circle-play cs-rsmar"></i>Player</a>
                         </div>
                     </div>`;
     $("#menu-groups").append(htmlTags);

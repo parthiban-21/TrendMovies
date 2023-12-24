@@ -112,6 +112,7 @@ textarea {
     color: var(--title-color);
     resize: none;
     font-family: inherit;
+    font-size: inherit;
     margin: 10px 0px 10px 0px;
 }
 

@@ -311,7 +311,7 @@
 
 .ui-widget-overlay {
     opacity: .9;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 100000;

@@ -119,8 +119,8 @@
                     <a class="cs-icon"><i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime : </span><span id="content-runtime">--</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a>
                     
-                    <a class="cs-icon sty-merge"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">First Aired On : </span><span id="content-first-aired">--</span></a>
-                    <a class="cs-icon sty-merge"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Last Aired On : </span><span id="content-last-aired">--</span></a>
+                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">First Aired On : </span><span id="content-first-aired">--</span></a>
+                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Last Aired On : </span><span id="content-last-aired">--</span></a>
                     <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre : </span><span id="content-genre">--</span></a>
                     <!-- <a class="cs-icon sty-merge"><i class="fa-solid fa-user"></i><span class="sty-i-color">Creator : </span><span id="dir-name">--</span></a>
                     <a class="cs-icon sty-merge"><i class="fa-solid fa-user"></i><span class="sty-i-color">Cast : </span><span id="starring">--</span></a> -->
@@ -154,11 +154,22 @@
                     <a class="cs-btn-max sty-tran-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i><span>Trailer</span></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-bookmark" title="Add To Watch List"><i class="fa-solid fa-bookmark"></i></a>
+                    <!-- <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-cast-crew" title="Cast & Crew"><i class="fa-solid fa-people-group"></i></a> -->
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-download" title="Download"><i class="fa-solid fa-download"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-share" title="Share"><i class="fa-solid fa-share-nodes"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="tv-info" title="Season Info"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
                 </div>
             </div>
+        </div>
+        
+        <div id="sty-recommendations" class="swiper-container" style="padding: 20px 40px;">
+            <label class="sty-sec-title">Recommendation</label>
+            <div id="related-contents" class="swiper-wrapper carousel">
+    
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
         <input type="hidden" id="apiId"/>
         <input type="hidden" id="tv-episode" value="1"/>

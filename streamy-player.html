@@ -1,0 +1,101 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.65">
+  <title>Streamy | URL Player</title>
+  <meta name="description" content="Streamy : The best site to watch movies, TV shows in HD for FREE! with No ADS! No Registration! WATCH NOW!">
+  <meta name="keywords" content="Streamy, movies free, watch movies free, watch series free, watch movies online, watch series online, free movies, free tv shows">
+  
+  <meta property="og:title" content="Streamy | Watch Online Movies | Free Movies Streaming">
+  <meta property="og:description" content="Streamy : The best site to watch movies, TV shows in HD for FREE! with No ADS! No Registration! WATCH NOW!">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://streamy-vh0y.onrender.com/img/Streamy_Preview.jpg">
+  <meta property="og:image:width" content="650">
+  <meta property="og:image:height" content="350">
+
+  <meta name="revisit-after" content="1 days">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="icon" type="image/x-icon" href="img/Streamy_Logo.png">
+  <link rel="manifest" href="manifest.json">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/trendMeta.css">
+  <link rel="stylesheet" href="css/plugins.css">
+  <!-- <link rel="stylesheet" href="css/cs-common.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
+  <!-- Base -->
+  <script src="js/base/alert.js"></script>
+  <script src="js/base/jquery-3.5.1.min.js"></script>
+  <script src="js/base/jquery-ui.js"></script>
+  <script src="js/base/meow-plugin.js"></script>
+  <script src="js/base/multitooltip.js"></script>
+  <script src="js/base/perfect-scrollbar.jquery.js"></script>
+  <script src="js/base/perfect-scrollbar.js"></script>
+  <script src="js/base/share-plugin.js"></script>
+  <script src="js/base/templates.js"></script>
+    <script src="https://cdn.jwplayer.com/libraries/QDCNWX6Y.js"></script>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css">
+    <style>
+      .input {
+        border: 1px solid var(--tran-color);
+        color: var(--title-color);
+        font-family: inherit;
+        width: auto;
+        height: 40px;
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, .0);
+        width: 85%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 0 10px;
+      }
+
+      .con {
+        background-color: var(--header-bg);
+      }
+    </style>
+</head>
+
+<body>
+  <header>
+    <div class="cs-head cs-cur">
+      <img src="img/Streamy_Logo.png" href="index.html">
+      <label>Streamy</label>
+    </div>
+    <div class="sty-head-mid">
+      <div class="sty-head-search">
+        <a class="cs-cur cs-rsmar" id="search-content" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+        <input type="text" placeholder="Search" id="content-search" class="sty-search" autocomplete="off">
+      </div>
+      <div class="sty-sugg">
+        <div class="sty-sugg-body">
+
+        </div>
+        <div class="sty-sugg-foot">
+          <a class="btn-sm"><span>Show More</span></a>
+        </div>
+      </div>
+    </div>
+    <div id="menu-groups" class="cs-menu cs-flex">
+    </div>
+  </header>
+    <!--Video Player Start-->
+    <div style="width: 90%; margin: 0 auto;">
+      <video id="myVideo" width="100%"> Your browser does not support the video tag. </video>
+      <div class="con cs-fCenter">
+        <input type="url" id="st-url" class="input" placeholder="Enter URL" />
+        <span id="play" class="cs-btn-max sty-tran-hover" onclick="play()">Play</span>
+      </div>
+    </div>
+    <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
+    <!--Video Player End-->
+    <script src="js/streamy-player.js"></script>
+    <script src="js/trendMeta.js"></script>
+</body>
+
+</html>

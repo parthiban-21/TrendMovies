@@ -25,6 +25,8 @@ $(function(){
     console.log(getSeasonCount(series_data.seasons));
     frameEpisode();
 
+    invokeRecommandation();
+
     $("#tv-season").on("change", function(){
         frameEpisode();
     })
@@ -190,4 +192,45 @@ function getDirectorAndStarring(credits, created_by){
     })
     stars = stars.substring(0,stars.length - 2) + " & more";
     $("#starring").text(stars);
+}
+
+function invokeRecommandation(){
+    const tmdb = new tmdbAPI();
+    var series_id = $("#apiId").val();
+    var recomList = tmdb.getSeriesRecommendation(series_id);
+    if(recomList.results.length > 0) {
+            $("#related-contents").empty();
+            $.each(recomList.results, function(index, item) {
+                var frameHTML = '';
+                frameHTML += '<div class="carousel-vr sty-content-card" id="series-'+ item.id +'">';
+                frameHTML += '  <img>';
+                frameHTML += '  <div class="cs-contents">';
+                frameHTML += '      <span id="adult-flag" class="cs-content cs-float-right color-red">18+</span>';
+                frameHTML += '      <span id="content-rating" class="cs-content cs-float-right color-orange">0.0</span>';
+                //frameHTML += '      <span class="cs-content cs-float-left">Movie</span>';
+                frameHTML += '  </div>';
+                frameHTML += '  <div class="overview cs-hide">';
+                frameHTML += '      <h3></h3>';
+                frameHTML += '      <a class="btn btn-circle cs-cur" id="watch-now" title="Watch Now"><i class="fa-solid fa-play"></i></a>';
+                frameHTML += '  </div>';
+                frameHTML += '</div>';
+                $("#related-contents").append(frameHTML);
+        
+                $("#related-contents #series-"+ item.id +" #adult-flag").hide();
+                $("#related-contents #series-"+ item.id +" img").attr('src',(item.poster_path) ? tmdb.BASIC_INFO.IMG_URL + item.poster_path : "img/Streamy_BG.jpg");
+                $("#related-contents #series-"+ item.id +" .overview h3").text(item.title);
+                $("#related-contents #series-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
+                if(item.adult){
+                    $("#related-contents #series-"+ item.id +" #adult-flag").show();
+                }
+        
+                /* Events */
+                $("#related-contents #series-"+ item.id +" #watch-now").on('click',function(){
+                    sessionStorage.setItem("seriesId", item.id);
+                    window.location.href = "series.html";
+                })
+            })
+    } else {
+        $("#sty-recommendations").hide();
+    }
 }
