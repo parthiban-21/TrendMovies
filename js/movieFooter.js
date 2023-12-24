@@ -54,6 +54,10 @@ $(function(){
         alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
+    $("#content-cast-crew").on('click', function(){
+        invokeContentCredits($("#contentType").val(), $("#apiId").val());
+    })
+
     $("#content-bookmark").hide();
     $("#content-like").hide();
     $("#content-share").hide();

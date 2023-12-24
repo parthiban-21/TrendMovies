@@ -63,6 +63,10 @@ $(function(){
         alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
     })
 
+    $("#content-cast-crew").on('click', function(){
+        invokeContentCredits($("#contentType").val(), $("#apiId").val());
+    })
+
     $("#tv-info").on('click', function(){
         var info = "";
         $.each(series_data.seasons , function(i, s) {

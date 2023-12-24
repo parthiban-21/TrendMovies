@@ -37,6 +37,7 @@
         <script src="js/base/perfect-scrollbar.js"></script>
         <script src="js/base/share-plugin.js"></script>
         <script src="js/base/templates.js"></script>
+        <script src="js/base/content-credits.js"></script>
         <!-- API -->
         <script src="js/api/tmdbAPI.js"></script>
         <script src="js/api/superembedAPI.js"></script>
@@ -139,6 +140,7 @@
                 <div class="cs-ltpad" id="actions">
                     <a class="cs-btn-max sty-tran-hover" id="info-dialog"><i class="fa-solid fa-clapperboard"></i><span id="content-watch">Watch Now</span></a>
                     <a class="cs-btn-max sty-tran-hover" id="content-trailer"><i class="fa-brands fa-youtube"></i><span>Trailer</span></a>
+                    <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-cast-crew" title="Cast & Crew"><i class="fa-solid fa-people-group"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-like" title="Like"><i class="fa-solid fa-heart"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-bookmark" title="Add To Watch List"><i class="fa-solid fa-bookmark"></i></a>
                     <a class="cs-btn-max cs-btn-round sty-tran-hover" id="content-download" title="Download"><i class="fa-solid fa-download"></i></a>
@@ -170,6 +172,10 @@
                     </div>
                 </section>
             </section>
+        </div>
+        <div id="sty-cast-crew" style="display: none; overflow-y: scroll;">
+            <div id="sty-cr-cast" class="cs-fCenter"></div>
+            <div id="sty-cr-crew" class="cs-fCenter"></div>
         </div>
         <div id="sty-recommendations" class="swiper-container" style="padding: 20px 40px;">
             <label class="sty-sec-title">Recommendation</label>

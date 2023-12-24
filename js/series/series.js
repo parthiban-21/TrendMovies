@@ -1,7 +1,7 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 $(function () {
     const tmdb = new tmdbAPI();
-    getSeries(tmdb.discoverSeries(1, 'POP_DSC', false, false), "#main");
+    getSeries(tmdb.onAirTVShows(), "#main");
 });
 
 function getSeries(data, append_id) {
