@@ -135,7 +135,7 @@ function frameSevers() {
         $("#sty-iframe").attr({ src: $(".sty-server.active").data("DATA").CLASS.getMovieURL(id) });
         $(".sty-bg").hide();
         $("#sty-iframe").show();
-        //location.href = "#sty-ply-container";
+        $("#sty-player-dialog").scrollTop(0);
     })
 }
 

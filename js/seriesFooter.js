@@ -97,12 +97,15 @@ function getSeasonCount(seasons){
 }
 
 function frameEpisode(){
+    var epi = new tmdbAPI().getSeason($("#apiId").val(), $("#tv-season").val());
     var ep = $("#tv-season option:selected").attr("ep");
     $(".sty-episode-container").empty();
-    for(var i = 1 ; i <= ep ; i++){
-        var option = `<li class="sty-episode" ep="${i}">Episode ${i}</li>`;
-        $(".sty-episode-container").append(option);
-    }
+    $.each(epi.episodes , function(i, s) {
+        if(s.air_date && compareDateToNow(s.air_date) <= 0){
+            var option = `<li class="sty-episode" ep="${s.episode_number}" title="${s.name}"><span class="count">EP ${s.episode_number}</span> : ${s.name}</li>`;
+            $(".sty-episode-container").append(option);
+        }
+    })
 
     $(".sty-episode").on('click', function(){
         $(".sty-episode").each(function() {
@@ -159,7 +162,7 @@ function invokeSeriesPlayer() {
     $("#sty-iframe").attr({ src: $(".sty-server.active").data("DATA").CLASS.getSeriesURL(id, s, e) });
     $(".sty-bg").hide();
     $("#sty-iframe").show();
-    //location.href = "#sty-ply-container";
+    $("#sty-player-dialog").scrollTop(0);
 }
 
 function getTrailer(contentID){

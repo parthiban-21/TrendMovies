@@ -10,7 +10,7 @@ function invokeContentCredits(type, id) {
     frame("#sty-cr-cast", credits.cast, "CAST");
     frame("#sty-cr-crew", credits.crew, "CREW");
 
-    $(".sty-creator-card h4").on('click', function(){
+    $(".sty-creator-card h4, .sty-creator-card .overview .sty-cr-open").on('click', function(){
         var id = $(this).attr('cr-id');
         if(id)
             window.open("https://www.themoviedb.org/person/"+id);
@@ -41,6 +41,7 @@ function invokeContentCredits(type, id) {
             var label = (type == "CAST") ? item.character : item.department;
             var tag = `<div class="cs-cflex sty-creator-card">
                             <img loading="lazy" src="${(item.profile_path) ? tmdb.BASIC_INFO.IMG_URL + item.profile_path : "img/Streamy_BG.jpg"}" alt="${label}">
+                            <div class="overview cs-hide"><i class="fa-solid fa-up-right-from-square cs-cur cs-hover sty-cr-open" cr-id="${item.id}" title="Know More"></i></div>
                             <div class="cs-cflex">
                                 <h4 class="cr-name cs-cur" cr-id="${item.id}">${item.original_name}</h4>
                                 <label class="cr-role" title="${label}">${label}</label>

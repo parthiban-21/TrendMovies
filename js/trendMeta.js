@@ -303,3 +303,16 @@ function parseDate(dateString) {
     const longDateFormat = parsedDate.toLocaleDateString("en-US", options);
     return longDateFormat;
 }
+
+function compareDateToNow(inputDate) {
+    const dateToCompare = new Date(inputDate);
+    const currentDate = new Date();
+
+    if (dateToCompare > currentDate) {
+        return 1; // Future = 1
+    } else if (dateToCompare < currentDate) {
+        return -1; // Past = -1
+    } else {
+        return 0; // Present = 0
+    }
+}

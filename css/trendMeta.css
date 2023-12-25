@@ -930,6 +930,13 @@ ul {
     border-radius: 5px;
     color: var(--title-color);
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sty-episode .count {
+    color: #7999ff;
 }
 
 /* Search Suggestion */
@@ -1061,6 +1068,7 @@ body.sty-model-open {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+    white-space: nowrap;
 }
 
 .sty-creator-card .cr-role {
@@ -1069,62 +1077,17 @@ body.sty-model-open {
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
+    white-space: nowrap;
 }
 
-ol.people {
-    list-style-type: none;
-    list-style-position: inside;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    position: relative;
-    top: 0;
-    left: 0
+.sty-creator-card:hover img {
+    opacity: 0.4;
+    -webkit-filter: blur(10px); /* Chrome, Safari, Opera */
+    filter: blur(3px);
 }
 
-ol.people li.card {
-    margin: 10px 4px 10px 10px;
-    border: 1px solid rgba(var(--lightGrey),1);
-    padding-bottom: 10px;
-    border-radius: var(--imageBorderRadius);
-    overflow: hidden
-}
-
-ol.people li {
-    min-width: 140px;
-    width: 140px;
-    background-color: #fff;
-    margin-right: 10px
-}
-
-ol.people li>a {
-    min-width: 138px;
-    width: 138px;
-    height: 175px;
+.sty-creator-card:hover .overview {
     display: block;
-}
-
-ol.people li img, p.new_button.rounded a:hover {
-    width: 100%;
-    height: 100%;
-    outline: none;
-}
-
-ol.people li p {
-    font-size: 1em;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    text-overflow: ellipsis
-}
-
-ol.people li p a {
-    font-weight: 700;
-    color: #000
-}
-
-ol.people li p.character{
-    font-size: .9em
 }
 
 @media (max-device-width:580px) {
