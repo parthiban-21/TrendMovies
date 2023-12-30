@@ -249,13 +249,14 @@ function loadFooter(){
 
 function setWindowTitle(title, only) {
     var win_title = "Streamy";
-    win_title = (only == true) ? title : title + " | Streamy ✨";
+    win_title = (only == true) ? title : title + " | Streamy";
     document.title = win_title;
 }
 
 function invokePlayerDialog(streamList, title, isTrailer) {
     let width = (screen.width < 610) ? window.innerWidth - 30 : window.innerWidth / 1.25;
-    let height = (screen.width < 610) ? "auto" : window.innerHeight / 1.25;
+    let height = (screen.width < 610) ? "auto" : "auto";
+    let max_height = window.innerHeight / 1.25;
     if (isTrailer) {
         $(".sty-ser-container").hide();
         $(".sty-player-bg , .sty-bg").hide();
@@ -273,6 +274,7 @@ function invokePlayerDialog(streamList, title, isTrailer) {
         closeText: "",
         height: height,
         width: width,
+        maxHeight: max_height,
         open: function(){
             $("body").addClass("sty-model-open");
         },

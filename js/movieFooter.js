@@ -3,10 +3,11 @@ $(function(){
     if(!movie_id)
         location.href = "index.html";
     
+    showOrHideOverlayAnimation("SHOW");
     $("#apiId").val(movie_id);
     const tmdb = new tmdbAPI();
     var movie_data = tmdb.getMovie(movie_id);
-
+    setWindowTitle(movie_data.title)
     var bg_ImgURL = (movie_data.backdrop_path) ? tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path : "img/Streamy_BG.jpg";
     var poster_path = (movie_data.poster_path) ? tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path : "img/Streamy_BG.jpg";
     //$('#backdrop-poster img').css('background-image', 'linear-gradient(25deg, rgba(0,0,0,0.7),rgba(0,36,71,0.9)), url("' + bg_ImgURL + '")');
@@ -61,6 +62,9 @@ $(function(){
     $("#content-bookmark").hide();
     $("#content-like").hide();
     $("#content-share").hide();
+    setTimeout(() => {
+        showOrHideOverlayAnimation("HIDE");
+    }, 1500);
 })
 
 function getTrailer(contentID){
@@ -143,6 +147,8 @@ function invokeRecommandation(){
     const tmdb = new tmdbAPI();
     var movie_id = $("#apiId").val();
     var recomList = tmdb.getMovieRecommendation(movie_id);
+    if(!recomList.results.length > 0)
+        recomList = tmdb.getSimilarMovies(movie_id);
     if(recomList.results.length > 0) {
             $("#related-contents").empty();
             $.each(recomList.results, function(index, item) {

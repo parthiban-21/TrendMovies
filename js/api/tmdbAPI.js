@@ -186,4 +186,18 @@ class tmdbAPI {
         var serviceURL = `https://api.themoviedb.org/3/tv/on_the_air?page=${page}&language=${lang}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
+
+    getSimilarMovies(movie_id, page, lang){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        var serviceURL = `https://api.themoviedb.org/3/movie/${movie_id}/similar?page=${page}&language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    getSimilarSeries(series_id, page, lang){
+        lang = (lang) ? lang : "en-US";
+        page = (page) ? page : 1;
+        var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/similar?page=${page}&language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }    
 }

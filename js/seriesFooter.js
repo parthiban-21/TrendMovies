@@ -3,10 +3,11 @@ $(function(){
     if(!series_id)
         location.href = "index.html";
     
+    showOrHideOverlayAnimation("SHOW");
     $("#apiId").val(series_id);
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
-
+    setWindowTitle(series_data.original_name);
     $('.sty-bg img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
     $("#content-title").text(series_data.original_name);
@@ -82,6 +83,9 @@ $(function(){
     $("#content-bookmark").hide();
     $("#content-like").hide();
     $("#content-share").hide();
+    setTimeout(() => {
+        showOrHideOverlayAnimation("HIDE");
+    }, 1500);
 })
 
 function getSeasonCount(seasons){
@@ -205,6 +209,8 @@ function invokeRecommandation(){
     const tmdb = new tmdbAPI();
     var series_id = $("#apiId").val();
     var recomList = tmdb.getSeriesRecommendation(series_id);
+    if(!recomList.results.length > 0)
+        recomList = tmdb.getSimilarSeries(series_id);
     if(recomList.results.length > 0) {
             $("#related-contents").empty();
             $.each(recomList.results, function(index, item) {
