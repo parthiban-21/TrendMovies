@@ -316,3 +316,28 @@ function compareDateToNow(inputDate) {
         return 0; // Present = 0
     }
 }
+
+function framePagination(current_page, total_page, fn_Ref) {
+    total_page = (total_page > 500 ) ? 500 : total_page; //TMDB Restriction
+    var pages = (total_page >=5) ? 5 : total_page;
+    $(".sty-pagination").empty();
+    for(let i = 1; i <= pages; i++){
+        var p = (current_page > 5) ? current_page - (pages - i) : i;
+        var page_tag = `<li class="page-item ${(p==current_page) ? "active" : ""}" sty-pg="${p}"><span class="page-link">${p}</span></li>`;
+        $(".sty-pagination").append(page_tag);
+    }
+    if(total_page > 5 && current_page != total_page){
+        var nxt_nav_tags = `<li class="page-item" sty-pg=${current_page + 1}><span class="page-link"><i class="fa-solid fa-angle-right"></i></span></li>
+                            <li class="page-item" sty-pg=${total_page}><span class="page-link"><i class="fa-solid fa-angles-right"></i></span></li>`;
+        $(".sty-pagination").append(nxt_nav_tags);
+    } 
+    if(current_page > 5) {
+        var pre_nav_tags = `<li class="page-item" sty-pg=${1}><span class="page-link"><i class="fa-solid fa-angles-left"></i></span></li>
+                            <li class="page-item" sty-pg=${current_page - 1}><span class="page-link"><i class="fa-solid fa-angle-left"></i></span></li>`;
+        $(".sty-pagination").prepend(pre_nav_tags);
+    }
+    $(".page-item").on('click', function(){
+        var p = $(this).attr('sty-pg');
+        fn_Ref(p);
+    })
+}

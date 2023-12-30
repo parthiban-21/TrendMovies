@@ -170,7 +170,7 @@
     color: white;
 }
 
-.pagination {
+/* .pagination {
     display: flex;
     margin: 10px 30px;
     align-items: center;
@@ -190,10 +190,12 @@
 
 .current {
     padding: 5px 15px;
-    border-radius: 50%;
+    border-radius: 10px;
     border: 2px solid var(--secondary-color);
     font-size: 16px;
-}
+    background-color: var(--header-bg);
+    text-align: center;
+} */
 
 .know-more {
     background-color: var(--secondary-color);

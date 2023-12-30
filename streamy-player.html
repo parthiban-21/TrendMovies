@@ -91,6 +91,14 @@
         <input type="url" id="st-url" class="input" placeholder="Enter URL" />
         <span id="play" class="cs-btn-max sty-tran-hover" onclick="play()">Play</span>
       </div>
+
+      <iframe id="sty-iframe" class="sty-iframe" src="" width="100%" height="100%" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      <div class="con cs-fCenter">
+        <input type="url" id="st-iframe-url" class="input" placeholder="Enter Embed URL" />
+        <span id="iplay" class="cs-btn-max sty-tran-hover" onclick="play('IFRAME')">Play</span>
+      </div>
     </div>
     <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
     <!--Video Player End-->

@@ -41,9 +41,13 @@ $(function () {
                 });
     })
 })
-function play(){
-    var videoPath = $("#st-url").val();
-    $("#myVideo").attr("src", videoPath);
+function play(type){
+    if(type == "IFRAME"){
+        $("#sty-iframe").attr("src", $("#st-iframe-url").val());
+    } else {
+        var videoPath = $("#st-url").val();
+        $("#myVideo").attr("src", videoPath);
+    }
     //player.download = videoPath;
     // jwplayer("myElement").setup({
     //     file: videoPath,

@@ -1,18 +1,24 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 $(function () {
-    const tmdb = new tmdbAPI();
-    getSeries(tmdb.onAirTVShows(), "#main");
+    pageCall(1);
 });
 
-function getSeries(data, append_id) {
+function pageCall(page) {
+    const tmdb = new tmdbAPI();
+    getSeries(tmdb.onAirTVShows(page));
+}
+
+function getSeries(data) {
     if (data.results.length !== 0) {
-        showSeries(data.results, append_id);
+        showSeries(data.results);
+        framePagination(data.page, data.total_pages, pageCall);
     } else {
-        $(append_id).text('<h1 class="no-results">No Results Found</h1>');
+        $("#main").append(`<h1 class="no-results">No Results Found</h1>`);
     }
 }
 
-function showSeries(seriesList, append_id) {
+function showSeries(seriesList) {
+    var append_id = "#main";
     $(append_id).empty();
     $.each(seriesList, function(index, item) {
         var frameHTML = '';

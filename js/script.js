@@ -1,45 +1,19 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-
-const main = document.getElementById('main');
-
-const prev = document.getElementById('prev')
-const next = document.getElementById('next')
-const current = document.getElementById('current')
-
-var currentPage = 1;
-var nextPage = 2;
-var prevPage = 3;
-var lastUrl = '';
-var totalPages = 100;
-
 $(function () {
-    const tmdb = new tmdbAPI();
-    getMovies(tmdb.discoverMovies(1, 'POP_DSC', false, false));
+    pageCall(1);
 });
+
+function pageCall(page) {
+    const tmdb = new tmdbAPI();
+    getMovies(tmdb.discoverMovies(page, 'POP_DSC', false, false));
+}
 
 function getMovies(data) {
     if (data.results.length !== 0) {
         showMovies(data.results);
-        currentPage = data.page;
-        nextPage = currentPage + 1;
-        prevPage = currentPage - 1;
-        totalPages = data.total_pages;
-
-        current.innerText = currentPage;
-
-        if (currentPage <= 1) {
-            prev.classList.add('disabled');
-            next.classList.remove('disabled')
-        } else if (currentPage >= totalPages) {
-            prev.classList.remove('disabled');
-            next.classList.add('disabled')
-        } else {
-            prev.classList.remove('disabled');
-            next.classList.remove('disabled')
-        }
-
+        framePagination(data.page, data.total_pages, pageCall);
     } else {
-        main.innerHTML = `<h1 class="no-results">No Results Found</h1>`
+        $("#main").append(`<h1 class="no-results">No Results Found</h1>`);
     }
 }
 
@@ -48,7 +22,7 @@ function showMovies(movieList) {
     $.each(movieList, function(index, item) {
         var frameHTML = '';
         frameHTML += '<div class="carousel-vr sty-content-card" id="movie-'+ item.id +'">';
-        frameHTML += '  <img>';
+        frameHTML += '  <img loading="lazy">';
         frameHTML += '  <div class="cs-contents">';
         //frameHTML += '      <div class="cs-content" style="margin-right: 108px;">Movie</div>';
         frameHTML += '      <span id="adult-flag" class="cs-content cs-float-right color-red">18+</span>';
@@ -79,21 +53,4 @@ function showMovies(movieList) {
             //window.open(url);
         })
     })
-}
-
-prev.addEventListener('click', () => {
-    if (prevPage > 0) {
-        pageCall(prevPage);
-    }
-})
-
-next.addEventListener('click', () => {
-    if (nextPage <= totalPages) {
-        pageCall(nextPage);
-    }
-})
-
-function pageCall(page) {
-    const tmdb = new tmdbAPI();
-    getMovies(tmdb.discoverMovies(page, 'POP_DSC', false, false));
 }
