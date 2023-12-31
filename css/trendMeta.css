@@ -1177,6 +1177,10 @@ body.sty-model-open {
     border-color: transparent
 }
 
+.sty-fcolor {
+    color: var(--title-color);
+}
+
 @media (max-device-width:580px) {
     header .sty-head-mid {
         max-width: 20rem;

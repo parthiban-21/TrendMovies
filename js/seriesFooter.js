@@ -15,15 +15,17 @@ $(function(){
     $("#content-overview").text(series_data.overview);
     $("#content-runtime").text((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "--");
     $("#content-rating").text(series_data.vote_average.toFixed(1) + " / 10");
-    $("#content-genre").text(getGenre(series_data.genres));
+    $("#content-genre").text(getNames(series_data.genres));
     $("#content-first-aired").text(parseDate(series_data.first_air_date));
     $("#content-last-aired").text(parseDate(series_data.last_air_date));
     $("#content-status").text(series_data.status);
     $("#content-lang").text(getLanguage(series_data.original_language));
-    //var credits = tmdb.getSeriesCredits(series_id);
-    //getDirectorAndStarring(credits, series_data.created_by);
+    if(series_data.homepage){
+        $("#content-homepage").attr({href : series_data.homepage});
+        $("#content-homepage").show();
+    }
 
-    console.log(getSeasonCount(series_data.seasons));
+    getSeasonCount(series_data.seasons);
     frameEpisode();
 
     invokeRecommandation();

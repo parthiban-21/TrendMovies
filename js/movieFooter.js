@@ -18,12 +18,20 @@ $(function(){
     $("#content-tagline").text(movie_data.tagline);
     $("#content-overview").text(movie_data.overview);
     $("#content-runtime").text(getDuration(movie_data.runtime));
-    $("#content-rating").text(movie_data.vote_average.toFixed(1));
-    $("#content-genre").text(getGenre(movie_data.genres));
+    $("#content-rating").text(movie_data.vote_average.toFixed(1) + " / 10");
+    $("#content-genre").text(getNames(movie_data.genres));
     $("#content-release").text(parseDate(movie_data.release_date));
     $("#content-lang").text(getLanguage(movie_data.original_language));
-    //var credits = tmdb.getMovieCredits(movie_id);
-    //getDirectorAndStarring(credits);
+    $("#content-status").text(movie_data.status);
+    $("#content-pro-company").text(getNames(movie_data.production_companies));
+    $("#content-pro-country").text(getNames(movie_data.production_countries));
+    $("#content-revenue").text(getCurrency(movie_data.revenue));
+
+    if(movie_data.homepage){
+        $("#content-homepage").attr({href : movie_data.homepage});
+        $("#content-homepage").show();
+    }
+    
     invokeRecommandation();
 
     $("#content-watch").on('click', function(){
@@ -80,26 +88,6 @@ function getTrailer(contentID){
     if(keyArr[0] != undefined && keyArr[0] != '' && keyArr[0] != null)
         youTubeURL = frameYTLink(keyArr[0],"EMBED") ;
     return youTubeURL;
-}
-
-function getDirectorAndStarring(credits){
-    $.each(credits.crew , function(i, member) {
-        if(member['job'] == "Director"){
-            $("#dir-name").text(member['name']);
-            return false;
-        }
-    })
-
-    var stars = "";
-    $.each(credits.cast , function(i, member) {
-        if(member['order'] <= 3){
-            stars += member['name'] + ", "
-        } else {
-            return false;
-        }
-    })
-    stars = stars.substring(0,stars.length - 2) + " & more";
-    $("#starring").text(stars);
 }
 
 function frameSevers() {

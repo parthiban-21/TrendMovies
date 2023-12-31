@@ -90,12 +90,12 @@ function getDuration(totalMinutes){
     return hoursText + separator + minutesText;
 }
 
-function getGenre(genreList){
-    var genreNameList = new Array();
-    $.each(genreList, function(i, genre) {
-        genreNameList.push(genre.name);
+function getNames(list){
+    var nameList = new Array();
+    $.each(list, function(i, item) {
+        nameList.push(item.name);
     })  
-    return genreNameList.join(" | ");
+    return nameList.join(" | ");
 }
 
 function frameYTLink(videoID, type){
@@ -293,6 +293,16 @@ function getLanguage(code, native){
         return intl.of(code);
     } else {
         return null;
+    }
+}
+
+function getCurrency(price) {
+    if (price) {
+        let USDollar = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+        });
+        return USDollar.format(price);
     }
 }
 
