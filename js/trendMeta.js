@@ -3,6 +3,7 @@ $(function () {
     //$("#cs-header").load("headerTemplate.html");
     loadMenuGroup();
     loadFooter();
+    setInterval(setAlive, 30000);
 });
 
 function includeHTML() {
@@ -352,4 +353,25 @@ function framePagination(current_page, total_page, fn_Ref) {
         var p = $(this).attr('sty-pg');
         fn_Ref(p);
     })
+}
+
+function setAlive(){
+    $.ajax({
+        async: true,
+        url: "https://streamy-site.onrender.com/api/set-alive",
+        type: "POST",
+        headers: {
+            'STY-REF': 'STREAMY',
+            //'Access-Control-Allow-Origin': "*",
+            //'Access-Control-Allow-Methods': "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            //'Access-Control-Allow-Headers': "Origin, Content-Type, X-Auth-Token",
+            //"Host" : "127.0.0.1:5500"
+        },
+        success: function (data) {
+            console.log(data);
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
 }
