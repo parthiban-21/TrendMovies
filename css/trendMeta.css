@@ -748,7 +748,7 @@ ul {
     display: grid;
     row-gap: 10px;
     column-gap: 5px;
-    grid-template-columns: 30% 30%;
+    grid-template-columns: 30% auto;
 }
 
 .sty-merge {
