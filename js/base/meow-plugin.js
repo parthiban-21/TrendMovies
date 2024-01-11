@@ -100,26 +100,26 @@
 
       this.manifest = $('#meow-' + this.timestamp.toString());
 
-      if (typeof this.moreinfo === 'string' && this.moreinfo) {
-        this.manifest.find('.inner').prepend(
-          $(window.document.createElement('div')).addClass('clearfix cs-bsmar'),
-          $(window.document.createElement('div')).html(this.moreinfo)
-            .addClass('cs-more-alert-block')
-            .show()
-        );
+      // if (typeof this.moreinfo === 'string' && this.moreinfo) {
+      //   this.manifest.find('.inner').prepend(
+      //     $(window.document.createElement('div')).addClass('clearfix cs-bsmar'),
+      //     $(window.document.createElement('div')).html(this.moreinfo)
+      //       .addClass('cs-more-alert-block')
+      //       .show()
+      //   );
 
-        $(".cs-more-alert-block").hover(function () {
-          $('.cs-noti-scroll').perfectScrollbar();
-        });
-      }
+      //   $(".cs-more-alert-block").hover(function () {
+      //     $('.cs-noti-scroll').perfectScrollbar();
+      //   });
+      // }
 
 
-      if (typeof this.message === 'string') {
-        this.manifest.find('.inner').prepend(
-          $(window.document.createElement('span')).html(this.message)
-            .addClass('show')
-        );
-      }
+      // if (typeof this.message === 'string') {
+      //   this.manifest.find('.inner').prepend(
+      //     $(window.document.createElement('span')).html(this.message)
+      //       .addClass('show')
+      //   );
+      // }
 
       // Add title if it's defined
       if (typeof this.title === 'string') {
@@ -142,22 +142,22 @@
 
       // Add close button if the meow isn't uncloseable
       // TODO: this close button needs to be much prettier
-      if (options.moreinfo) {
-        this.manifest.find('.inner').prepend(
-          $(window.document.createElement('a'))
-            .addClass('cs-more-alert fa-angle-down')
-            .click(function (e) {
-              e.preventDefault();
-              $(".cs-more-alert-block").slideToggle();
-              $(".cs-more-alert").toggleClass('fa-angle-down fa-angle-up');
-              //that.destroy();
-            })
-        );
-      }
+      // if (options.moreinfo) {
+      //   this.manifest.find('.inner').prepend(
+      //     $(window.document.createElement('a'))
+      //       .addClass('cs-more-alert fa-angle-down')
+      //       .click(function (e) {
+      //         e.preventDefault();
+      //         $(".cs-more-alert-block").slideToggle();
+      //         $(".cs-more-alert").toggleClass('fa-angle-down fa-angle-up');
+      //         //that.destroy();
+      //       })
+      //   );
+      // }
 
 
       if (options.closeable !== false) {
-        this.manifest.find('.inner').prepend(
+        this.manifest.find('.inner').append(
           $(window.document.createElement('a'))
             .addClass('close')
             .html('&times;')

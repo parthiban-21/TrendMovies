@@ -142,31 +142,31 @@
 
 @-webkit-keyframes slideIn {
     0% {
-        -webkit-transform: translateX(110%);
-        transform: translateX(110%)
+        -webkit-transform: translateY(110%);
+        transform: translateY(110%)
     }
     50% {
-        -webkit-transform: translateX(-10%);
-        transform: translateX(-10%)
+        -webkit-transform: translateY(-10%);
+        transform: translateY(-10%)
     }
     100% {
-        -webkit-transform: translateX(1%);
-        transform: translateX(1%)
+        -webkit-transform: translateY(1%);
+        transform: translateY(1%)
     }
 }
 
 @keyframes slideIn {
     0% {
-        -webkit-transform: translateX(110%);
-        transform: translateX(110%)
+        -webkit-transform: translateY(110%);
+        transform: translateY(110%)
     }
     50% {
-        -webkit-transform: translateX(-10%);
-        transform: translateX(-10%)
+        -webkit-transform: translateY(-10%);
+        transform: translateY(-10%)
     }
     100% {
-        -webkit-transform: translateX(1%);
-        transform: translateX(1%)
+        -webkit-transform: translateY(1%);
+        transform: translateY(1%)
     }
 }
 
@@ -531,14 +531,14 @@
 
 .cs-noti-block {
     position: fixed;
-    top: 80px;
-    right: 0;
+    /* top: 80px;
+    right: 0; */
     z-index: 100005
 }
 
 .cs-noti {
     position: relative;
-    margin: 20px 7px 0 0
+    /* margin: 20px 7px 0 0 */
 }
 
 .cs-noti .inner {
@@ -549,12 +549,14 @@
     background: #d9dcde;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
-    border-radius: 2px;
+    border-radius: 10px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     zoom: 1;
     color: #848484;
+    display: flex;
+    align-items: center;
 }
 
 .cs-noti .inner.info {
@@ -628,7 +630,7 @@
 
 .cs-noti .inner h1 {
     padding: 0;
-    margin: 6px 0 10px;
+    margin: 0;
     font-size: 16px;
     font-weight: 700;
     line-height: 1
@@ -663,28 +665,29 @@
 }
 
 .cs-noti .inner .close {
-    position: absolute;
+    /* position: absolute;
     top: 4px;
     right: 4px;
     display: block;
     width: 20px;
     height: 20px;
-    font-size: 19px;
+    font-size: 19px; */
     font-weight: 500;
     line-height: 14px;
-    color: #fff;
-    text-align: center;
+    /* color: #fff;
+    text-align: center; */
     text-decoration: none;
-    -webkit-border-radius: 10px;
+    /* -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
     -webkit-opacity: .9;
-    -moz-opacity: .9;
+    -moz-opacity: .9; */
     opacity: .9;
-    zoom: 1
+    /* zoom: 1 */
+    margin: 0 0 0 auto;
 }
 
 .cs-noti .inner:after {
@@ -697,15 +700,15 @@
 }
 
 .trans-message {
-    width: 450px;
+    width: 380px;
     position: fixed;
-    right: 1%;
-    top: 8%
+    right: 2%;
+    bottom: 8%
 }
 
 @media (max-device-width:580px) {
     .trans-message {
-        top: 3%
+        bottom: 10%
     }
 }
 

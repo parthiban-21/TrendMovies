@@ -3,7 +3,7 @@ $(function () {
     //$("#cs-header").load("headerTemplate.html");
     loadMenuGroup();
     loadFooter();
-    setInterval(setAlive, 30000);
+    setInterval(setAlive, 5 * 60 * 1000);
 });
 
 function includeHTML() {
@@ -73,8 +73,8 @@ function metaXMLRequest(URL, method) {
         } else {
             console.log("Error occurred!")
         }
-        resultJSON = JSON.parse(XMLRequest.response);
-        console.log(resultJSON);
+        //resultJSON = JSON.parse(XMLRequest.response);
+        console.log(XMLRequest.response);
     }
     XMLRequest.send();
     return resultJSON;
@@ -235,7 +235,7 @@ function searchContent(search, type){
 
 function loadFooter(){
     var htmlTags = `<div class="sty-foot-left">
-                        <label><i class="fa-regular fa-copyright cs-rsmar"></i>2023 | Streamy, All Rights Reserved.</label>
+                        <label><i class="fa-regular fa-copyright cs-rsmar"></i>${new Date().getFullYear()} | Streamy, All Rights Reserved.</label>
                     </div>
                     <div class="sty-foot-mid">
                         <label>We don't host any of the above content. All are hosted by Third-Party sites</label>
@@ -362,10 +362,6 @@ function setAlive(){
         type: "POST",
         headers: {
             'STY-REF': 'STREAMY',
-            //'Access-Control-Allow-Origin': "*",
-            //'Access-Control-Allow-Methods': "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            //'Access-Control-Allow-Headers': "Origin, Content-Type, X-Auth-Token",
-            //"Host" : "127.0.0.1:5500"
         },
         success: function (data) {
             console.log(data);

@@ -7,10 +7,10 @@ $(function(){
     $("#apiId").val(series_id);
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
-    setWindowTitle(series_data.original_name);
+    setWindowTitle(series_data.name);
     $('.sty-bg img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
     $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
-    $("#content-title").text(series_data.original_name);
+    $("#content-title").text(series_data.name);
     $("#content-tagline").text(series_data.tagline);
     $("#content-overview").text(series_data.overview);
     $("#content-runtime").text((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "--");
@@ -20,6 +20,8 @@ $(function(){
     $("#content-last-aired").text(parseDate(series_data.last_air_date));
     $("#content-status").text(series_data.status);
     $("#content-lang").text(getLanguage(series_data.original_language));
+    $("#content-pro-company").text(getNames(series_data.production_companies));
+    $("#content-pro-country").text(getNames(series_data.production_countries));
     if(series_data.homepage){
         $("#content-homepage").attr({href : series_data.homepage});
         $("#content-homepage").show();
@@ -47,23 +49,23 @@ $(function(){
             invokePlayerDialog(YTUrl, "Official Trailer", true);
         }
         else
-            alertMessage("Sorry", "Could Not Find Official Trailer.", "", "ERROR");
+            alertMessage("Couldn't find Official Trailer..!", "", "", "ERROR");
     })
     
     $("#content-bookmark").on('click', function(){
-        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "WARNING");
     })
 
     $("#content-like").on('click', function(){
-        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "WARNING");
     })
 
     $("#content-download").on('click', function(){
-        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "ERROR");
     })
 
     $("#content-share").on('click', function(){
-        alertMessage("Sorry", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "WARNING");
     })
 
     $("#content-cast-crew").on('click', function(){

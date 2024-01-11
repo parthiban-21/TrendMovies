@@ -44,23 +44,23 @@ $(function(){
         if(YTUrl)
             invokePlayerDialog(YTUrl, "Official Trailer", true);
         else
-            alertMessage("Sorry..!", "Could Not Find Official Trailer.", "", "ERROR");
+            alertMessage("Couldn't find Official Trailer..!", "", "", "ERROR");
     })
     
     $("#content-bookmark").on('click', function(){
-        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "WARNING");
     })
 
     $("#content-like").on('click', function(){
-        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "WARNING");
     })
 
     $("#content-download").on('click', function(){
-        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "ERROR");
+        alertMessage("This Feature is Not Available Now..!", "", "", "ERROR");
     })
 
     $("#content-share").on('click', function(){
-        alertMessage("Sorry..!", "This Feature is Currently Not Available.", "", "WARNING");
+        alertMessage("This Feature is Not Available Now..!", "", "", "WARNING");
     })
 
     $("#content-cast-crew").on('click', function(){
