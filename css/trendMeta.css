@@ -829,7 +829,6 @@ ul {
     background-color: rgb(12 15 25);
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .sty-head-search .sty-search {
@@ -897,7 +896,7 @@ ul {
 .sty-player-sec .sec {
     width: 100%;
     background-color: var(--header-bg);
-    padding: 12px;
+    padding: 8px 0;
 }
 
 .sty-player-sec .sty-bg {
@@ -1182,9 +1181,9 @@ body.sty-model-open {
 }
 
 @media (max-device-width:580px) {
-    header .sty-head-mid {
+    /* header .sty-head-mid {
         max-width: 20rem;
-    }
+    } */
 
     .sty-content-credits {
         display: grid;
@@ -1241,7 +1240,7 @@ body.sty-model-open {
     .sty-episode-container {
         grid-template-columns: auto;
         font-size: 14px;
-        row-gap: 8px;
+        row-gap: 5px;
     }
 
     footer .sty-foot-left {
@@ -1253,15 +1252,24 @@ body.sty-model-open {
     }
 
     .sty-creator-card {
-        width: 180px;
-        height: 320px;
+        width: 100px;
+        height: 190px;
+        margin: 5px;
+    }
+
+    .sty-creator-card .cr-name {
+        font-size: 12px;
+    }
+
+    .sty-creator-card .cr-role {
+        font-size: 10px;
     }
 
     .sty-m-hide {
         display: none;
     }
 
-    .sty-m-font {
+    .sty-m-font, footer {
         font-size: 12px;
     }
 
@@ -1293,5 +1301,11 @@ body.sty-model-open {
     }
     .cs-btn-round {
         width: 30px;
+    }
+
+    .sty-sugg {
+        left: 2%;
+        width: -webkit-fill-available;
+        right: 2%;
     }
 }

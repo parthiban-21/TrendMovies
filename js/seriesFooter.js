@@ -235,7 +235,7 @@ function invokeRecommandation(){
         
                 $("#related-contents #series-"+ item.id +" #adult-flag").hide();
                 $("#related-contents #series-"+ item.id +" img").attr('src',(item.poster_path) ? tmdb.BASIC_INFO.IMG_URL + item.poster_path : "img/Streamy_BG.jpg");
-                $("#related-contents #series-"+ item.id +" .overview h3").text(item.title);
+                $("#related-contents #series-"+ item.id +" .overview h3").text(item.name);
                 $("#related-contents #series-"+ item.id +" #content-rating").text(item.vote_average.toFixed(1));
                 if(item.adult){
                     $("#related-contents #series-"+ item.id +" #adult-flag").show();

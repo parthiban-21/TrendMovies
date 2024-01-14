@@ -240,7 +240,7 @@ function loadFooter(){
                     <div class="sty-foot-mid sty-m-hide">
                         <label>We don't host any of the above content. All are hosted by Third-Party sites</label>
                     </div>
-                    <div class="sty-foot-right sty-m-hide">
+                    <div class="sty-foot-right">
                         <label class="cs-lmar cs-cur sty-hi sty-anti-select"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</label>
                         <label class="cs-lmar cs-cur sty-hi sty-anti-select"><i class="fa-regular fa-circle-question cs-rsmar"></i>Help</label>
                     </div>`;

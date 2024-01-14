@@ -227,7 +227,7 @@
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    margin-bottom: 10px
+    /* margin-bottom: 10px */
 }
 
 .ui-dialog .ui-dialog-titlebar .ui-dialog-title {
@@ -708,7 +708,13 @@
 
 @media (max-device-width:580px) {
     .trans-message {
-        bottom: 10%
+        width: -webkit-fill-available;
+        bottom: 85%;
+        left: 2%;
+    }
+
+    .ui-dialog .ui-dialog-titlebar .ui-dialog-title {
+        font-size: 14px;
     }
 }
 
