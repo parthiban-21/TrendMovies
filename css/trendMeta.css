@@ -1208,13 +1208,16 @@ body.sty-model-open {
     }
 
     .sty-content-details {
-        font-size: 15px;
-        grid-template-columns: 50% 50%;
+        font-size: inherit;
+        grid-template-columns: auto auto;
     }
 
+    /* .sty-content-details a {
+         grid-column-start: 1;
+    } */
+
     .sty-content-plot {
-        height: 100px;
-        font-size: 12px;
+        height: 60px;
     }
 
     .sty-side-menu {
@@ -1223,7 +1226,7 @@ body.sty-model-open {
 
     .cs-postermax {
         width: 85%;
-        height: 650px;
+        /* height: 650px; */
     }
 
     .cs-overview {
@@ -1232,7 +1235,7 @@ body.sty-model-open {
     }
 
     .sty-ply-container {
-        height: 300px
+        height: 180px;
     }
 
     .sty-episode-container {
@@ -1252,5 +1255,43 @@ body.sty-model-open {
     .sty-creator-card {
         width: 180px;
         height: 320px;
+    }
+
+    .sty-m-hide {
+        display: none;
+    }
+
+    .sty-m-font {
+        font-size: 12px;
+    }
+
+    .cs-title-head h3 {
+        font-size: 25px;
+    }
+
+    .cs-title-head i {
+        font-size: 14px;
+    }
+
+    .sty-content-card {
+        width: 170px;
+        height: 250px;
+    }
+
+    .carousel .carousel-vr {
+        flex: 0 0 170px;
+    }
+
+    .carousel .carousel-vr img {
+        height: 250px;
+    }
+
+    .cs-btn-max {
+        height: 30px;
+        border-radius: 30px;
+        line-height: 30px;
+    }
+    .cs-btn-round {
+        width: 30px;
     }
 }

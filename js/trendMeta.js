@@ -96,7 +96,7 @@ function getNames(list){
     $.each(list, function(i, item) {
         nameList.push(item.name);
     })  
-    return nameList.join(" | ");
+    return nameList.join(" • ");
 }
 
 function frameYTLink(videoID, type){
@@ -237,10 +237,10 @@ function loadFooter(){
     var htmlTags = `<div class="sty-foot-left">
                         <label><i class="fa-regular fa-copyright cs-rsmar"></i>${new Date().getFullYear()} | Streamy, All Rights Reserved.</label>
                     </div>
-                    <div class="sty-foot-mid">
+                    <div class="sty-foot-mid sty-m-hide">
                         <label>We don't host any of the above content. All are hosted by Third-Party sites</label>
                     </div>
-                    <div class="sty-foot-right">
+                    <div class="sty-foot-right sty-m-hide">
                         <label class="cs-lmar cs-cur sty-hi sty-anti-select"><i class="fa-regular fa-comment cs-rsmar"></i>Contact</label>
                         <label class="cs-lmar cs-cur sty-hi sty-anti-select"><i class="fa-regular fa-circle-question cs-rsmar"></i>Help</label>
                     </div>`;
@@ -250,7 +250,7 @@ function loadFooter(){
 
 function setWindowTitle(title, only) {
     var win_title = "Streamy";
-    win_title = (only == true) ? title : title + " | Streamy";
+    win_title = (only == true) ? title : title + " • Streamy";
     document.title = win_title;
 }
 
@@ -268,7 +268,7 @@ function invokePlayerDialog(streamList, title, isTrailer) {
         $(".sty-player-bg , .sty-bg").show();
     }
     $("#sty-player-dialog").dialog({
-        title: (title) ? "Now Playing : " + title : "Streamy",
+        title: (title) ? title : "Streamy",
         modal: true,
         autoOpen: true,
         draggable: false,

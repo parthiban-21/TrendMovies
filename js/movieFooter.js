@@ -35,8 +35,12 @@ $(function(){
     invokeRecommandation();
 
     $("#content-watch").on('click', function(){
-        frameSevers();
-        invokePlayerDialog("", $("#content-title").text(), false);
+        if(movie_data.status == "Released"){
+            frameSevers();
+            invokePlayerDialog("", $("#content-title").text(), false);
+        } else {
+            alertMessage("Too Early To Watch, Stay Tuned..!", "", "", "WARNING");
+        }
     })
 
     $("#content-trailer").on('click', function(){
