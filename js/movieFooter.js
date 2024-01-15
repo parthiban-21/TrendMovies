@@ -28,7 +28,14 @@ $(function(){
     $("#content-pro-company").text(getNames(movie_data.production_companies));
     $("#content-pro-country").text(getNames(movie_data.production_countries));
     $("#content-revenue").text(getCurrency(movie_data.revenue));
-    $("#content-rated").text(omdb_data.Rated);
+    if (omdb_data.Rated && omdb_data.Rated != "N/A") {
+        $("#content-rated").text(omdb_data.Rated);
+    } else {
+        $("#content-rated").prev("i").hide();
+        $("#content-rated").hide();
+    }
+    $("#content-director").text(omdb_data.Director);
+    $("#content-casts").text(omdb_data.Actors);
 
     if(movie_data.homepage){
         $("#content-homepage").attr({href : movie_data.homepage});
