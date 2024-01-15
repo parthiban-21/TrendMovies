@@ -244,6 +244,7 @@ ul {
 .cs-overview {
     height: 590px;
     color: var(--title-color);
+    flex-direction: row;
 }
 
 .cs-backdrop-poster {
@@ -379,9 +380,11 @@ ul {
     font-size: 30px;
 }
 
-.cs-title-head i {
+.cs-title-head .con-tag {
+    display: block;
     font-size: 16px;
     color: rgb(176, 176, 176);
+    padding-bottom: 8px;
 }
 
 
@@ -1180,6 +1183,29 @@ body.sty-model-open {
     color: var(--title-color);
 }
 
+.sty-batch-sm {
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    background: #333;
+}
+
+.sty-batch-sm.sty-rating {
+    background: var(--icon-color);
+    color: var(--primary-color);
+}
+
+.sty-batch-sm.sty-rating .r-rate {
+    font-weight: 800;
+    margin-left: 4px;
+}
+
+.sty-before::before {
+    content: "•";
+    padding: 0 5px;
+    font-style: normal;
+}
+
 @media (max-device-width:580px) {
     /* header .sty-head-mid {
         max-width: 20rem;
@@ -1231,6 +1257,7 @@ body.sty-model-open {
     .cs-overview {
         height: fit-content;
         margin-bottom: 30px;
+        flex-direction: column;
     }
 
     .sty-ply-container {
@@ -1277,7 +1304,7 @@ body.sty-model-open {
         font-size: 25px;
     }
 
-    .cs-title-head i {
+    .cs-title-head .con-tag {
         font-size: 14px;
     }
 

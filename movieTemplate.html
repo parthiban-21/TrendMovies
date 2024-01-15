@@ -40,6 +40,7 @@
         <script src="js/base/content-credits.js"></script>
         <!-- API -->
         <script src="js/api/tmdbAPI.js"></script>
+        <script src="js/api/omdbAPI.js"></script>
         <script src="js/api/superembedAPI.js"></script>
         <script src="js/api/vidstreamAPI.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.4/js/swiper.min.js"></script>
@@ -82,13 +83,20 @@
             <div class="cs-frag-70 sty-top-fade">
                 <div class="cs-title-head cs-lbpad">
                     <h3 id="content-title">--</h3>
-                    <i id="content-tagline">--</i>
+                    <span class="con-tag" id="content-tagline">--</span>
+                    <div>
+                        <span class="sty-batch-sm sty-rating"><i class="fa-solid fa-star"></i><span class="r-rate" id="content-rating">0.0</span></span>
+                        <i class="sty-before"></i>
+                        <span class="sty-batch-sm"><span id="content-rated">--</span></span>
+                        <i class="sty-before"></i>
+                        <span class="sty-batch-sm" id="content-lang">--</span>
+                    </div>
                 </div>
                 <div id="content-details" class="sty-content-details sty-m-font">
-                    <a class="cs-icon">
+                    <!-- <a class="cs-icon">
                         <i class="fa-solid fa-star"></i><span class="sty-i-color">Rating :  </span>
                         <span id="content-rating">--</span>
-                    </a>
+                    </a> -->
                     <a class="cs-icon"><i class="fa-solid fa-circle-dot fa-fade"></i><span class="sty-i-color">Status : </span><span id="content-status">--</span></a>
                     <a class="cs-icon">
                         <i class="fa-regular fa-calendar"></i><span class="sty-i-color">Released On :  </span>
@@ -98,10 +106,10 @@
                         <i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime :    </span>
                         <span id="content-runtime">--</span>
                     </a>
-                    <a class="cs-icon">
+                    <!-- <a class="cs-icon">
                         <i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language :    </span>
                         <span id="content-lang">--</span>
-                    </a>
+                    </a> -->
                     <a class="cs-icon">
                         <i class="fa-solid fa-sack-dollar"></i><span class="sty-i-color">Revenue :    </span>
                         <span id="content-revenue">--</span>

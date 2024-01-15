@@ -6,7 +6,9 @@ $(function(){
     showOrHideOverlayAnimation("SHOW");
     $("#apiId").val(movie_id);
     const tmdb = new tmdbAPI();
+    const omdb_api = new omdb();
     var movie_data = tmdb.getMovie(movie_id);
+    var omdb_data = omdb_api.getContentByID(movie_data.imdb_id);
     setWindowTitle(movie_data.title)
     var bg_ImgURL = (movie_data.backdrop_path) ? tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path : "img/Streamy_BG.jpg";
     var poster_path = (movie_data.poster_path) ? tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path : "img/Streamy_BG.jpg";
@@ -18,7 +20,7 @@ $(function(){
     $("#content-tagline").text(movie_data.tagline);
     $("#content-overview").text(movie_data.overview);
     $("#content-runtime").text(getDuration(movie_data.runtime));
-    $("#content-rating").text(movie_data.vote_average.toFixed(1) + " / 10");
+    $("#content-rating").text(movie_data.vote_average.toFixed(1));
     $("#content-genre").text(getNames(movie_data.genres));
     $("#content-release").text(parseDate(movie_data.release_date));
     $("#content-lang").text(getLanguage(movie_data.original_language));
@@ -26,6 +28,7 @@ $(function(){
     $("#content-pro-company").text(getNames(movie_data.production_companies));
     $("#content-pro-country").text(getNames(movie_data.production_countries));
     $("#content-revenue").text(getCurrency(movie_data.revenue));
+    $("#content-rated").text(omdb_data.Rated);
 
     if(movie_data.homepage){
         $("#content-homepage").attr({href : movie_data.homepage});
