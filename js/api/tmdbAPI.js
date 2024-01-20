@@ -4,7 +4,8 @@ class tmdbAPI {
         this.AUTH_HEADER = {'Authorization' : 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ZTMwZGZjYjgxYzExNjgxZjdlNjRiZjBiZDM2N2EzYSIsInN1YiI6IjYzOWU5Y2Y4OWJjZDBmMjdkNmZjNDY2ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.NCw_mPY4I9tam2CQsY-0IRZcpLy0pqLwE9wGQbrK-44'};
         this.BASIC_INFO = {
             'IMG_URL' : "https://image.tmdb.org/t/p/w500",
-            'IMG_BG_URL' : "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces"
+            'IMG_BG_URL' : "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces",
+            'IMG_ORG_URL': "https://image.tmdb.org/t/p/original"
         }
     }
 

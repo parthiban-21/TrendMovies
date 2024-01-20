@@ -26,7 +26,7 @@ $(function(){
     $("#content-runtime").fillText(getDuration(movie_data.runtime));
     $("#content-genre").fillText(getNames(movie_data.genres));
     $("#content-release").fillText(parseDate(movie_data.release_date));
-    $("#content-pro-company").fillText(getNames(movie_data.production_companies));
+    // $("#content-pro-company").fillText(getNames(movie_data.production_companies));
     $("#content-pro-country").fillText(getNames(movie_data.production_countries));
     $("#content-revenue").fillText(getCurrency(movie_data.revenue));
     $("#content-director").fillText(metaGetValue(omdb_data, "Director"));
@@ -40,6 +40,7 @@ $(function(){
         $("#content-homepage").show();
     }
     
+    frameProduction(movie_data.production_companies);
     invokeRecommandation();
 
     $("#content-watch").on('click', function(){

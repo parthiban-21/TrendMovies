@@ -1041,11 +1041,13 @@ footer .sty-foot-mid {
 }
 
 .sty-sec-title {
-    padding: 10px 0;
+    padding: 0 8px;
     font-size: 20px;
-    font-weight: 900;
-    margin-left: 10px;
+    font-weight: 400;
+    margin: 10px;
     color: var(--title-color);
+    border-left: 5px solid var(--icon-color);
+    border-radius: 3px;
 }
 
 body.sty-model-open {
@@ -1205,6 +1207,40 @@ body.sty-model-open {
     content: "•";
     padding: 0 5px;
     font-style: normal;
+}
+
+.sty-prod-cover {
+    flex: 0 0 350px;
+    margin: 0 8px;
+    height: 250px;
+    background-color: var(--header-bg);
+    text-align: center;
+    padding: 10px;
+    border-bottom: 4px solid var(--font-color);
+    border-radius: 15px;
+}
+
+.sty-prod-cover .prod-img {
+    height: 80%;
+    object-fit: contain;
+    width: 100%;
+    object-position: center;
+    border-radius: 12px;
+    background: white;
+    padding: 10px;
+}
+
+.sty-prod-cover .prod-text span {
+    display: block;
+}
+
+.sty-prod-cover .prod-text .name {
+    font-size: 16px;
+}
+
+.sty-prod-cover .prod-text .country {
+    font-size: 13px;
+    color: rgb(171 171 171);
 }
 
 @media (max-device-width:580px) {

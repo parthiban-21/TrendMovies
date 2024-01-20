@@ -19,7 +19,9 @@ const controls = [
 const settings = ['captions', 'quality', 'speed', 'loop'];
 const player = Plyr.setup("#myVideo", {
     controls: controls,
-    clickToPlay: true
+    clickToPlay: true,
+    captions: { active: true, update: true, language: 'en' },
+    audio: { active: true, language: 'en' }
 });
 $(function () {
     window.addEventListener("devtoolschange", function (e) {

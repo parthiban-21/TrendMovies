@@ -25,7 +25,7 @@ $(function(){
     $("#content-genre").fillText(getNames(series_data.genres));
     $("#content-first-aired").fillText(parseDate(series_data.first_air_date));
     $("#content-last-aired").fillText(parseDate(series_data.last_air_date));
-    $("#content-pro-company").fillText(getNames(series_data.production_companies));
+    // $("#content-pro-company").fillText(getNames(series_data.production_companies));
     $("#content-pro-country").fillText(getNames(series_data.production_countries));
 
     let rated = getContentRating(series_data);
@@ -39,6 +39,7 @@ $(function(){
     getSeasonCount(series_data.seasons);
     frameEpisode();
 
+    frameProduction(series_data.production_companies);
     invokeRecommandation();
 
     $("#tv-season").on("change", function(){

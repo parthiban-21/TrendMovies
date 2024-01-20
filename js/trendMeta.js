@@ -297,6 +297,15 @@ function getLanguage(code, native){
     }
 }
 
+function getCountryName(code){
+    if(code){
+        let intl = new Intl.DisplayNames(['en'], { type: 'region' });
+        return intl.of(code);
+    } else {
+        return "";
+    }
+}
+
 function getCurrency(price) {
     if (price) {
         let USDollar = new Intl.NumberFormat('en-US', {
@@ -377,6 +386,26 @@ function metaGetValue(object, key) {
         return object[key];
     else
         return null;
+}
+
+function frameProduction(production_companies){
+    $("#con-prod-list").empty();
+    if(production_companies && production_companies.length > 0) {
+        $.each(production_companies, function(index, item) {
+            let prod_img = (item.logo_path) ? "https://image.tmdb.org/t/p/original" + item.logo_path : "img/Streamy_Logo.png";
+            let country = getCountryName(item.origin_country);
+            let tag = `<li class="sty-prod-cover">
+                            <img class="prod-img" loading="lazy" src="${prod_img}">
+                            <div class="prod-text">
+                                <span class="name">${item.name}</span>
+                                <span class="country"><i class="fa-solid fa-globe cs-rsmar"></i>${country}</span>
+                            </div>
+                        </li>`;
+            $("#con-prod-list").append(tag);
+        })
+    } else {
+        $("#sty-content-production").hide();
+    }
 }
 
 $.fn.fillText = function(data) {
