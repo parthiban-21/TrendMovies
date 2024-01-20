@@ -310,7 +310,7 @@ function getCurrency(price) {
 function parseDate(dateString) {
     const parsedDate = new Date(dateString);
     if (isNaN(parsedDate.getTime())) {
-        return '--';
+        return null;
     }
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     const longDateFormat = parsedDate.toLocaleDateString("en-US", options);
@@ -370,4 +370,12 @@ function setAlive(){
             console.log(data);
         }
     });
+}
+
+$.fn.fillText = function(data) {
+    if (data) {
+        $(this).text(data);
+    } else {
+        $(this).parent().hide();
+    }
 }

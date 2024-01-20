@@ -1290,17 +1290,17 @@ body.sty-model-open {
     }
 
     .sty-creator-card {
-        width: 100px;
-        height: 190px;
+        width: 80px;
+        height: 140px;
         margin: 5px;
     }
 
     .sty-creator-card .cr-name {
-        font-size: 12px;
+        font-size: 8px;
     }
 
     .sty-creator-card .cr-role {
-        font-size: 10px;
+        font-size: 7px;
     }
 
     .sty-m-hide {
@@ -1349,5 +1349,9 @@ body.sty-model-open {
 
     .sty-batch-sm {
         font-size: 12px;
+    }
+
+    .overview h3 {
+        font-size: smaller;
     }
 }

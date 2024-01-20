@@ -16,18 +16,20 @@ $(function(){
 
     $('.sty-bg img').attr('src',bg_ImgURL);
     $("#content-poster").attr('src',poster_path);
+
     $("#content-title").text(movie_data.title);
     $("#content-tagline").text(movie_data.tagline);
-    $("#content-overview").text(movie_data.overview);
-    $("#content-runtime").text(getDuration(movie_data.runtime));
     $("#content-rating").text(movie_data.vote_average.toFixed(1));
-    $("#content-genre").text(getNames(movie_data.genres));
-    $("#content-release").text(parseDate(movie_data.release_date));
     $("#content-lang").text(getLanguage(movie_data.original_language));
     $("#content-status").text(movie_data.status);
-    $("#content-pro-company").text(getNames(movie_data.production_companies));
-    $("#content-pro-country").text(getNames(movie_data.production_countries));
-    $("#content-revenue").text(getCurrency(movie_data.revenue));
+
+    $("#content-overview").text(movie_data.overview);
+    $("#content-runtime").fillText(getDuration(movie_data.runtime));
+    $("#content-genre").fillText(getNames(movie_data.genres));
+    $("#content-release").fillText(parseDate(movie_data.release_date));
+    $("#content-pro-company").fillText(getNames(movie_data.production_companies));
+    $("#content-pro-country").fillText(getNames(movie_data.production_countries));
+    $("#content-revenue").fillText(getCurrency(movie_data.revenue));
     if (omdb_data) {
         if (omdb_data.Rated && omdb_data.Rated != "N/A") {
             $("#content-rated").text(omdb_data.Rated);
@@ -35,8 +37,8 @@ $(function(){
             $("#content-rated").prev("i").hide();
             $("#content-rated").hide();
         }
-        $("#content-director").text(omdb_data.Director);
-        $("#content-casts").text(omdb_data.Actors);
+        $("#content-director").fillText(omdb_data.Director);
+        $("#content-casts").fillText(omdb_data.Actors);
     }
     if(movie_data.homepage){
         $("#content-homepage").attr({href : movie_data.homepage});
