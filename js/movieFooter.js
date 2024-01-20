@@ -6,9 +6,8 @@ $(function(){
     showOrHideOverlayAnimation("SHOW");
     $("#apiId").val(movie_id);
     const tmdb = new tmdbAPI();
-    const omdb_api = new omdb();
     var movie_data = tmdb.getMovie(movie_id);
-    var omdb_data = omdb_api.getContentByID(movie_data.imdb_id);
+    var omdb_data = new omdb().getContentByID(movie_data.imdb_id);
     setWindowTitle(movie_data.title)
     var bg_ImgURL = (movie_data.backdrop_path) ? tmdb.BASIC_INFO.IMG_BG_URL + movie_data.backdrop_path : "img/Streamy_BG.jpg";
     var poster_path = (movie_data.poster_path) ? tmdb.BASIC_INFO.IMG_URL + movie_data.poster_path : "img/Streamy_BG.jpg";
@@ -20,8 +19,8 @@ $(function(){
     $("#content-title").text(movie_data.title);
     $("#content-tagline").text(movie_data.tagline);
     $("#content-rating").text(movie_data.vote_average.toFixed(1));
-    $("#content-lang").text(getLanguage(movie_data.original_language));
-    $("#content-status").text(movie_data.status);
+    $("#content-lang").fillBatchText(getLanguage(movie_data.original_language, true));
+    $("#content-status").fillBatchText(movie_data.status);
 
     $("#content-overview").text(movie_data.overview);
     $("#content-runtime").fillText(getDuration(movie_data.runtime));
@@ -30,16 +29,12 @@ $(function(){
     $("#content-pro-company").fillText(getNames(movie_data.production_companies));
     $("#content-pro-country").fillText(getNames(movie_data.production_countries));
     $("#content-revenue").fillText(getCurrency(movie_data.revenue));
-    if (omdb_data) {
-        if (omdb_data.Rated && omdb_data.Rated != "N/A") {
-            $("#content-rated").text(omdb_data.Rated);
-        } else {
-            $("#content-rated").prev("i").hide();
-            $("#content-rated").hide();
-        }
-        $("#content-director").fillText(omdb_data.Director);
-        $("#content-casts").fillText(omdb_data.Actors);
-    }
+    $("#content-director").fillText(metaGetValue(omdb_data, "Director"));
+    $("#content-casts").fillText(metaGetValue(omdb_data, "Actors"));
+
+    let rated = metaGetValue(omdb_data, "Rated");
+    $("#content-rated").fillBatchText((rated == "N/A") ? null : rated);
+        
     if(movie_data.homepage){
         $("#content-homepage").attr({href : movie_data.homepage});
         $("#content-homepage").show();

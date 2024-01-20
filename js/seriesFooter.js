@@ -7,21 +7,30 @@ $(function(){
     $("#apiId").val(series_id);
     const tmdb = new tmdbAPI();
     var series_data = tmdb.getSeries(series_id);
+    //var omdb_data = new omdb().getContentByID(series_data.imdb_id);
     setWindowTitle(series_data.name);
-    $('.sty-bg img').attr('src',tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path);
-    $("#content-poster").attr('src',tmdb.BASIC_INFO.IMG_URL + series_data.poster_path);
+    var bg_ImgURL = (series_data.backdrop_path) ? tmdb.BASIC_INFO.IMG_BG_URL + series_data.backdrop_path : "img/Streamy_BG.jpg";
+    var poster_path = (series_data.poster_path) ? tmdb.BASIC_INFO.IMG_URL + series_data.poster_path : "img/Streamy_BG.jpg";
+    $('.sty-bg img').attr('src', bg_ImgURL);
+    $("#content-poster").attr('src', poster_path);
+
     $("#content-title").text(series_data.name);
     $("#content-tagline").text(series_data.tagline);
+    $("#content-rating").text(series_data.vote_average.toFixed(1));
+    $("#content-status").fillBatchText(series_data.status);
+    $("#content-lang").fillBatchText(getLanguage(series_data.original_language, true));
+
     $("#content-overview").text(series_data.overview);
-    $("#content-runtime").text((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "--");
-    $("#content-rating").text(series_data.vote_average.toFixed(1) + " / 10");
-    $("#content-genre").text(getNames(series_data.genres));
-    $("#content-first-aired").text(parseDate(series_data.first_air_date));
-    $("#content-last-aired").text(parseDate(series_data.last_air_date));
-    $("#content-status").text(series_data.status);
-    $("#content-lang").text(getLanguage(series_data.original_language));
-    $("#content-pro-company").text(getNames(series_data.production_companies));
-    $("#content-pro-country").text(getNames(series_data.production_countries));
+    $("#content-runtime").fillText((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "");
+    $("#content-genre").fillText(getNames(series_data.genres));
+    $("#content-first-aired").fillText(parseDate(series_data.first_air_date));
+    $("#content-last-aired").fillText(parseDate(series_data.last_air_date));
+    $("#content-pro-company").fillText(getNames(series_data.production_companies));
+    $("#content-pro-country").fillText(getNames(series_data.production_countries));
+
+    let rated = getContentRating(series_data);
+    $("#content-rated").fillBatchText((rated == "N/A") ? null : rated);
+
     if(series_data.homepage){
         $("#content-homepage").attr({href : series_data.homepage});
         $("#content-homepage").show();
@@ -249,5 +258,18 @@ function invokeRecommandation(){
             })
     } else {
         $("#sty-recommendations").hide();
+    }
+}
+
+function getContentRating(tmdb_data){
+    var ratings = new tmdbAPI().getTVContentRating(tmdb_data.id);
+    var rateMap = new Object();
+    var country = (tmdb_data.origin_country && tmdb_data.origin_country.length > 0 ) ? tmdb_data.origin_country[0] : "US";
+    if(ratings && ratings.results && ratings.results.length > 0){
+        $.each(ratings.results, function(index, item) {
+            if(item.rating)
+                rateMap[item.iso_3166_1] = item.rating;
+        })
+        return rateMap[country];
     }
 }

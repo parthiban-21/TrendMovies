@@ -1118,7 +1118,8 @@ body.sty-model-open {
     justify-content: center;
     align-items: center;
     width: 2.5rem;
-    font-weight: 600
+    font-weight: 600;
+    margin: 0px 3px;
 }
 
 .sty-pagination {
@@ -1220,7 +1221,7 @@ body.sty-model-open {
     }
 
     .sty-bottom-fade {
-        background: linear-gradient(#0001, var(--primary-color));
+        background: linear-gradient(transparent,transparent, var(--primary-color));
         position: absolute;
         width: -webkit-fill-available;
         height: -webkit-fill-available;
@@ -1290,8 +1291,8 @@ body.sty-model-open {
     }
 
     .sty-creator-card {
-        width: 80px;
-        height: 140px;
+        width: 110px;
+        height: 190px;
         margin: 5px;
     }
 
@@ -1353,5 +1354,12 @@ body.sty-model-open {
 
     .overview h3 {
         font-size: smaller;
+    }
+
+    .sty-navigation .sty-pagination .page-item .page-link {
+        height: 25px;
+        width: 25px;
+        border-radius: 5px;
+        font-size: 12px;
     }
 }

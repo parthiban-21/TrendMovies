@@ -293,7 +293,7 @@ function getLanguage(code, native){
         const intl = new Intl.DisplayNames([lang], { type: 'language' });
         return intl.of(code);
     } else {
-        return null;
+        return "";
     }
 }
 
@@ -310,7 +310,7 @@ function getCurrency(price) {
 function parseDate(dateString) {
     const parsedDate = new Date(dateString);
     if (isNaN(parsedDate.getTime())) {
-        return null;
+        return "";
     }
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     const longDateFormat = parsedDate.toLocaleDateString("en-US", options);
@@ -372,10 +372,26 @@ function setAlive(){
     });
 }
 
+function metaGetValue(object, key) {
+    if(object && key && object.hasOwnProperty(key))
+        return object[key];
+    else
+        return null;
+}
+
 $.fn.fillText = function(data) {
     if (data) {
         $(this).text(data);
     } else {
         $(this).parent().hide();
+    }
+}
+
+$.fn.fillBatchText = function(data) {
+    if (data) {
+        $(this).text(data);
+    } else {
+        $(this).prev("i").hide();
+        $(this).hide();
     }
 }

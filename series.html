@@ -40,6 +40,7 @@
         <script src="js/base/content-credits.js"></script>
         <!-- API -->
         <script src="js/api/tmdbAPI.js"></script>
+        <script src="js/api/omdbAPI.js"></script>
         <script src="js/api/superembedAPI.js"></script>
         <script src="js/api/vidstreamAPI.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.4/js/swiper.min.js"></script>
@@ -54,7 +55,7 @@
             <div class="sty-head-mid">
                 <div class="sty-head-search">
                     <a class="cs-cur cs-rsmar" id="search-content" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
-                    <input type="text" placeholder="Search" id="content-search" class="sty-search" autocomplete="off">
+                    <input type="text" placeholder="Search TV Shows" id="content-search" class="sty-search" autocomplete="off">
                 </div>
                 <div class="sty-sugg">
                     <div class="sty-sugg-body">
@@ -112,15 +113,24 @@
                 <div class="cs-title-head cs-lbpad">
                     <h3 id="content-title">--</h3>
                     <span id="content-tagline" class="con-tag">--</span>
+                    <div>
+                        <span class="sty-batch-sm sty-rating"><i class="fa-solid fa-star"></i><span class="r-rate" id="content-rating">0.0</span></span>
+                        <i class="sty-before"></i>
+                        <span class="sty-batch-sm" id="content-rated">--</span>
+                        <i class="sty-before"></i>
+                        <span class="sty-batch-sm" id="content-lang">--</span>
+                        <i class="sty-before"></i>
+                        <span class="sty-batch-sm" id="content-status">--</span>
+                    </div>
                 </div>
                 <div id="content-details" class="sty-content-details sty-m-font">
-                    <a class="cs-icon"><i class="fa-solid fa-star"></i><span class="sty-i-color">Rating : </span><span id="content-rating">0.0</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-circle-dot fa-fade"></i><span class="sty-i-color">Status : </span><span id="content-status">--</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime : </span><span id="content-runtime">--</span></a>
-                    <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a>
+                    <!-- <a class="cs-icon"><i class="fa-solid fa-star"></i><span class="sty-i-color">Rating : </span><span id="content-rating">0.0</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-circle-dot fa-fade"></i><span class="sty-i-color">Status : </span><span id="content-status">--</span></a> -->
+                    <!-- <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a> -->
                     
                     <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">First Aired On : </span><span id="content-first-aired">--</span></a>
                     <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Last Aired On : </span><span id="content-last-aired">--</span></a>
+                    <a class="cs-icon"><i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime : </span><span id="content-runtime">--</span></a>
                     <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre : </span><span id="content-genre">--</span></a>
                     <a class="cs-icon sty-merge">
                         <i class="fa-solid fa-fan"></i><span class="sty-i-color">Production :    </span>

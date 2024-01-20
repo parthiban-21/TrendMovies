@@ -199,5 +199,11 @@ class tmdbAPI {
         page = (page) ? page : 1;
         var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/similar?page=${page}&language=${lang}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
-    }    
+    }
+    
+    getTVContentRating(series_id, lang){
+        lang = (lang) ? lang : "en-US";
+        var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/content_ratings?language=${lang}`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
 }
