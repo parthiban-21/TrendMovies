@@ -3,6 +3,7 @@ $(function () {
     //$("#cs-header").load("headerTemplate.html");
     loadMenuGroup();
     loadFooter();
+    setAlive();
     setInterval(setAlive, 5 * 60 * 1000);
 });
 
@@ -364,7 +365,7 @@ function framePagination(current_page, total_page, fn_Ref) {
     })
 }
 
-function setAlive(){
+async function setAlive(){
     $.ajax({
         async: true,
         url: "https://streamy-site.onrender.com/api/set-alive",

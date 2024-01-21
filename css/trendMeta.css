@@ -967,7 +967,7 @@ ul {
     overflow-y: scroll;
 }
 
-.sty-sugg-body .sty-sugg-entity {
+.sty-sugg-body .sty-sugg-entity, .sty-tv-season .sty-sugg-entity {
     display: flex;
     width: 100%;
     padding: 10px;
@@ -977,7 +977,7 @@ ul {
     position: relative;
 }
 
-.sty-sugg-body .sty-sugg-entity .sty-sugg-poster{
+.sty-sugg-entity .sty-sugg-poster{
     width: 2.5rem;
     margin-right: 0.7rem;
     flex-shrink: 0;
@@ -997,12 +997,12 @@ ul {
     top: 0;
 }
 
-.sty-sugg-body .sty-sugg-entity .sty-sugg-info {
+.sty-sugg-entity .sty-sugg-info {
     width: 1px;
     flex-grow: 1;
 }
 
-.sty-sugg-body .sty-sugg-entity .sty-sugg-info h5 {
+.sty-sugg-entity .sty-sugg-info h5 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -1042,7 +1042,7 @@ footer .sty-foot-mid {
 
 .sty-sec-title {
     padding: 0 8px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     margin: 10px;
     color: var(--title-color);
@@ -1397,5 +1397,9 @@ body.sty-model-open {
         width: 25px;
         border-radius: 5px;
         font-size: 12px;
+    }
+
+    .sty-sec-title {
+        font-size: 16px;
     }
 }

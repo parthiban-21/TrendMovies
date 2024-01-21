@@ -90,7 +90,7 @@
                         <div id="sty-stream-servers" class="cs-flex">
                             
                         </div>
-                        <div style="width: 100%;">
+                        <div style="width: 100%; padding: 0 8px;">
                             <div class="sty-m-font" style="padding: 5px 0px;">
                                 <select id="tv-season">
                                 </select>
@@ -129,8 +129,9 @@
                     <!-- <a class="cs-icon"><i class="fa-solid fa-volume-high"></i><span class="sty-i-color">Language : </span><span id="content-lang">--</span></a> -->
                     
                     <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">First Aired On : </span><span id="content-first-aired">--</span></a>
-                    <a class="cs-icon"><i class="fa-regular fa-calendar"></i><span class="sty-i-color">Last Aired On : </span><span id="content-last-aired">--</span></a>
                     <a class="cs-icon"><i class="fa-solid fa-clock"></i><span class="sty-i-color">Runtime : </span><span id="content-runtime">--</span></a>
+                    <a class="cs-icon sty-merge"><i class="fa-regular fa-calendar-check"></i><span class="sty-i-color">Last Aired Episode : </span><span id="content-last-aired">--</span></a>
+                    <a class="cs-icon sty-merge"><i class="fa-solid fa-bell"></i><span class="sty-i-color">Next Episode : </span><span id="content-next-aired">--</span></a>
                     <a class="cs-icon sty-merge"><i class="fa-solid fa-hashtag"></i><span class="sty-i-color">Genre : </span><span id="content-genre">--</span></a>
                     <!-- <a class="cs-icon sty-merge">
                         <i class="fa-solid fa-fan"></i><span class="sty-i-color">Production :    </span>
@@ -183,6 +184,20 @@
             <div id="sty-cr-cast" class="cs-fCenter"></div>
             <div id="sty-cr-crew" class="cs-fCenter"></div>
         </div>
+        <!-- Seasons 
+        <div class="sty-tv-season">
+            <a class="sty-sugg-entity cs-cur"> 
+                <div class="sty-sugg-poster"> 
+                    <div><img src="img/Streamy_BG.jpg"></div> 
+                </div> 
+                <div class="sty-sugg-info"> 
+                    <h5>${name}</h5>
+                    <span><i class="fa-solid fa-star cs-rsmar"></i>${item.vote_average.toFixed(1)}</span> 
+                    <span>${label}</span> 
+                    <span>${parseDate(year)}</span>  
+                </div> 
+            </a>
+        </div> -->
 
         <!-- Production -->
         <div id="sty-content-production" style="padding: 10px 20px;">

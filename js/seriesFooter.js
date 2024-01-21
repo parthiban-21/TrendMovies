@@ -18,13 +18,16 @@ $(function(){
     $("#content-tagline").text(series_data.tagline);
     $("#content-rating").text(series_data.vote_average.toFixed(1));
     $("#content-status").fillBatchText(series_data.status);
-    $("#content-lang").fillBatchText(getLanguage(series_data.original_language, true));
+    $("#content-lang").fillBatchText(getLanguage(series_data.original_language, false));
 
     $("#content-overview").text(series_data.overview);
     $("#content-runtime").fillText((series_data.episode_run_time && series_data.episode_run_time[0]) ? getDuration(series_data.episode_run_time[0]) : "");
     $("#content-genre").fillText(getNames(series_data.genres));
     $("#content-first-aired").fillText(parseDate(series_data.first_air_date));
-    $("#content-last-aired").fillText(parseDate(series_data.last_air_date));
+    let last_aired_episode = (series_data.last_episode_to_air) ? `S ${series_data.last_episode_to_air.season_number} : EP ${series_data.last_episode_to_air.episode_number} on ${parseDate(series_data.last_episode_to_air.air_date)}` : "";
+    $("#content-last-aired").fillText(last_aired_episode);
+    let next_episode = (series_data.next_episode_to_air) ? `S ${series_data.next_episode_to_air.season_number} : EP ${series_data.next_episode_to_air.episode_number} on ${parseDate(series_data.next_episode_to_air.air_date)}` : "";
+    $("#content-next-aired").fillText(next_episode);
     // $("#content-pro-company").fillText(getNames(series_data.production_companies));
     $("#content-pro-country").fillText(getNames(series_data.production_countries));
 
