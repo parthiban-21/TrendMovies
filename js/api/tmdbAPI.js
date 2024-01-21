@@ -100,7 +100,11 @@ class tmdbAPI {
         sort_by = (sort_by) ? sortBy[sort_by] : sortBy.POP_DSC;
         include_adult = (include_adult) ? include_adult : false;
         include_video = (include_video) ? include_video : false;
-        var serviceURL = `https://api.themoviedb.org/3/discover/tv?language=${lang}&page=${page}&sort_by=${sort_by}&include_adult=${include_adult}&include_video=${include_video}`;
+        let today = new Date();
+        let ninetyDaysAgo = new Date(today.getTime() - (90 * 24 * 60 * 60 * 1000));
+        var current_date = `${today.getFullYear()+"-"+(today.getMonth() + 1).toString().padStart(2, '0')+"-"+today.getDate()}`;
+        var before_date = `${ninetyDaysAgo.getFullYear()+"-"+(ninetyDaysAgo.getMonth() + 1).toString().padStart(2, '0')+"-"+ninetyDaysAgo.getDate()}`;
+        var serviceURL = `https://api.themoviedb.org/3/discover/tv?language=${lang}&page=${page}&sort_by=${sort_by}&include_adult=${include_adult}&include_video=${include_video}&first_air_date.gte=${before_date}&first_air_date.lte=${current_date}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
 

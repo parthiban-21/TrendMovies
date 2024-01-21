@@ -5,7 +5,7 @@ $(function () {
 
 function pageCall(page) {
     const tmdb = new tmdbAPI();
-    getSeries(tmdb.onAirTVShows(page));
+    getSeries(tmdb.discoverSeries(page, 'POP_DSC', false, false));
 }
 
 function getSeries(data) {
