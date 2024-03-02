@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/trendMeta.css">
         <link rel="stylesheet" href="css/plugins.css">
+        <link rel="stylesheet" href="css/front.owl.min.css">
         <!-- <link rel="stylesheet" href="css/cs-common.css"> -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/0ce161c5b4.js" crossorigin="anonymous"></script>
@@ -38,6 +39,7 @@
         <script src="js/base/share-plugin.js"></script>
         <script src="js/base/templates.js"></script>
         <script src="js/base/content-credits.js"></script>
+        <script src="js/base/owlcarousel.js"></script>
         <!-- API -->
         <script src="js/api/tmdbAPI.js"></script>
         <script src="js/api/omdbAPI.js"></script>
@@ -195,8 +197,8 @@
                     <div class="cs-fCenter sty-bg" style="height: 100%;">
                         <img>
                         <!-- <div class="cs-cflex sty-player-txt">
-                                    <i class="fa-solid fa-circle-play cs-hover"></i>
-                                </div> -->
+                                <i class="fa-solid fa-circle-play cs-hover"></i>
+                            </div> -->
                     </div>
                     <iframe id="sty-iframe" class="sty-iframe" style="display: none;" width="100%" height="100%" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -218,13 +220,17 @@
             <div id="sty-cr-cast" class="cs-fCenter"></div>
             <div id="sty-cr-crew" class="cs-fCenter"></div>
         </div>
+        <section class="sty-section">
+            <label class="section-header">Images</label>
+            <div id="content-backdrops"></div>
+        </section>
         <!-- Production -->
-        <div id="sty-content-production" style="padding: 10px 20px;">
-            <label class="sty-sec-title">Production</label>
-            <ul id="con-prod-list" class="carousel" style="margin: 10px 0;">
+        <section id="sty-content-production" class="sty-section">
+            <label class="section-header">Production</label>
+            <ul id="con-prod-list" class="carousel">
                 
             </ul>
-        </div>
+        </section>
         <div id="sty-recommendations" class="swiper-container" style="padding: 10px 20px;">
             <label class="sty-sec-title">Recommendation</label>
             <div id="related-contents" class="swiper-wrapper carousel">
@@ -237,9 +243,7 @@
         <input type="hidden" id="apiId"/>
         <input type="hidden" id="contentType" value="MOVIE"/>
         <footer>
-            <div class="cs-fCenter">
-                <label>We don't host any of the above content. All are hosted by Third-Party sites</label>
-            </div>
+            
         </footer>
         <script src="js/trendMeta.js"></script>
         <script src="js/movieFooter.js"></script>

@@ -211,4 +211,14 @@ class tmdbAPI {
         var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/content_ratings?language=${lang}`;
         return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
     }
+
+    getMovieImages(movie_id){
+        var serviceURL = `https://api.themoviedb.org/3/movie/${movie_id}/images`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
+
+    getTVShowImages(series_id){
+        var serviceURL = `https://api.themoviedb.org/3/tv/${series_id}/images`;
+        return metaAjaxCall(serviceURL, "GET", this.AUTH_HEADER);
+    }
 }

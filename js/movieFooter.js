@@ -42,6 +42,7 @@ $(function(){
     
     frameProduction(movie_data.production_companies);
     invokeRecommandation();
+    invokeImages();
 
     $("#content-watch").on('click', function(){
         if(movie_data.status == "Released"){
@@ -184,5 +185,30 @@ function invokeRecommandation(){
             })
     } else {
         $("#sty-recommendations").hide();
+    }
+}
+
+function invokeImages() {
+    const tmdb = new tmdbAPI();
+    var movie_id = $("#apiId").val();
+    var img_data = tmdb.getMovieImages(movie_id);
+    if(img_data && img_data.backdrops.length > 0) {
+        $("#content-backdrops").empty();
+        $.each(img_data.backdrops, function(index, item) {
+            var htmlTag = `<img alt="" src="${"https://image.tmdb.org/t/p/w500" + item.file_path}">`;
+            $("#content-backdrops").append(htmlTag);
+        })
+        $("#content-backdrops").owlCarousel({
+            autoPlay: false,
+            items: 3,
+            stopOnHover: true,
+            pagination: false,
+            center: true,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [980, 3],
+            itemsTablet: [768,1],
+            itemsTabletSmall: false,
+            itemsMobile: [479, 1]
+        });
     }
 }

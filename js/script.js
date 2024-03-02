@@ -1,6 +1,18 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 $(function () {
     pageCall(1);
+    $("#main").owlCarousel({
+        autoPlay: false,
+        items: 5,
+        stopOnHover: true,
+        pagination: true,
+        center: true,
+        itemsDesktop: [1199, 5],
+        itemsDesktopSmall: [980, 5],
+        itemsTablet: [768, 2],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 2]
+    });
 });
 
 function pageCall(page) {
