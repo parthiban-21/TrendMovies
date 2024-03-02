@@ -1,7 +1,7 @@
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 $(function () {
     pageCall(1);
-    $("#main").owlCarousel({
+    /*$("#main").owlCarousel({
         autoPlay: false,
         items: 5,
         stopOnHover: true,
@@ -12,7 +12,7 @@ $(function () {
         itemsTablet: [768, 2],
         itemsTabletSmall: false,
         itemsMobile: [479, 2]
-    });
+    });*/
 });
 
 function pageCall(page) {
