@@ -46,9 +46,9 @@ body {
     /* background-image: linear-gradient(black, transparent), url(../img/top-bg.png); */
     background-color: var(--primary-color);;
     opacity: 1;
-    background-image:  radial-gradient(#001465 1.1px, transparent 1.1px), radial-gradient(#001465 1.1px, var(--primary-color) 1.1px);
+    /* background-image:  radial-gradient(#001465 1.1px, transparent 1.1px), radial-gradient(#001465 1.1px, var(--primary-color) 1.1px);
     background-size: 44px 44px;
-    background-position: 0 0,22px 22px;
+    background-position: 0 0,22px 22px; */
 
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
@@ -276,9 +276,9 @@ ul {
 }
 
 .sty-content-card {
-    width: 270px;
-    height: 400px;
-    margin: 8px;
+    width: 300px;
+    height: 410px;
+    margin: 1.5px;
     border-radius: 3px;
     box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
     background-color: rgb(0, 0, 0);
@@ -315,7 +315,7 @@ ul {
     margin: 1rem;
     border-radius: 15px;
     box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
-    background-color: rgb(0, 0, 0);
+    background-color: transparent;
     position: relative;
     overflow: hidden;
 }
@@ -602,8 +602,7 @@ ul {
 }
 
 .carousel .carousel-vr {
-    flex: 0 0 270px;
-    margin-right: 10px;
+    flex: 0 0 300px;
 }
 
 .carousel .carousel-hr img {
@@ -614,7 +613,7 @@ ul {
 
 .carousel .carousel-vr img {
     width: 100%;
-    height: 400px;
+    height: 410px;
     object-fit: cover;
 }
 
@@ -1273,8 +1272,10 @@ body.sty-model-open {
         display: grid;
     }
 
-    .cs-frag-70 {
-        width: 85%;
+    .cs-frag-70, .cs-postermax {
+        width: 100%;
+        padding: 10px 15px;
+        margin: 0 auto;
     }
 
     .sty-bottom-fade {
@@ -1316,11 +1317,6 @@ body.sty-model-open {
 
     .sty-side-menu {
         width: 50%;
-    }
-
-    .cs-postermax {
-        width: 85%;
-        /* height: 650px; */
     }
 
     .cs-overview {
@@ -1378,16 +1374,16 @@ body.sty-model-open {
     }
 
     .sty-content-card {
-        width: 170px;
-        height: 250px;
+        width: 190px;
+        height: 280px;
     }
 
     .carousel .carousel-vr {
-        flex: 0 0 170px;
+        flex: 0 0 190px;
     }
 
     .carousel .carousel-vr img {
-        height: 250px;
+        height: 280px;
     }
 
     .cs-btn-max {
@@ -1440,5 +1436,9 @@ body.sty-model-open {
     
     .sty-prod-cover .prod-text .country {
         font-size: 10px;
+    }
+
+    .sty-section {
+        padding: 10px 15px;
     }
 }

@@ -195,7 +195,7 @@ function invokeImages() {
     if(img_data && img_data.backdrops.length > 0) {
         $("#content-backdrops").empty();
         $.each(img_data.backdrops, function(index, item) {
-            var htmlTag = `<img alt="" src="${"https://image.tmdb.org/t/p/w500" + item.file_path}">`;
+            var htmlTag = `<img style="width:100%;" alt="" src="${"https://image.tmdb.org/t/p/w500" + item.file_path}">`;
             $("#content-backdrops").append(htmlTag);
         })
         $("#content-backdrops").owlCarousel({
