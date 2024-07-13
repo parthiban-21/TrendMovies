@@ -37,7 +37,9 @@
   <script src="js/base/perfect-scrollbar.js"></script>
   <script src="js/base/share-plugin.js"></script>
   <script src="js/base/templates.js"></script>
-    <script src="https://cdn.jwplayer.com/libraries/QDCNWX6Y.js"></script>
+    <!-- <script src="https://cdn.jwplayer.com/libraries/QDCNWX6Y.js"></script> -->
+    <script src='https://ssl.p.jwpcdn.com/player/v/8.6.2/jwplayer.js'></script>
+    <script type="text/javascript">jwplayer.key="64HPbvSQorQcd52B8XFuhMtEoitbvY/EXJmMBfKcXZQU2Rnn";</script>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css">
     <style>
       .input {
@@ -87,6 +89,7 @@
     <!--Video Player Start-->
     <div style="width: 90%; margin: 0 auto;">
       <video id="myVideo" width="100%"> Your browser does not support the video tag. </video>
+      <div id="sty-jw-player"></div>
       <div class="con cs-fCenter">
         <input type="url" id="st-url" class="input" placeholder="Enter URL" />
         <span id="play" class="cs-btn-max sty-tran-hover" onclick="play()">Play</span>

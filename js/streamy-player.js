@@ -1,4 +1,4 @@
-const controls = [
+const sty_pyro_player_controls = [
     'play-large', // The large play button in the center
     'restart', // Restart playback
     'rewind', // Rewind by the seek time (default 10 seconds)
@@ -16,13 +16,27 @@ const controls = [
     //'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
     'fullscreen', // Toggle fullscreen
   ];
-const settings = ['captions', 'quality', 'speed', 'loop'];
-const player = Plyr.setup("#myVideo", {
-    controls: controls,
+const sty_pyro_player_settings = ['captions', 'quality', 'speed', 'loop'];
+const sty_pyro_player = Plyr.setup("#myVideo", {
+    controls: sty_pyro_player_controls,
     clickToPlay: true,
     captions: { active: true, update: true, language: 'en' },
     audio: { active: true, language: 'en' }
 });
+
+const sty_jw_setup = {
+    mute: false,
+    volume: 80,
+    autostart: false,
+    width: "100%",
+    aspectratio: "16:9",
+    repeat: false,
+    controls: true,
+    skin: {
+        active: "#0b7ef4"
+    }
+};
+var sty_jw_player;
 $(function () {
     window.addEventListener("devtoolschange", function (e) {
         if (e.detail.opened) {
@@ -48,12 +62,14 @@ function play(type){
         $("#sty-iframe").attr("src", $("#st-iframe-url").val());
     } else {
         var videoPath = $("#st-url").val();
-        $("#myVideo").attr("src", videoPath);
+        $("#myVideo").hide();
+        //$("#myVideo").attr("src", videoPath);
+        var play = sty_jw_setup;
+        play['sources'] = [{
+            file : videoPath,
+            type: 'video/mp4'
+        }]
+        sty_jw_player = jwplayer('sty-jw-player').setup(play);
+        $("#st-url").val('');
     }
-    //player.download = videoPath;
-    // jwplayer("myElement").setup({
-    //     file: videoPath,
-    //     width: '100%',
-    //     aspectratio: '16:9' // Adjust as needed
-    // });
 }
