@@ -3,8 +3,7 @@ $(function () {
     //$("#cs-header").load("headerTemplate.html");
     loadMenuGroup();
     loadFooter();
-    setAlive();
-    setInterval(setAlive, 5 * 60 * 1000);
+    setTimeout(setAlive, 5 * 1000);
 });
 
 function includeHTML() {
@@ -366,7 +365,9 @@ function framePagination(current_page, total_page, fn_Ref) {
 }
 
 async function setAlive(){
-    $.ajax({
+	alert("This Site is Moved Permantantly");
+	window.location.href = "https://streamy-site.onrender.com/";
+    /*$.ajax({
         async: true,
         url: "https://streamy-site.onrender.com/api/set-alive",
         type: "POST",
@@ -379,7 +380,7 @@ async function setAlive(){
         error: function(data){
             console.log(data);
         }
-    });
+    });*/
 }
 
 function metaGetValue(object, key) {
